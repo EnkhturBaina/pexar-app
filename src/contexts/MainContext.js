@@ -3,21 +3,21 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 
-const UserContext = React.createContext();
+const MainContext = React.createContext();
 
 export const UserStore = (props) => {
   const navigation = useNavigation();
 
   const [expoPushToken, setExpoPushToken] = useState("");
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [loginMsg, setLoginMsg] = useState("");
   const [token, setToken] = useState("");
 
   return (
-    <UserContext.Provider
+    <MainContext.Provider
       value={{
         isLoggedIn,
         setIsLoggedIn,
@@ -30,8 +30,8 @@ export const UserStore = (props) => {
       }}
     >
       {props.children}
-    </UserContext.Provider>
+    </MainContext.Provider>
   );
 };
 
-export default UserContext;
+export default MainContext;

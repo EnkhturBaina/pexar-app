@@ -1,14 +1,17 @@
 import { NavigationContainer } from "@react-navigation/native";
 import "react-native-gesture-handler";
-import { UserStore } from "./src/contexts/UserContext";
-import MainDrawerNavigation from "./src/navigations/MainDrawerNavigation";
+import { UserStore } from "./src/contexts/MainContext";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import HomeScreenTabNavigation from "./src/navigations/HomeScreenTabNavigation";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <UserStore>
-        <MainDrawerNavigation />
-      </UserStore>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <UserStore>
+          <HomeScreenTabNavigation />
+        </UserStore>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
