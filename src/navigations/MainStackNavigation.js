@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { FONT_FAMILY_BOLD } from "../constant";
 
 import MainContext from "../contexts/MainContext";
 
@@ -9,6 +8,9 @@ import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import HRScreen from "../screens/HRScreen";
+import ResetPasswordScreen from "../screens/ResetPasswordScreen";
+import { Icon } from "@rneui/base";
+import { MAIN_BACKGROUND_COLOR } from "../constant";
 
 const Stack = createStackNavigator();
 
@@ -16,22 +18,46 @@ const LoginStackNavigator = (props) => {
   const state = useContext(MainContext);
   return (
     <Stack.Navigator
-      initialRouteName="LoginTab"
+      initialRouteName="LoginScreen"
       screenOptions={{
         headerStyle: {
           shadowColor: "transparent",
           elevation: 0,
+          backgroundColor: MAIN_BACKGROUND_COLOR,
         },
       }}
     >
       <Stack.Screen
-        name="LoginTab"
+        name="LoginScreen"
         component={LoginScreen}
         options={{
           title: "",
           headerShown: false,
           headerTitleStyle: {},
           headerLeft: () => <></>,
+        }}
+      />
+      <Stack.Screen
+        name="ResetPasswordScreen"
+        component={ResetPasswordScreen}
+        options={{
+          title: "",
+          headerTitleStyle: {},
+          headerLeft: () => (
+            <TouchableOpacity
+              style={styles.headerLeftContainer}
+              onPress={() => {
+                props.navigation.goBack();
+              }}
+            >
+              <Icon
+                name="keyboard-arrow-left"
+                type="material-icons"
+                size={30}
+              />
+              <Text style={styles.headerLeftText}>Нууц үг мартсан</Text>
+            </TouchableOpacity>
+          ),
         }}
       />
     </Stack.Navigator>
@@ -128,7 +154,7 @@ const styles = StyleSheet.create({
   },
   headerLeftText: {
     marginLeft: 10,
-    fontFamily: FONT_FAMILY_BOLD,
+    fontWeight: "bold",
     fontSize: 20,
     width: "100%",
   },

@@ -12,7 +12,12 @@ import {
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, CheckBox } from "@rneui/themed";
-import { BUTTON_BORDER_RADIUS, MAIN_COLOR, MAIN_COLOR_GRAY } from "../constant";
+import {
+  BUTTON_BORDER_RADIUS,
+  MAIN_BACKGROUND_COLOR,
+  MAIN_COLOR,
+  MAIN_COLOR_GRAY,
+} from "../constant";
 import { Icon } from "@rneui/base";
 import { Snackbar } from "react-native-paper";
 import MainContext from "../contexts/MainContext";
@@ -87,6 +92,7 @@ const LoginScreen = (props) => {
           topPos={30}
         />
         <Image source={logo_black} style={styles.logo} />
+        <Text style={{ fontSize: 36 }}>Нэвтрэх хэсэг</Text>
         {state.loginError != "" ? (
           <Text
             style={{
@@ -103,7 +109,7 @@ const LoginScreen = (props) => {
             styles.sectionStyle,
             {
               backgroundColor:
-                selectedInput == "userName" ? backgroundColor : "#fff",
+                selectedInput == "userName" ? backgroundColor : "#F2F3F5",
               borderColor:
                 selectedInput == "userName" ? borderColor : MAIN_COLOR_GRAY,
             },
@@ -111,7 +117,7 @@ const LoginScreen = (props) => {
         >
           <Icon
             name="user"
-            type="entypo"
+            type="font-awesome"
             size={20}
             color={selectedInput == "userName" ? MAIN_COLOR : MAIN_COLOR_GRAY}
             style={styles.inputIcon}
@@ -130,15 +136,15 @@ const LoginScreen = (props) => {
             styles.sectionStyle,
             {
               backgroundColor:
-                selectedInput == "password" ? backgroundColor : "#fff",
+                selectedInput == "password" ? backgroundColor : "#F2F3F5",
               borderColor:
                 selectedInput == "password" ? borderColor : MAIN_COLOR_GRAY,
             },
           ]}
         >
           <Icon
-            name="key"
-            type="ionicon"
+            name="locked"
+            type="fontisto"
             size={20}
             color={selectedInput == "password" ? MAIN_COLOR : MAIN_COLOR_GRAY}
             style={styles.inputIcon}
@@ -181,13 +187,7 @@ const LoginScreen = (props) => {
           />
           <TouchableOpacity
             onPress={() => {
-              if (state.userName == "") {
-                onToggleSnackBar("Нэвтрэх нэр оруулна уу.");
-              } else {
-                props.navigation.navigate("ResetPasswordScreen", {
-                  userName: state.userName,
-                });
-              }
+              props.navigation.navigate("ResetPasswordScreen");
             }}
           >
             <Text style={{ color: MAIN_COLOR }}>Нууц үг мартсан</Text>
@@ -221,7 +221,7 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   loginContainer: {
     flexGrow: 1,
-    backgroundColor: "#F7F8FA",
+    backgroundColor: MAIN_BACKGROUND_COLOR,
     paddingTop: 20,
     justifyContent: "center",
     alignItems: "center",
@@ -237,8 +237,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
-    borderWidth: 0.5,
-    borderColor: MAIN_COLOR_GRAY,
     height: 50,
     borderRadius: BUTTON_BORDER_RADIUS,
     margin: 10,
@@ -258,6 +256,7 @@ const styles = StyleSheet.create({
   generalInput: {
     width: "80%",
     height: 50,
+    fontWeight: "bold",
   },
   stackView: {
     width: "80%",
@@ -275,6 +274,7 @@ const styles = StyleSheet.create({
     // paddingTop: 0,
     marginTop: 0,
     marginBottom: 0,
+    backgroundColor: MAIN_BACKGROUND_COLOR,
   },
   imageStyle: {
     position: "absolute",
