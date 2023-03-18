@@ -8,14 +8,22 @@ const MainContext = React.createContext();
 export const UserStore = (props) => {
   const navigation = useNavigation();
 
+  const [userName, setUserName] = useState("");
   const [expoPushToken, setExpoPushToken] = useState("");
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const [loginMsg, setLoginMsg] = useState("");
   const [token, setToken] = useState("");
+  const [rememberUserName, setRememberUserName] = useState(false);
 
+  const logout = () => {
+    AsyncStorage.removeItem("accessToken");
+    AsyncStorage.removeItem("refreshToken");
+    AsyncStorage.removeItem("userData");
+    setIsLoggedIn(false);
+  };
   return (
     <MainContext.Provider
       value={{
@@ -27,6 +35,11 @@ export const UserStore = (props) => {
         setLoginMsg,
         token,
         expoPushToken,
+        logout,
+        rememberUserName,
+        setRememberUserName,
+        userName,
+        setUserName,
       }}
     >
       {props.children}

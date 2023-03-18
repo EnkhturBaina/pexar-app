@@ -51,7 +51,6 @@ const HomeScreenTabNavigation = () => {
                 <Text
                   style={{
                     color: focused ? MAIN_COLOR : MAIN_COLOR_GRAY,
-                    fontWeight: focused ? "bold" : "normal",
                     fontSize: 12,
                   }}
                 >
@@ -73,7 +72,6 @@ const HomeScreenTabNavigation = () => {
                 <Text
                   style={{
                     color: focused ? MAIN_COLOR : MAIN_COLOR_GRAY,
-                    fontWeight: focused ? "bold" : "normal",
                     fontSize: 12,
                   }}
                 >
@@ -95,7 +93,6 @@ const HomeScreenTabNavigation = () => {
                 <Text
                   style={{
                     color: focused ? MAIN_COLOR : MAIN_COLOR_GRAY,
-                    fontWeight: focused ? "bold" : "normal",
                     fontSize: 12,
                   }}
                 >
@@ -119,7 +116,6 @@ const HomeScreenTabNavigation = () => {
                 <Text
                   style={{
                     color: focused ? MAIN_COLOR : MAIN_COLOR_GRAY,
-                    fontWeight: focused ? "bold" : "normal",
                     fontSize: 12,
                   }}
                 >
@@ -141,7 +137,6 @@ const HomeScreenTabNavigation = () => {
                 <Text
                   style={{
                     color: focused ? MAIN_COLOR : MAIN_COLOR_GRAY,
-                    fontWeight: focused ? "bold" : "normal",
                     fontSize: 12,
                   }}
                 >
