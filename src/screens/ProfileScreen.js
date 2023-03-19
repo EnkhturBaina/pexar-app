@@ -86,7 +86,7 @@ const ProfileScreen = (props) => {
           <View style={{ flex: 1 }}>
             <TouchableOpacity
               style={styles.profileMenuContainer}
-              onPress={() => {}}
+              onPress={() => props.navigation.navigate("EditUserDataScreen")}
             >
               <View style={styles.stack1}>
                 <Image
@@ -104,7 +104,7 @@ const ProfileScreen = (props) => {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.profileMenuContainer}
-              onPress={() => {}}
+              onPress={() => props.navigation.navigate("PrivacyScreen")}
             >
               <View style={styles.stack1}>
                 <Image

@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-
 import MainContext from "../contexts/MainContext";
-
 import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
@@ -11,10 +9,14 @@ import HRScreen from "../screens/HRScreen";
 import ResetPasswordScreen from "../screens/ResetPasswordScreen";
 import { Icon } from "@rneui/base";
 import { MAIN_BACKGROUND_COLOR } from "../constant";
+import EditUserDataScreen from "../screens/EditUserDataScreen";
+import { useNavigation } from "@react-navigation/native";
+import PrivacyScreen from "../screens/PrivacyScreen";
 
 const Stack = createStackNavigator();
 
-const LoginStackNavigator = (props) => {
+const LoginStackNavigator = () => {
+  const navigation = useNavigation();
   const state = useContext(MainContext);
   return (
     <Stack.Navigator
@@ -32,7 +34,6 @@ const LoginStackNavigator = (props) => {
         component={LoginScreen}
         options={{
           title: "",
-          headerShown: false,
           headerTitleStyle: {},
           headerLeft: () => <></>,
         }}
@@ -47,14 +48,10 @@ const LoginStackNavigator = (props) => {
             <TouchableOpacity
               style={styles.headerLeftContainer}
               onPress={() => {
-                props.navigation.goBack();
+                navigation.goBack();
               }}
             >
-              <Icon
-                name="keyboard-arrow-left"
-                type="material-icons"
-                size={30}
-              />
+              <Icon name="arrow-left" type="feather" size={25} />
               <Text style={styles.headerLeftText}>Нууц үг мартсан</Text>
             </TouchableOpacity>
           ),
@@ -120,10 +117,10 @@ const ProfileStackNavigator = (props) => {
     <Stack.Navigator
       initialRouteName="ProfileScreen"
       screenOptions={{
-        headerShown: false,
         headerStyle: {
           shadowColor: "transparent",
           elevation: 0,
+          backgroundColor: MAIN_BACKGROUND_COLOR,
         },
       }}
     >
@@ -132,7 +129,44 @@ const ProfileStackNavigator = (props) => {
         component={ProfileScreen}
         options={{
           title: "",
+          headerShown: false,
           headerLeft: () => <></>,
+        }}
+      />
+      <Stack.Screen
+        name="EditUserDataScreen"
+        component={EditUserDataScreen}
+        options={{
+          title: "",
+          headerLeft: () => (
+            <TouchableOpacity
+              style={styles.headerLeftContainer}
+              onPress={() => {
+                props.navigation.navigate("ProfileScreen");
+              }}
+            >
+              <Icon name="arrow-left" type="feather" size={25} />
+              <Text style={styles.headerLeftText}>Профайл</Text>
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="PrivacyScreen"
+        component={PrivacyScreen}
+        options={{
+          title: "",
+          headerLeft: () => (
+            <TouchableOpacity
+              style={styles.headerLeftContainer}
+              onPress={() => {
+                props.navigation.navigate("ProfileScreen");
+              }}
+            >
+              <Icon name="arrow-left" type="feather" size={25} />
+              <Text style={styles.headerLeftText}>Нууцлал</Text>
+            </TouchableOpacity>
+          ),
         }}
       />
     </Stack.Navigator>

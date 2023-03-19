@@ -18,6 +18,8 @@ export const UserStore = (props) => {
   const [token, setToken] = useState("");
   const [rememberUserName, setRememberUserName] = useState(false);
 
+  const [lookUpType, setLookUpType] = useState("");
+
   const logout = () => {
     AsyncStorage.removeItem("accessToken");
     AsyncStorage.removeItem("refreshToken");
@@ -40,6 +42,8 @@ export const UserStore = (props) => {
         setRememberUserName,
         userName,
         setUserName,
+        lookUpType,
+        setLookUpType,
       }}
     >
       {props.children}

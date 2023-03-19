@@ -14,12 +14,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { Button, CheckBox } from "@rneui/themed";
 import {
   BUTTON_BORDER_RADIUS,
+  INPUT_BG_COLOR,
   MAIN_BACKGROUND_COLOR,
   MAIN_COLOR,
   MAIN_COLOR_GRAY,
 } from "../constant";
 import { Icon } from "@rneui/base";
-import { Snackbar } from "react-native-paper";
 import MainContext from "../contexts/MainContext";
 import logo_black from "../../assets/logo_black.png";
 import { useHeaderHeight } from "@react-navigation/elements";
@@ -109,7 +109,7 @@ const LoginScreen = (props) => {
             styles.sectionStyle,
             {
               backgroundColor:
-                selectedInput == "userName" ? backgroundColor : "#F2F3F5",
+                selectedInput == "userName" ? backgroundColor : INPUT_BG_COLOR,
               borderColor:
                 selectedInput == "userName" ? borderColor : MAIN_COLOR_GRAY,
             },
@@ -136,7 +136,7 @@ const LoginScreen = (props) => {
             styles.sectionStyle,
             {
               backgroundColor:
-                selectedInput == "password" ? backgroundColor : "#F2F3F5",
+                selectedInput == "password" ? backgroundColor : INPUT_BG_COLOR,
               borderColor:
                 selectedInput == "password" ? borderColor : MAIN_COLOR_GRAY,
             },
@@ -230,7 +230,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     width: 230,
     height: 60,
-    marginTop: 20,
     marginBottom: 20,
   },
   sectionStyle: {
