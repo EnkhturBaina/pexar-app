@@ -3,15 +3,20 @@ import { StyleSheet, TouchableOpacity, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import MainContext from "../contexts/MainContext";
 import LoginScreen from "../screens/LoginScreen";
-import HomeScreen from "../screens/HomeScreen";
+import HomeScreen from "../screens/Home/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import HRScreen from "../screens/HRScreen";
-import ResetPasswordScreen from "../screens/ResetPasswordScreen";
+import ResetPasswordScreen from "../screens/ResetPassword/ResetPasswordScreen";
 import { Icon } from "@rneui/base";
 import { MAIN_BACKGROUND_COLOR } from "../constant";
 import EditUserDataScreen from "../screens/EditUserDataScreen";
 import { useNavigation } from "@react-navigation/native";
 import PrivacyScreen from "../screens/PrivacyScreen";
+import LanguageScreen from "../screens/LanguageScreen";
+import NotificationScreen from "../screens/NotificationScreen";
+import ChatScreen from "../screens/ChatScreen";
+import ConfirmOTPScreen from "../screens/ResetPassword/ConfirmOTPScreen";
+import NewPasswordScreen from "../screens/ResetPassword/NewPasswordScreen";
 
 const Stack = createStackNavigator();
 
@@ -53,6 +58,44 @@ const LoginStackNavigator = () => {
             >
               <Icon name="arrow-left" type="feather" size={25} />
               <Text style={styles.headerLeftText}>Нууц үг мартсан</Text>
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="ConfirmOTPScreen"
+        component={ConfirmOTPScreen}
+        options={{
+          title: "",
+          headerTitleStyle: {},
+          headerLeft: () => (
+            <TouchableOpacity
+              style={styles.headerLeftContainer}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <Icon name="arrow-left" type="feather" size={25} />
+              <Text style={styles.headerLeftText}>Баталгаажуулах</Text>
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="NewPasswordScreen"
+        component={NewPasswordScreen}
+        options={{
+          title: "",
+          headerTitleStyle: {},
+          headerLeft: () => (
+            <TouchableOpacity
+              style={styles.headerLeftContainer}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <Icon name="arrow-left" type="feather" size={25} />
+              <Text style={styles.headerLeftText}>Нууц үг солих</Text>
             </TouchableOpacity>
           ),
         }}
@@ -102,6 +145,54 @@ const HRScreenStackNavigator = (props) => {
       <Stack.Screen
         name="HRScreen"
         component={HRScreen}
+        options={{
+          title: "",
+          headerTitleStyle: {},
+          headerLeft: () => <></>,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+const ChatScreenStackNavigator = (props) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="ChatScreen"
+      screenOptions={{
+        headerShown: false,
+        headerStyle: {
+          shadowColor: "transparent",
+          elevation: 0,
+        },
+      }}
+    >
+      <Stack.Screen
+        name="ChatScreen"
+        component={ChatScreen}
+        options={{
+          title: "",
+          headerTitleStyle: {},
+          headerLeft: () => <></>,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+const NotifScreenStackNavigator = (props) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="NotificationScreen"
+      screenOptions={{
+        headerShown: false,
+        headerStyle: {
+          shadowColor: "transparent",
+          elevation: 0,
+        },
+      }}
+    >
+      <Stack.Screen
+        name="NotificationScreen"
+        component={NotificationScreen}
         options={{
           title: "",
           headerTitleStyle: {},
@@ -169,6 +260,24 @@ const ProfileStackNavigator = (props) => {
           ),
         }}
       />
+      <Stack.Screen
+        name="LanguageScreen"
+        component={LanguageScreen}
+        options={{
+          title: "",
+          headerLeft: () => (
+            <TouchableOpacity
+              style={styles.headerLeftContainer}
+              onPress={() => {
+                props.navigation.navigate("ProfileScreen");
+              }}
+            >
+              <Icon name="arrow-left" type="feather" size={25} />
+              <Text style={styles.headerLeftText}>Хэл солих</Text>
+            </TouchableOpacity>
+          ),
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -178,6 +287,8 @@ export {
   HomeScreenStackNavigator,
   HRScreenStackNavigator,
   ProfileStackNavigator,
+  NotifScreenStackNavigator,
+  ChatScreenStackNavigator,
 };
 
 const styles = StyleSheet.create({

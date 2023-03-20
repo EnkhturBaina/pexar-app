@@ -5,6 +5,8 @@ export const MAIN_COLOR_RED = "#E34935";
 export const MAIN_BACKGROUND_COLOR = "#F7F8FA";
 export const MAIN_DARK_LEVEL9 = "#183142"; //Бараан цэнхэр өнгө LEVEL 9
 export const INPUT_BG_COLOR = "#F2F3F5";
+export const MAIN_COLOR_B1 = "#007B42"; //Үндсэн өнгө B1
+export const MAIN_COLOR_GRAY_LEVEL4 = "#C9CDD4"; //Цайвар level 4
 
 export const BUTTON_BORDER_RADIUS = 12;
 export const SERVER_URL = "";

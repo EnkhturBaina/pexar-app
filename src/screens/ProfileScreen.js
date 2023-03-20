@@ -32,7 +32,7 @@ const ProfileScreen = (props) => {
   const state = useContext(MainContext);
   const navigation = useNavigation();
   const [visibleDialog, setVisibleDialog] = useState(false); //Dialog харуулах
-  const [dialogType, setDialogType] = useState("warning"); //Dialog харуулах төрөл
+
   return (
     <SafeAreaView
       style={{
@@ -122,7 +122,7 @@ const ProfileScreen = (props) => {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.profileMenuContainer}
-              onPress={() => {}}
+              onPress={() => props.navigation.navigate("LanguageScreen")}
             >
               <View style={styles.stack1}>
                 <Image
@@ -144,7 +144,7 @@ const ProfileScreen = (props) => {
           </View>
           <TouchableOpacity
             style={styles.profileMenuContainer}
-            onPress={() => state.logout()}
+            onPress={() => setVisibleDialog(true)}
           >
             <View style={styles.stack1}>
               <Image
@@ -168,10 +168,12 @@ const ProfileScreen = (props) => {
           declineFunction={() => {
             setVisibleDialog(false);
           }}
-          text="Системээс гарах уу?"
+          text="Та системээс гарах гэж байна."
           confirmBtnText="Гарах"
           DeclineBtnText="Хаах"
-          type={dialogType}
+          type={null}
+          title="Системээс гарах"
+          dialogColor={MAIN_COLOR_RED}
         />
       </ScrollView>
     </SafeAreaView>

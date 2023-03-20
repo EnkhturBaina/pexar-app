@@ -14,17 +14,17 @@ import {
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 const { StatusBarManager } = NativeModules;
-import reset_pass from "../../assets/reset_pass.png";
+import reset_pass from "../../../assets/reset_pass.png";
 import {
   BUTTON_BORDER_RADIUS,
   MAIN_BACKGROUND_COLOR,
   MAIN_COLOR,
   MAIN_COLOR_GRAY,
-} from "../constant";
+} from "../../constant";
 import { Icon, Button } from "@rneui/base";
 import { useHeaderHeight } from "@react-navigation/elements";
 
-const ResetPasswordScreen = () => {
+const ResetPasswordScreen = (props) => {
   const [email, setEmail] = useState("");
   const headerHeight = useHeaderHeight();
   return (
@@ -68,7 +68,7 @@ const ResetPasswordScreen = () => {
             title="Нэвтрэх"
             color={MAIN_COLOR}
             radius={BUTTON_BORDER_RADIUS}
-            onPress={() => console.log("A")}
+            onPress={() => props.navigation.navigate("ConfirmOTPScreen")}
             titleStyle={{
               fontWeight: "bold",
             }}

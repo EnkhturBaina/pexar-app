@@ -29,7 +29,6 @@ const PrivacyScreen = () => {
         backgroundColor: MAIN_BACKGROUND_COLOR,
         paddingHorizontal: 20,
         justifyContent: "space-between",
-        paddingBottom: 20,
       }}
     >
       <View>
@@ -113,6 +112,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginBottom: Platform.OS == "ios" ? 10 : 0,
   },
   btnContainer: {
     marginRight: "auto",
@@ -122,7 +122,9 @@ const styles = StyleSheet.create({
     borderColor: MAIN_COLOR,
     borderWidth: 2,
   },
-  bottomContainer: {},
+  bottomContainer: {
+    paddingBottom: 20,
+  },
   textStyle: {
     color: MAIN_DARK_LEVEL9,
     fontSize: 16,

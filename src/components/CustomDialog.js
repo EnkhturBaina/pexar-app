@@ -11,14 +11,18 @@ export default function ({
   confirmBtnText,
   DeclineBtnText,
   type, //Dialog харуулах төрөл ['success', 'warning', 'error']
+  title,
+  dialogColor,
 }) {
   var imageType = null;
   if (type == "warning") {
     imageType = require("../../assets/warning.png");
   } else if (type == "error") {
     imageType = require("../../assets/error.png");
-  } else {
+  } else if (type == "success") {
     imageType = require("../../assets/success.png");
+  } else {
+    imageType = null;
   }
 
   return (
@@ -31,14 +35,25 @@ export default function ({
         alignItems: "center",
       }}
     >
-      <Image
-        source={imageType}
-        style={{ width: 150, height: 150 }}
-        resizeMode="contain"
-      />
       <Text
         style={{
           fontWeight: "bold",
+          textAlign: "center",
+          marginVertical: 10,
+          color: dialogColor,
+        }}
+      >
+        {title}
+      </Text>
+      {imageType ? (
+        <Image
+          source={imageType}
+          style={{ width: 150, height: 150 }}
+          resizeMode="contain"
+        />
+      ) : null}
+      <Text
+        style={{
           textAlign: "center",
           marginTop: 20,
           marginBottom: 10,
@@ -50,31 +65,34 @@ export default function ({
         <View
           style={{
             width: "100%",
-            flexDirection: "column",
+            flexDirection: "row",
           }}
         >
-          <Dialog.Button
-            title={confirmBtnText}
-            onPress={() => confirmFunction()}
-            containerStyle={styles.dialogBtn}
-            radius={BUTTON_BORDER_RADIUS}
-            titleStyle={{
-              fontWeight: "bold",
-              color: "#fff",
-            }}
-          />
           {DeclineBtnText != "" ? (
             <Dialog.Button
               title={DeclineBtnText}
               onPress={() => declineFunction()}
               containerStyle={styles.dialogDeclineBtn}
-              radius={BUTTON_BORDER_RADIUS}
+              radius={8}
               titleStyle={{
                 fontWeight: "bold",
                 color: "#000",
               }}
             />
           ) : null}
+          <Dialog.Button
+            title={confirmBtnText}
+            onPress={() => confirmFunction()}
+            containerStyle={[
+              styles.dialogBtn,
+              { backgroundColor: dialogColor },
+            ]}
+            radius={8}
+            titleStyle={{
+              fontWeight: "bold",
+              color: "#fff",
+            }}
+          />
         </View>
       </Dialog.Actions>
     </Dialog>
@@ -87,10 +105,13 @@ const styles = StyleSheet.create({
   },
   dialogBtn: {
     marginBottom: 5,
-    marginHorizontal: 20,
-    backgroundColor: MAIN_COLOR,
+    width: "48%",
+    height: 40,
+    justifyContent: "center",
   },
   dialogDeclineBtn: {
-    marginHorizontal: 20,
+    width: "48%",
+    height: 40,
+    justifyContent: "center",
   },
 });

@@ -6,6 +6,8 @@ import {
   LoginStackNavigator,
   HRScreenStackNavigator,
   ProfileStackNavigator,
+  NotifScreenStackNavigator,
+  ChatScreenStackNavigator,
 } from "./MainStackNavigation";
 import MainContext from "../contexts/MainContext";
 import { MAIN_COLOR, MAIN_COLOR_GRAY } from "../constant";
@@ -63,9 +65,19 @@ const HomeScreenTabNavigation = () => {
         <Tab.Screen
           name="HRTab"
           component={HRScreenStackNavigator}
+          listeners={{
+            tabPress: (e) => {
+              e.preventDefault();
+            },
+          }}
           options={{
             tabBarIcon: ({ focused }) => {
-              return <Image source={focused ? people_filled : people} />;
+              return (
+                <Image
+                  source={focused ? people_filled : people}
+                  style={{ opacity: 0.5 }}
+                />
+              );
             },
             tabBarLabel: ({ focused }) => {
               return (
@@ -73,6 +85,7 @@ const HomeScreenTabNavigation = () => {
                   style={{
                     color: focused ? MAIN_COLOR : MAIN_COLOR_GRAY,
                     fontSize: 12,
+                    opacity: 0.5,
                   }}
                 >
                   Хүний нөөц
@@ -83,10 +96,20 @@ const HomeScreenTabNavigation = () => {
         />
         <Tab.Screen
           name="ChatTab"
-          component={ProfileStackNavigator}
+          component={ChatScreenStackNavigator}
+          listeners={{
+            tabPress: (e) => {
+              e.preventDefault();
+            },
+          }}
           options={{
             tabBarIcon: ({ focused }) => {
-              return <Image source={focused ? messages_filled : messages} />;
+              return (
+                <Image
+                  source={focused ? messages_filled : messages}
+                  style={{ opacity: 0.5 }}
+                />
+              );
             },
             tabBarLabel: ({ focused }) => {
               return (
@@ -94,6 +117,7 @@ const HomeScreenTabNavigation = () => {
                   style={{
                     color: focused ? MAIN_COLOR : MAIN_COLOR_GRAY,
                     fontSize: 12,
+                    opacity: 0.5,
                   }}
                 >
                   Чат
@@ -104,7 +128,7 @@ const HomeScreenTabNavigation = () => {
         />
         <Tab.Screen
           name="NotifTab"
-          component={ProfileStackNavigator}
+          component={NotifScreenStackNavigator}
           options={{
             tabBarIcon: ({ focused }) => {
               return (
