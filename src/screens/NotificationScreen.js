@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     borderRadius: BUTTON_BORDER_RADIUS,
     flexDirection: "column",
     marginBottom: 10,
-    padding: 20,
+    padding: 15,
     width: "100%",
   },
   topContainer: {
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: MAIN_COLOR,
     position: "absolute",
-    left: 10,
-    top: 10,
+    left: 8,
+    top: 8,
   },
 });

@@ -5,7 +5,7 @@ import TopFilter from "../TopFilter";
 const List = () => {
   return (
     <View>
-      <TopFilter tabs={false} />
+      <TopFilter tabs={false} cats={false} />
       <Text>List</Text>
     </View>
   );

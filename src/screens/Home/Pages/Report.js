@@ -5,7 +5,7 @@ import TopFilter from "../TopFilter";
 const Report = () => {
   return (
     <View>
-      <TopFilter tabs={true} />
+      <TopFilter tabs={true} cats={true} />
       <Text>Report</Text>
     </View>
   );

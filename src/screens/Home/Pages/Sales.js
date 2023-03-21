@@ -1,10 +1,13 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
+import TopFilter from "../TopFilter";
+import ComingSoon from "../../../components/ComingSoon";
 
 const Sales = () => {
   return (
-    <View>
-      <Text>Sales</Text>
+    <View style={{ flex: 1 }}>
+      <TopFilter tabs={false} cats={false} />
+      <ComingSoon />
     </View>
   );
 };

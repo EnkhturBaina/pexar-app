@@ -1,12 +1,15 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useContext, useState } from "react";
-import { MAIN_COLOR, MAIN_COLOR_B1, MAIN_COLOR_GRAY } from "../../constant";
+import {
+  MAIN_COLOR,
+  MAIN_COLOR_B1,
+  MAIN_COLOR_GRAY_LEVEL4,
+} from "../../constant";
 import { Icon } from "@rneui/base";
-import { Modal, Portal, Button, Provider } from "react-native-paper";
+import { Modal, Portal } from "react-native-paper";
 import MainContext from "../../contexts/MainContext";
 
-const TopFilter = ({ tabs }) => {
-  console.log("tabs", tabs);
+const TopFilter = ({ tabs, cats }) => {
   const state = useContext(MainContext);
   const [menu, setMenu] = useState(1);
   const [visibleReport, setVisibleReport] = useState(false);
@@ -58,119 +61,175 @@ const TopFilter = ({ tabs }) => {
     },
   ];
   return (
-    <View style={styles.topFilterContainer}>
-      <View style={styles.firstRowContainer}>
-        <TouchableOpacity style={styles.filterContainer} onPress={showModal}>
-          <Text style={{ color: "#fff" }}>{state.selectedReport?.name}</Text>
-          <Icon
-            name="keyboard-arrow-down"
-            type="material-icons"
-            size={20}
-            color="#fff"
-          />
-        </TouchableOpacity>
-        <Portal>
-          <Modal
-            visible={visibleReport}
-            onDismiss={hideModal}
-            contentContainerStyle={styles.modalContainerStyle}
-          >
-            <View style={{ flexDirection: "column" }}>
-              {reports?.map((el, index) => {
-                return (
-                  <TouchableOpacity
-                    style={styles.eachReport}
-                    key={index}
-                    onPress={() => {
-                      state.setSelectedReport(el);
-                      hideModal();
-                    }}
-                  >
-                    <Icon
-                      name={el.iconName}
-                      type={el.iconType}
-                      size={20}
-                      color={MAIN_COLOR}
-                    />
-                    <Text style={styles.reportText}>{el.name}</Text>
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
-          </Modal>
-        </Portal>
-        <TouchableOpacity style={styles.filterContainer}>
-          <Text style={{ color: "#fff" }}>1,2,4 -р сар</Text>
-          <Icon name="sliders" type="font-awesome" size={20} color="#fff" />
-        </TouchableOpacity>
+    <View>
+      <View style={styles.topFilterContainer}>
+        <View style={styles.firstRowContainer}>
+          <TouchableOpacity style={styles.filterContainer} onPress={showModal}>
+            <Text style={{ color: "#fff" }}>{state.selectedReport?.name}</Text>
+            <Icon
+              name="keyboard-arrow-down"
+              type="material-icons"
+              size={20}
+              color="#fff"
+            />
+          </TouchableOpacity>
+          <Portal>
+            <Modal
+              visible={visibleReport}
+              onDismiss={hideModal}
+              contentContainerStyle={styles.modalContainerStyle}
+            >
+              <View style={{ flexDirection: "column" }}>
+                {reports?.map((el, index) => {
+                  return (
+                    <TouchableOpacity
+                      style={styles.eachReport}
+                      key={index}
+                      onPress={() => {
+                        state.setSelectedReport(el);
+                        hideModal();
+                      }}
+                    >
+                      <Icon
+                        name={el.iconName}
+                        type={el.iconType}
+                        size={20}
+                        color={MAIN_COLOR}
+                      />
+                      <Text style={styles.reportText}>{el.name}</Text>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            </Modal>
+          </Portal>
+          <TouchableOpacity style={styles.filterContainer}>
+            <Text style={{ color: "#fff" }}>1,2,4 -р сар</Text>
+            <Icon name="sliders" type="font-awesome" size={20} color="#fff" />
+          </TouchableOpacity>
+        </View>
+        {tabs ? (
+          <View style={styles.secondRowContainer}>
+            <TouchableOpacity
+              style={[
+                styles.eachMenu,
+                menu == 1
+                  ? {
+                      backgroundColor: MAIN_COLOR,
+                      borderRadius: 8,
+                    }
+                  : null,
+              ]}
+              onPress={() => setMenu(1)}
+            >
+              <Text
+                style={{
+                  color: "#fff",
+                  fontWeight: menu == 1 ? "bold" : "normal",
+                  textAlign: "center",
+                }}
+              >
+                ОҮДТ
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.eachMenu,
+                menu == 2
+                  ? {
+                      backgroundColor: MAIN_COLOR,
+                      borderRadius: 8,
+                    }
+                  : null,
+              ]}
+              onPress={() => setMenu(2)}
+            >
+              <Text
+                style={{
+                  color: "#fff",
+                  fontWeight: menu == 2 ? "bold" : "normal",
+                  textAlign: "center",
+                }}
+              >
+                Харилцах/Касс
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.eachMenu,
+                menu == 3
+                  ? {
+                      backgroundColor: MAIN_COLOR,
+                      borderRadius: 8,
+                    }
+                  : null,
+              ]}
+              onPress={() => setMenu(3)}
+            >
+              <Text
+                style={{
+                  color: "#fff",
+                  fontWeight: menu == 3 ? "bold" : "normal",
+                  textAlign: "center",
+                }}
+              >
+                Авлага/Өглөг
+              </Text>
+            </TouchableOpacity>
+          </View>
+        ) : null}
       </View>
-      {tabs ? (
-        <View style={styles.secondRowContainer}>
+      {cats ? (
+        <View
+          style={{
+            flexDirection: "row",
+            width: "100%",
+            justifyContent: "space-between",
+            paddingHorizontal: 20,
+            marginVertical: 10,
+          }}
+        >
           <TouchableOpacity
             style={[
-              styles.eachMenu,
-              menu == 1
+              styles.eachCardMenu,
+              state.cardMenu == 1
                 ? {
                     backgroundColor: MAIN_COLOR,
                     borderRadius: 8,
                   }
                 : null,
             ]}
-            onPress={() => setMenu(1)}
+            onPress={() => state.setCardMenu(1)}
           >
-            <Text
-              style={{
-                color: "#fff",
-                fontWeight: menu == 1 ? "bold" : "normal",
-                textAlign: "center",
-              }}
-            >
-              ОҮДТ
-            </Text>
+            <Icon name="graph-pie" type="foundation" size={25} color="#fff" />
           </TouchableOpacity>
           <TouchableOpacity
             style={[
-              styles.eachMenu,
-              menu == 2
+              styles.eachCardMenu,
+              state.cardMenu == 2
                 ? {
                     backgroundColor: MAIN_COLOR,
                     borderRadius: 8,
                   }
                 : null,
             ]}
-            onPress={() => setMenu(2)}
+            onPress={() => state.setCardMenu(2)}
           >
-            <Text
-              style={{
-                color: "#fff",
-                fontWeight: menu == 2 ? "bold" : "normal",
-                textAlign: "center",
-              }}
-            >
-              Харилцах/Касс
-            </Text>
+            <Icon name="bar-chart" type="ion-icon" size={25} color="#fff" />
           </TouchableOpacity>
           <TouchableOpacity
             style={[
-              styles.eachMenu,
-              menu == 3
+              styles.eachCardMenu,
+              state.cardMenu == 3
                 ? {
                     backgroundColor: MAIN_COLOR,
                     borderRadius: 8,
                   }
                 : null,
             ]}
-            onPress={() => setMenu(3)}
+            onPress={() => state.setCardMenu(3)}
           >
-            <Text
-              style={{
-                color: "#fff",
-                fontWeight: menu == 3 ? "bold" : "normal",
-                textAlign: "center",
-              }}
-            >
-              Авлага/Өглөг
-            </Text>
+            <Icon name="document-text" type="ionicon" size={25} color="#fff" />
           </TouchableOpacity>
         </View>
       ) : null}
@@ -240,5 +299,12 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
     borderRadius: 12,
     paddingBottom: 10,
+  },
+  eachCardMenu: {
+    width: "30%",
+    borderRadius: 6,
+    height: 40,
+    justifyContent: "center",
+    backgroundColor: MAIN_COLOR_GRAY_LEVEL4,
   },
 });

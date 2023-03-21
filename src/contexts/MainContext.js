@@ -27,6 +27,7 @@ export const UserStore = (props) => {
     iconName: "document-text-outline",
     key: "List",
   });
+  const [cardMenu, setCardMenu] = useState(1);
 
   const logout = () => {
     AsyncStorage.removeItem("accessToken");
@@ -54,6 +55,8 @@ export const UserStore = (props) => {
         setLookUpType,
         selectedReport,
         setSelectedReport,
+        cardMenu,
+        setCardMenu,
       }}
     >
       {props.children}
