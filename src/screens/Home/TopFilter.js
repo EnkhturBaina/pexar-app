@@ -1,18 +1,14 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { MAIN_COLOR, MAIN_COLOR_B1, MAIN_COLOR_GRAY } from "../../constant";
 import { Icon } from "@rneui/base";
 import { Modal, Portal, Button, Provider } from "react-native-paper";
+import MainContext from "../../contexts/MainContext";
 
 const TopFilter = ({ tabs }) => {
   console.log("tabs", tabs);
+  const state = useContext(MainContext);
   const [menu, setMenu] = useState(1);
-  const [selectedReport, setSelectedReport] = useState({
-    id: 0,
-    name: "Жагсаалт",
-    iconType: "ionicon",
-    iconName: "document-text-outline",
-  });
   const [visibleReport, setVisibleReport] = useState(false);
 
   const showModal = () => setVisibleReport(true);
@@ -23,43 +19,49 @@ const TopFilter = ({ tabs }) => {
       name: "Жагсаалт",
       iconType: "ionicon",
       iconName: "document-text-outline",
+      key: "List",
     },
     {
       id: 1,
       name: "Тайлан",
       iconType: "ionicon",
       iconName: "document-text-outline",
+      key: "Report",
     },
     {
       id: 2,
       name: "Төлөвлөгөө",
       iconType: "ionicon",
       iconName: "calculator-outline",
+      key: "Plan",
     },
     {
       id: 3,
       name: "Бараа материал",
       iconType: "simple-line-icon",
       iconName: "handbag",
+      key: "Inventory",
     },
     {
       id: 4,
       name: "Гүйлгээ",
       iconType: "font-awesome",
       iconName: "credit-card",
+      key: "Transaction",
     },
     {
       id: 5,
       name: "Борлуулалт",
       iconType: "font-awesome",
       iconName: "credit-card",
+      key: "Sales",
     },
   ];
   return (
     <View style={styles.topFilterContainer}>
       <View style={styles.firstRowContainer}>
         <TouchableOpacity style={styles.filterContainer} onPress={showModal}>
-          <Text style={{ color: "#fff" }}>{selectedReport.name}</Text>
+          <Text style={{ color: "#fff" }}>{state.selectedReport?.name}</Text>
           <Icon
             name="keyboard-arrow-down"
             type="material-icons"
@@ -80,7 +82,7 @@ const TopFilter = ({ tabs }) => {
                     style={styles.eachReport}
                     key={index}
                     onPress={() => {
-                      setSelectedReport(el);
+                      state.setSelectedReport(el);
                       hideModal();
                     }}
                   >

@@ -1,16 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import TopFilter from "./TopFilter";
+import TopFilter from "../TopFilter";
 
-const Plan = () => {
+const List = () => {
   return (
     <View>
       <TopFilter tabs={false} />
-      <Text>Plan</Text>
+      <Text>List</Text>
     </View>
   );
 };
 
-export default Plan;
+export default List;
 
 const styles = StyleSheet.create({});

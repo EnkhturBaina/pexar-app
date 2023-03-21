@@ -20,6 +20,14 @@ export const UserStore = (props) => {
 
   const [lookUpType, setLookUpType] = useState("");
 
+  const [selectedReport, setSelectedReport] = useState({
+    id: 0,
+    name: "Жагсаалт",
+    iconType: "ionicon",
+    iconName: "document-text-outline",
+    key: "List",
+  });
+
   const logout = () => {
     AsyncStorage.removeItem("accessToken");
     AsyncStorage.removeItem("refreshToken");
@@ -44,6 +52,8 @@ export const UserStore = (props) => {
         setUserName,
         lookUpType,
         setLookUpType,
+        selectedReport,
+        setSelectedReport,
       }}
     >
       {props.children}

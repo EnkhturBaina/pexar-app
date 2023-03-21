@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import TopFilter from "./TopFilter";
+import TopFilter from "../TopFilter";
 
 //Гүйлгээ
 const Transaction = () => {

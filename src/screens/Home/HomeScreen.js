@@ -8,18 +8,33 @@ import {
   Platform,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { MAIN_COLOR, MAIN_COLOR_GRAY_LEVEL4 } from "../../constant";
 import { Provider } from "react-native-paper";
 import { Icon } from "@rneui/base";
-import Report from "./Report";
-import Transaction from "./Transaction";
+import Inventory from "./Pages/Inventory";
+import List from "./Pages/List";
+import Plan from "./Pages/Plan";
+import Report from "./Pages/Report";
+import Sales from "./Pages/Sales";
+import Transaction from "./Pages/Transaction";
+import MainContext from "../../contexts/MainContext";
 const { StatusBarManager } = NativeModules;
 
 const STATUSBAR_HEIGHT = StatusBar.currentHeight;
 
 const HomeScreen = () => {
+  const state = useContext(MainContext);
   const [cardMenu, setCardMenu] = useState(1);
+  const pages_comps = [
+    { key: "Inventory", value: <Inventory /> },
+    { key: "List", value: <List /> },
+    { key: "Plan", value: <Plan /> },
+    { key: "Report", value: <Report /> },
+    { key: "Sales", value: <Sales /> },
+    { key: "Transaction", value: <Transaction /> },
+  ];
+
   const MyStatusBar = ({ backgroundColor, ...props }) => (
     <View style={[styles.statusBar, { backgroundColor }]}>
       <SafeAreaView>
@@ -39,8 +54,11 @@ const HomeScreen = () => {
         }}
       >
         <MyStatusBar backgroundColor={MAIN_COLOR} barStyle="light-content" />
-        {/* <Report /> */}
-        <Transaction />
+        {pages_comps.map((el, index) => {
+          if (el.key === state.selectedReport.key) {
+            return el.value;
+          }
+        })}
         <View
           style={{
             flexDirection: "row",
