@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BUTTON_BORDER_RADIUS,
   MAIN_BACKGROUND_COLOR,
@@ -22,6 +22,10 @@ const ConfirmOTPScreen = (props) => {
     value,
     setValue,
   });
+
+  useEffect(() => {
+    console.log("value", value);
+  }, [value]);
 
   return (
     <View
@@ -76,7 +80,11 @@ const ConfirmOTPScreen = (props) => {
           title="Баталгаажуулах"
           color={MAIN_COLOR}
           radius={BUTTON_BORDER_RADIUS}
-          onPress={() => props.navigation.navigate("NewPasswordScreen")}
+          onPress={() => {
+            // if (value?.length == 4) {
+            props.navigation.navigate("NewPasswordScreen");
+            // }
+          }}
           titleStyle={{
             fontWeight: "bold",
           }}
@@ -104,6 +112,7 @@ const styles = StyleSheet.create({
     borderColor: MAIN_COLOR_GRAY,
     borderWidth: 1,
     borderRadius: 8,
+    backgroundColor: "#fff",
   },
   cellText: {
     color: "#000",

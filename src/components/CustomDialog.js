@@ -15,6 +15,19 @@ export default function ({
   dialogColor,
 }) {
   var imageType = null;
+  const styles = {
+    container: {
+      width: "100%",
+    },
+    dialogBtn: {
+      width: DeclineBtnText != "" ? "48%" : "80%",
+      justifyContent: "center",
+    },
+    dialogDeclineBtn: {
+      width: "48%",
+      justifyContent: "center",
+    },
+  };
   if (type == "warning") {
     imageType = require("../../assets/warning.png");
   } else if (type == "error") {
@@ -35,16 +48,18 @@ export default function ({
         alignItems: "center",
       }}
     >
-      <Text
-        style={{
-          fontWeight: "bold",
-          textAlign: "center",
-          marginVertical: 10,
-          color: dialogColor,
-        }}
-      >
-        {title}
-      </Text>
+      {title ? (
+        <Text
+          style={{
+            fontWeight: "bold",
+            textAlign: "center",
+            marginVertical: 10,
+            color: dialogColor,
+          }}
+        >
+          {title}
+        </Text>
+      ) : null}
       {imageType ? (
         <Image
           source={imageType}
@@ -66,6 +81,9 @@ export default function ({
           style={{
             width: "100%",
             flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            height: 50,
           }}
         >
           {DeclineBtnText != "" ? (
@@ -98,20 +116,3 @@ export default function ({
     </Dialog>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-  },
-  dialogBtn: {
-    marginBottom: 5,
-    width: "48%",
-    height: 40,
-    justifyContent: "center",
-  },
-  dialogDeclineBtn: {
-    width: "48%",
-    height: 40,
-    justifyContent: "center",
-  },
-});

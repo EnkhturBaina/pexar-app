@@ -4,7 +4,8 @@ import { MAIN_COLOR, MAIN_COLOR_B1, MAIN_COLOR_GRAY } from "../../constant";
 import { Icon } from "@rneui/base";
 import { Modal, Portal, Button, Provider } from "react-native-paper";
 
-const TopFilter = () => {
+const TopFilter = ({ tabs }) => {
+  console.log("tabs", tabs);
   const [menu, setMenu] = useState(1);
   const [selectedReport, setSelectedReport] = useState({
     id: 0,
@@ -101,74 +102,76 @@ const TopFilter = () => {
           <Icon name="sliders" type="font-awesome" size={20} color="#fff" />
         </TouchableOpacity>
       </View>
-      <View style={styles.secondRowContainer}>
-        <TouchableOpacity
-          style={[
-            styles.eachMenu,
-            menu == 1
-              ? {
-                  backgroundColor: MAIN_COLOR,
-                  borderRadius: 8,
-                }
-              : null,
-          ]}
-          onPress={() => setMenu(1)}
-        >
-          <Text
-            style={{
-              color: "#fff",
-              fontWeight: menu == 1 ? "bold" : "normal",
-              textAlign: "center",
-            }}
+      {tabs ? (
+        <View style={styles.secondRowContainer}>
+          <TouchableOpacity
+            style={[
+              styles.eachMenu,
+              menu == 1
+                ? {
+                    backgroundColor: MAIN_COLOR,
+                    borderRadius: 8,
+                  }
+                : null,
+            ]}
+            onPress={() => setMenu(1)}
           >
-            ОҮДТ
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[
-            styles.eachMenu,
-            menu == 2
-              ? {
-                  backgroundColor: MAIN_COLOR,
-                  borderRadius: 8,
-                }
-              : null,
-          ]}
-          onPress={() => setMenu(2)}
-        >
-          <Text
-            style={{
-              color: "#fff",
-              fontWeight: menu == 2 ? "bold" : "normal",
-              textAlign: "center",
-            }}
+            <Text
+              style={{
+                color: "#fff",
+                fontWeight: menu == 1 ? "bold" : "normal",
+                textAlign: "center",
+              }}
+            >
+              ОҮДТ
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.eachMenu,
+              menu == 2
+                ? {
+                    backgroundColor: MAIN_COLOR,
+                    borderRadius: 8,
+                  }
+                : null,
+            ]}
+            onPress={() => setMenu(2)}
           >
-            Харилцах/Касс
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[
-            styles.eachMenu,
-            menu == 3
-              ? {
-                  backgroundColor: MAIN_COLOR,
-                  borderRadius: 8,
-                }
-              : null,
-          ]}
-          onPress={() => setMenu(3)}
-        >
-          <Text
-            style={{
-              color: "#fff",
-              fontWeight: menu == 3 ? "bold" : "normal",
-              textAlign: "center",
-            }}
+            <Text
+              style={{
+                color: "#fff",
+                fontWeight: menu == 2 ? "bold" : "normal",
+                textAlign: "center",
+              }}
+            >
+              Харилцах/Касс
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.eachMenu,
+              menu == 3
+                ? {
+                    backgroundColor: MAIN_COLOR,
+                    borderRadius: 8,
+                  }
+                : null,
+            ]}
+            onPress={() => setMenu(3)}
           >
-            Авлага/Өглөг
-          </Text>
-        </TouchableOpacity>
-      </View>
+            <Text
+              style={{
+                color: "#fff",
+                fontWeight: menu == 3 ? "bold" : "normal",
+                textAlign: "center",
+              }}
+            >
+              Авлага/Өглөг
+            </Text>
+          </TouchableOpacity>
+        </View>
+      ) : null}
     </View>
   );
 };

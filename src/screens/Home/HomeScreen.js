@@ -10,9 +10,10 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { MAIN_COLOR, MAIN_COLOR_GRAY_LEVEL4 } from "../../constant";
-import TopFilter from "./TopFilter";
 import { Provider } from "react-native-paper";
 import { Icon } from "@rneui/base";
+import Report from "./Report";
+import Transaction from "./Transaction";
 const { StatusBarManager } = NativeModules;
 
 const STATUSBAR_HEIGHT = StatusBar.currentHeight;
@@ -32,13 +33,14 @@ const HomeScreen = () => {
       <View
         style={{
           flex: 1,
-          paddingTop: Platform.OS === "android" ? StatusBarManager.HEIGHT : 0,
+          // paddingTop: Platform.OS === "android" ? StatusBarManager.HEIGHT : 0,
           paddingBottom: 80,
           backgroundColor: "#fff",
         }}
       >
         <MyStatusBar backgroundColor={MAIN_COLOR} barStyle="light-content" />
-        <TopFilter />
+        {/* <Report /> */}
+        <Transaction />
         <View
           style={{
             flexDirection: "row",
