@@ -26,7 +26,9 @@ const ListDtl = () => {
             resizeMode="contain"
           />
           <View style={{ flexDirection: "column", marginLeft: 5 }}>
-            <Text style={{ fontWeight: "bold" }}>"Смарт-Крафт" ХХК</Text>
+            <Text style={{ fontWeight: "bold", color: "#272E3B" }}>
+              "Смарт-Крафт" ХХК
+            </Text>
             <Text style={{ fontSize: 12, color: "#4E5969" }}>5506913</Text>
           </View>
         </View>

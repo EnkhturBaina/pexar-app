@@ -29,6 +29,7 @@ const InventoryDtl = () => {
             paddingHorizontal: 12,
             color: "#22465E",
             fontSize: 12,
+            overflow: "hidden",
           }}
         >
           Хэмжих нэгж: Ширхэг
@@ -37,15 +38,15 @@ const InventoryDtl = () => {
       <View style={styles.bottomContainer}>
         <View style={{ width: "33%", alignItems: "center" }}>
           <Text style={styles.boldText}>Харилцах данс</Text>
-          <Text style={{ fontSize: 10 }}>99,999сая₮</Text>
+          <Text style={{ fontSize: 10, color: "#4E5969" }}>99,999сая₮</Text>
         </View>
         <View style={styles.bottomMidContent}>
           <Text style={styles.boldText}>Касс</Text>
-          <Text style={{ fontSize: 10 }}>99,999сая₮</Text>
+          <Text style={{ fontSize: 10, color: "#4E5969" }}>99,999сая₮</Text>
         </View>
         <View style={{ width: "33%", alignItems: "center" }}>
           <Text style={styles.boldText}>Нийт үлдэгдэл</Text>
-          <Text style={{ fontSize: 10 }}>99,999сая₮</Text>
+          <Text style={{ fontSize: 10, color: "#4E5969" }}>99,999сая₮</Text>
         </View>
       </View>
       <View style={styles.middleContainer}>

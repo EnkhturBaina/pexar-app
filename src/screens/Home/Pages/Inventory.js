@@ -162,7 +162,9 @@ const Inventory = (props) => {
                   resizeMode="contain"
                 />
                 <View style={styles.topMidContent}>
-                  <Text style={{ fontWeight: "bold" }}>Хар үзгэн бал</Text>
+                  <Text style={{ fontWeight: "bold", color: "#272E3B" }}>
+                    Хар үзгэн бал
+                  </Text>
                   <Text style={styles.lightText}>#1234 5678 9000</Text>
                   <Text style={styles.lightText}>Хэмжих нэгж: Ширхэг</Text>
                   <Text style={styles.lightText}>Тоо хэмжээ:100</Text>
@@ -191,15 +193,19 @@ const Inventory = (props) => {
             <View style={styles.bottomContainer}>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={styles.boldText}>Барааны төрөл</Text>
-                <Text style={{ fontSize: 10 }}>Бичиг хэрэг</Text>
+                <Text style={{ fontSize: 10, color: "#4E5969" }}>
+                  Бичиг хэрэг
+                </Text>
               </View>
               <View style={styles.bottomMidContent}>
                 <Text style={styles.boldText}>Бүлэг</Text>
-                <Text style={{ fontSize: 10 }}>Бичиг хэрэг</Text>
+                <Text style={{ fontSize: 10, color: "#4E5969" }}>
+                  Бичиг хэрэг
+                </Text>
               </View>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={styles.boldText}>Брэнд</Text>
-                <Text style={{ fontSize: 10 }}>BEst pen</Text>
+                <Text style={{ fontSize: 10, color: "#4E5969" }}>BEst pen</Text>
               </View>
             </View>
           </TouchableOpacity>

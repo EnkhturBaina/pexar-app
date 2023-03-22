@@ -7,23 +7,18 @@ import {
   Image,
 } from "react-native";
 import React from "react";
-import TopFilter from "../TopFilter";
 import { MAIN_BACKGROUND_COLOR, MAIN_COLOR_GRAY } from "../../../constant";
 import Base from "../../../../assets/Base.png";
 import { Icon } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 
 //Гүйлгээ
-const Transaction = () => {
+const TransactionDtl = () => {
   const navigation = useNavigation();
   return (
     <View style={{ flex: 1 }}>
-      <TopFilter tabs={false} cats={false} />
       <ScrollView bounces={false} contentContainerStyle={styles.mainContainer}>
-        <TouchableOpacity
-          style={styles.cardContainer}
-          onPress={() => navigation.navigate("TransactionDtl")}
-        >
+        <View style={styles.cardContainer}>
           <View style={styles.cardHeader}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Image
@@ -114,13 +109,13 @@ const Transaction = () => {
               <Text style={{ fontSize: 10, color: "#4E5969" }}>99,999сая₮</Text>
             </View>
           </View>
-        </TouchableOpacity>
+        </View>
       </ScrollView>
     </View>
   );
 };
 
-export default Transaction;
+export default TransactionDtl;
 
 const styles = StyleSheet.create({
   mainContainer: {

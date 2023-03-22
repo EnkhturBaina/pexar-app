@@ -30,7 +30,9 @@ const List = () => {
               resizeMode="contain"
             />
             <View style={{ flexDirection: "column", marginLeft: 5 }}>
-              <Text style={{ fontWeight: "bold" }}>"Смарт-Крафт" ХХК</Text>
+              <Text style={{ fontWeight: "bold", color: "#272E3B" }}>
+                "Смарт-Крафт" ХХК
+              </Text>
               <Text style={{ fontSize: 12, color: "#4E5969" }}>5506913</Text>
             </View>
           </View>
@@ -64,7 +66,13 @@ const List = () => {
             />
             <Text style={{ flex: 1 }}>www.smart-craft.mn</Text>
           </View>
-          <View style={{ flexDirection: "row", padding: 10 }}>
+          <View
+            style={{
+              flexDirection: "row",
+              paddingHorizontal: 10,
+              paddingVertical: 5,
+            }}
+          >
             <Icon
               name="location-sharp"
               type="ionicon"
@@ -120,17 +128,20 @@ const styles = StyleSheet.create({
   mobileContainer: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
     marginLeft: 5,
   },
   maiLContainer: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
   webContainer: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
 });
