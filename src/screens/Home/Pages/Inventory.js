@@ -20,13 +20,20 @@ import { useHeaderHeight } from "@react-navigation/elements";
 import empty_img from "../../../../assets/empty_img.png";
 import { Modal, Portal, Provider } from "react-native-paper";
 import { Icon, CheckBox, Button } from "@rneui/themed";
-const Inventory = () => {
+import { useNavigation } from "@react-navigation/native";
+
+const Inventory = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigation = useNavigation();
+
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(false);
   const [check3, setCheck3] = useState(false);
+
   const headerHeight = useHeaderHeight();
+
   const [visibleFilter, setVisibleFilter] = useState(false);
+
   const showModal = () => setVisibleFilter(true);
   const hideModal = () => setVisibleFilter(false);
   return (
@@ -143,7 +150,10 @@ const Inventory = () => {
           bounces={false}
           contentContainerStyle={styles.mainContainer}
         >
-          <TouchableOpacity style={styles.cardContainer}>
+          <TouchableOpacity
+            style={styles.cardContainer}
+            onPress={() => navigation.navigate("InventoryDtl")}
+          >
             <View style={styles.stack1}>
               <View style={{ flexDirection: "row" }}>
                 <Image

@@ -8,7 +8,7 @@ import ProfileScreen from "../screens/ProfileScreen";
 import HRScreen from "../screens/HRScreen";
 import ResetPasswordScreen from "../screens/ResetPassword/ResetPasswordScreen";
 import { Icon } from "@rneui/base";
-import { MAIN_BACKGROUND_COLOR } from "../constant";
+import { MAIN_BACKGROUND_COLOR, MAIN_COLOR } from "../constant";
 import EditUserDataScreen from "../screens/EditUserDataScreen";
 import { useNavigation } from "@react-navigation/native";
 import PrivacyScreen from "../screens/PrivacyScreen";
@@ -17,6 +17,7 @@ import NotificationScreen from "../screens/NotificationScreen";
 import ChatScreen from "../screens/ChatScreen";
 import ConfirmOTPScreen from "../screens/ResetPassword/ConfirmOTPScreen";
 import NewPasswordScreen from "../screens/ResetPassword/NewPasswordScreen";
+import InventoryDtl from "../screens/Home/Pages/InventoryDtl";
 
 const Stack = createStackNavigator();
 
@@ -105,6 +106,7 @@ const LoginStackNavigator = () => {
 };
 
 const HomeScreenStackNavigator = (props) => {
+  const navigation = useNavigation();
   return (
     <Stack.Navigator
       initialRouteName="HomeScreen"
@@ -124,6 +126,30 @@ const HomeScreenStackNavigator = (props) => {
           title: "",
           headerTitleStyle: {},
           headerLeft: () => <></>,
+        }}
+      />
+      <Stack.Screen
+        name="InventoryDtl"
+        component={InventoryDtl}
+        options={{
+          title: "",
+          headerTitleStyle: {},
+          headerStyle: {
+            backgroundColor: MAIN_COLOR,
+          },
+          headerLeft: () => (
+            <TouchableOpacity
+              style={styles.headerLeftContainer}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <Icon name="arrow-left" type="feather" size={25} color="#FFF" />
+              <Text style={[styles.headerLeftText, { color: "#FFF" }]}>
+                Бараа материал
+              </Text>
+            </TouchableOpacity>
+          ),
         }}
       />
     </Stack.Navigator>
