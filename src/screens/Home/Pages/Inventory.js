@@ -6,6 +6,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Image,
+  TextInput,
 } from "react-native";
 import React, { useState } from "react";
 import TopFilter from "../TopFilter";
@@ -15,7 +16,6 @@ import {
   MAIN_COLOR,
   MAIN_COLOR_GRAY,
 } from "../../../constant";
-import { TextInput } from "react-native";
 import { useHeaderHeight } from "@react-navigation/elements";
 import empty_img from "../../../../assets/empty_img.png";
 import { Modal, Portal, Provider } from "react-native-paper";
@@ -86,7 +86,7 @@ const Inventory = (props) => {
                       padding: 0,
                     }}
                     onPress={() => setCheck1(!check1)}
-                    size={30}
+                    size={25}
                     title="Барааны төрөл"
                     uncheckedColor={MAIN_COLOR}
                     uncheckedIcon="checkbox-blank-outline"
@@ -100,7 +100,7 @@ const Inventory = (props) => {
                       padding: 0,
                     }}
                     onPress={() => setCheck2(!check2)}
-                    size={30}
+                    size={25}
                     title="Барааны бүлэг"
                     uncheckedColor={MAIN_COLOR}
                     uncheckedIcon="checkbox-blank-outline"
@@ -114,7 +114,7 @@ const Inventory = (props) => {
                       padding: 0,
                     }}
                     onPress={() => setCheck3(!check3)}
-                    size={30}
+                    size={25}
                     title="Барааны брэнд"
                     uncheckedColor={MAIN_COLOR}
                     uncheckedIcon="checkbox-blank-outline"
@@ -258,9 +258,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   bottomMidContent: {
-    borderLeftColor: MAIN_COLOR_GRAY,
+    borderLeftColor: "#E5E6EB",
     borderLeftWidth: 1,
-    borderRightColor: MAIN_COLOR_GRAY,
+    borderRightColor: "#E5E6EB",
     borderRightWidth: 1,
     width: "33%",
     alignItems: "center",
