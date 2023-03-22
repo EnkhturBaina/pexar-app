@@ -52,7 +52,6 @@ const HomeScreen = () => {
         style={{
           flex: 1,
           // paddingTop: Platform.OS === "android" ? StatusBarManager.HEIGHT : 0,
-          paddingBottom: 80,
           backgroundColor: MAIN_BACKGROUND_COLOR,
         }}
       >
