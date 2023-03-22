@@ -9,7 +9,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useContext, useState } from "react";
-import { MAIN_COLOR, MAIN_COLOR_GRAY_LEVEL4 } from "../../constant";
+import {
+  MAIN_BACKGROUND_COLOR,
+  MAIN_COLOR,
+  MAIN_COLOR_GRAY_LEVEL4,
+} from "../../constant";
 import { Provider } from "react-native-paper";
 import { Icon } from "@rneui/base";
 import Inventory from "./Pages/Inventory";
@@ -49,7 +53,7 @@ const HomeScreen = () => {
           flex: 1,
           // paddingTop: Platform.OS === "android" ? StatusBarManager.HEIGHT : 0,
           paddingBottom: 80,
-          backgroundColor: "#fff",
+          backgroundColor: MAIN_BACKGROUND_COLOR,
         }}
       >
         <MyStatusBar backgroundColor={MAIN_COLOR} barStyle="light-content" />
