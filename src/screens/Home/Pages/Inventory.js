@@ -28,15 +28,7 @@ const Inventory = () => {
       }}
     >
       <TopFilter tabs={false} cats={false} />
-      <View
-        style={{
-          flexDirection: "row",
-          width: "100%",
-          alignItems: "center",
-          padding: 10,
-          justifyContent: "space-between",
-        }}
-      >
+      <View style={styles.headerContainer}>
         <View style={styles.sectionStyle}>
           <Icon
             name="search"
@@ -67,483 +59,53 @@ const Inventory = () => {
       </View>
       <ScrollView bounces={false} contentContainerStyle={styles.mainContainer}>
         <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
+          <View style={styles.stack1}>
+            <View style={{ flexDirection: "row" }}>
+              <Image
+                source={empty_img}
+                style={{ width: 80, height: 80 }}
+                resizeMode="contain"
+              />
+              <View style={styles.topMidContent}>
+                <Text style={{ fontWeight: "bold" }}>Хар үзгэн бал</Text>
+                <Text style={styles.lightText}>#1234 5678 9000</Text>
+                <Text style={styles.lightText}>Хэмжих нэгж: Ширхэг</Text>
+                <Text style={styles.lightText}>Тоо хэмжээ:100</Text>
+              </View>
             </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
+            <View
+              style={{
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <View style={styles.greenBtn}>
+                <Text style={[styles.lightText, { color: "#EC7A09" }]}>
+                  Өртөг
+                </Text>
+                <Text style={[styles.boldText, { color: "#EC7A09" }]}>
+                  2,000₮
+                </Text>
+              </View>
+              <View style={styles.grayBtn}>
+                <Text style={styles.lightText}>Зарах үнэ</Text>
+                <Text style={styles.boldText}>2,200₮</Text>
+              </View>
             </View>
           </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
+          <View style={styles.bottomContainer}>
+            <View style={{ width: "33%", alignItems: "center" }}>
+              <Text style={styles.boldText}>Барааны төрөл</Text>
+              <Text style={{ fontSize: 10 }}>Бичиг хэрэг</Text>
             </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
+            <View style={styles.bottomMidContent}>
+              <Text style={styles.boldText}>Бүлэг</Text>
+              <Text style={{ fontSize: 10 }}>Бичиг хэрэг</Text>
             </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
+            <View style={{ width: "33%", alignItems: "center" }}>
+              <Text style={styles.boldText}>Брэнд</Text>
+              <Text style={{ fontSize: 10 }}>BEst pen</Text>
             </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={empty_img}
-              style={{ width: 80, height: 80 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column" }}>
-              <Text>Хар үзгэн бал</Text>
-              <Text>#1234 5678 9000</Text>
-              <Text>Хэмжих нэгж: Ширхэг</Text>
-              <Text>Тоо хэмжээ:100</Text>
-            </View>
-            <View style={{ flexDirection: "column" }}>
-              <Text>Өртөг 2,000₮</Text>
-              <Text>Зарах үнэ 2,200₮</Text>
-            </View>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Барааны төрөл</Text>
-            <Text>Бүлэг</Text>
-            <Text>Брэнд</Text>
           </View>
         </TouchableOpacity>
       </ScrollView>
@@ -559,6 +121,60 @@ const styles = StyleSheet.create({
     backgroundColor: MAIN_BACKGROUND_COLOR,
     paddingHorizontal: 10,
     paddingBottom: 10,
+  },
+  greenBtn: {
+    minWidth: 70,
+    height: 36,
+    backgroundColor: "#F7CC8B",
+    borderRadius: 400,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  grayBtn: {
+    minWidth: 70,
+    height: 36,
+    backgroundColor: "#C9CDD4",
+    borderRadius: 400,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  stack1: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  bottomContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
+  },
+  boldText: {
+    fontSize: 12,
+    fontWeight: "bold",
+    color: "#4E5969",
+  },
+  lightText: {
+    fontSize: 12,
+    color: "#4E5969",
+  },
+  topMidContent: {
+    flexDirection: "column",
+    marginLeft: 10,
+    justifyContent: "space-around",
+  },
+  bottomMidContent: {
+    borderLeftColor: MAIN_COLOR_GRAY,
+    borderLeftWidth: 1,
+    borderRightColor: MAIN_COLOR_GRAY,
+    borderRightWidth: 1,
+    width: "33%",
+    alignItems: "center",
+  },
+  headerContainer: {
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center",
+    padding: 10,
+    justifyContent: "space-between",
   },
   sectionStyle: {
     flex: 1,
