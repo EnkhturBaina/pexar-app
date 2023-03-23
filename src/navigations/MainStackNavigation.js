@@ -20,6 +20,7 @@ import NewPasswordScreen from "../screens/ResetPassword/NewPasswordScreen";
 import InventoryDtl from "../screens/Home/Pages/InventoryDtl";
 import ListDtl from "../screens/Home/Pages/ListDtl";
 import TransactionDtl from "../screens/Home/Pages/TransactionDtl";
+import PlanDtl from "../screens/Home/Pages/PlanDtl";
 
 const Stack = createStackNavigator();
 
@@ -203,6 +204,32 @@ const HomeScreenStackNavigator = (props) => {
               <Icon name="arrow-left" type="feather" size={25} color="#FFF" />
               <Text style={[styles.headerLeftText, { color: "#FFF" }]}>
                 Гүйлгээ
+              </Text>
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="PlanDtl"
+        component={PlanDtl}
+        options={{
+          title: "",
+          headerTitleStyle: {},
+          headerStyle: {
+            backgroundColor: MAIN_COLOR,
+            borderBottomLeftRadius: 12,
+            borderBottomRightRadius: 12,
+          },
+          headerLeft: () => (
+            <TouchableOpacity
+              style={styles.headerLeftContainer}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <Icon name="arrow-left" type="feather" size={25} color="#FFF" />
+              <Text style={[styles.headerLeftText, { color: "#FFF" }]}>
+                Төлөвлөгөө
               </Text>
             </TouchableOpacity>
           ),
