@@ -6,6 +6,7 @@ import {
   ScrollView,
   Image,
   useWindowDimensions,
+  SafeAreaView,
 } from "react-native";
 import React, { useCallback, useState } from "react";
 import TopFilter from "../TopFilter";
@@ -111,7 +112,7 @@ const Plan = () => {
         <TouchableOpacity
           activeOpacity={0.8}
           style={styles.cardContainer}
-          onPress={() => navigation.navigate("PlanDtl")}
+          // onPress={() => navigation.navigate("PlanDtl")}
         >
           <View style={styles.cardHeader}>
             <Image
@@ -151,9 +152,9 @@ const styles = StyleSheet.create({
     paddingBottom: 60,
   },
   cardContainer: {
-    flex: 1,
+    height: 300,
     borderColor: MAIN_COLOR_GRAY,
-    backgroundColor: "#FFF",
+    backgroundColor: "red",
     opacity: 1,
     shadowColor: "#000",
     shadowOffset: {
