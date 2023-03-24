@@ -1,11 +1,17 @@
 import { Dimensions, Text, StyleSheet, View, ScrollView } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import TopFilter from "../TopFilter";
 // import { PieChart } from "react-native-chart-kit";
 
 import { PieChart } from "react-native-svg-charts";
-import { MAIN_BACKGROUND_COLOR, MAIN_COLOR_GRAY } from "../../../constant";
+import {
+  MAIN_BACKGROUND_COLOR,
+  MAIN_COLOR,
+  MAIN_COLOR_GRAY,
+} from "../../../constant";
+import { CheckBox } from "@rneui/base";
 const Report = () => {
+  const [selectedIndex, setSelectedIndex] = useState(false);
   const data = [
     {
       key: 1,
@@ -64,49 +70,35 @@ const Report = () => {
     <View style={{ flex: 1 }}>
       <TopFilter tabs={true} cats={true} />
       <ScrollView bounces={false} contentContainerStyle={styles.mainContainer}>
-        <View
-          style={{
-            flexDirection: "row",
-            borderColor: MAIN_COLOR_GRAY,
-            backgroundColor: "#FFF",
-            opacity: 1,
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 1,
-            },
-            shadowOpacity: 0.18,
-            shadowRadius: 1.0,
-            elevation: 1,
-            borderRadius: 8,
-            padding: 10,
-            marginBottom: 10,
-            justifyContent: "space-around",
-          }}
-        >
+        <View style={styles.topPieContainer}>
           <PieChart
-            style={{ height: 250, width: "60%" }}
+            style={{
+              height: 180,
+              width: 180,
+              flex: 1,
+              alignSelf: "center",
+            }}
             data={data}
             innerRadius={"70%"}
             valueAccessor={({ item }) => item.amount}
           >
             <View
               style={{
-                position: "absolute",
-                left: 250 / 3,
-                top: 250 / 3,
-                textAlign: "center",
+                justifyContent: "center",
+                alignItems: "center",
+                height: 180,
               }}
             >
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 36,
                   fontWeight: "bold",
+                  lineHeight: 36,
                 }}
               >
                 61%
               </Text>
-              <Text>Ашиг</Text>
+              <Text style={{ fontSize: 20, lineHeight: 18 }}>Ашиг</Text>
             </View>
           </PieChart>
           <View
@@ -117,17 +109,27 @@ const Report = () => {
             }}
           >
             <PieChart
-              style={{ height: 100, marginBottom: 10 }}
+              style={styles.smallPieContainer}
               data={data1}
               innerRadius={"60%"}
               valueAccessor={({ item }) => item.amount}
-            />
+            >
+              <View style={styles.smallPieTextContainer}>
+                <Text style={styles.smallPieTopText}>61%</Text>
+                <Text style={styles.smallPieBtmText}>Орлого</Text>
+              </View>
+            </PieChart>
             <PieChart
-              style={{ height: 100 }}
+              style={styles.smallPieContainer}
               data={data}
               innerRadius={"60%"}
               valueAccessor={({ item }) => item.amount}
-            />
+            >
+              <View style={styles.smallPieTextContainer}>
+                <Text style={styles.smallPieTopText}>61%</Text>
+                <Text style={styles.smallPieBtmText}>Зардал</Text>
+              </View>
+            </PieChart>
           </View>
         </View>
         <View style={styles.bottomContainer}>
@@ -143,6 +145,29 @@ const Report = () => {
             <Text style={{ color: "#22A06B" }}>Ашиг</Text>
             <Text style={styles.amountText}>99,999сая₮</Text>
           </View>
+        </View>
+        <View style={styles.bottomCardContainer}>
+          <ScrollView bounces={false} contentContainerStyle={{}}>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <CheckBox
+                checked={selectedIndex}
+                onPress={() => setSelectedIndex(!selectedIndex)}
+                checkedIcon="check-square"
+                uncheckedIcon="square-o"
+                title="Тэнплас Интернэйшнал ХХК"
+                wrapperStyle={{ justifyContent: "space-between" }}
+                checkedColor={MAIN_COLOR}
+                uncheckedColor={MAIN_COLOR}
+              />
+              <Text>5506913</Text>
+            </View>
+          </ScrollView>
         </View>
       </ScrollView>
     </View>
@@ -186,5 +211,61 @@ const styles = StyleSheet.create({
   amountText: {
     color: "#4E5969",
     fontWeight: "bold",
+  },
+  topPieContainer: {
+    flexDirection: "row",
+    borderColor: MAIN_COLOR_GRAY,
+    backgroundColor: "#FFF",
+    opacity: 1,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.0,
+    elevation: 1,
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 10,
+    height: 220,
+  },
+  smallPieContainer: {
+    height: 90,
+    width: 90,
+    flex: 1,
+  },
+  smallPieTextContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: 100,
+  },
+  smallPieTopText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    lineHeight: 18,
+  },
+  smallPieBtmText: {
+    fontSize: 12,
+    lineHeight: 12,
+  },
+  bottomCardContainer: {
+    flexDirection: "row",
+    borderColor: MAIN_COLOR_GRAY,
+    backgroundColor: "#FFF",
+    opacity: 1,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.0,
+    elevation: 1,
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 10,
+    height: 220,
+    marginTop: 10,
   },
 });
