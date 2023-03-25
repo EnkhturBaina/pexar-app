@@ -27,6 +27,7 @@ export const UserStore = (props) => {
     iconName: "document-text-outline",
     key: "List",
   });
+  const [selectedHeader, setSelectedHeader] = useState(1);
   const [cardMenu, setCardMenu] = useState(1);
 
   const logout = () => {
@@ -57,6 +58,8 @@ export const UserStore = (props) => {
         setSelectedReport,
         cardMenu,
         setCardMenu,
+        selectedHeader,
+        setSelectedHeader,
       }}
     >
       {props.children}

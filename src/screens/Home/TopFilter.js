@@ -11,7 +11,6 @@ import MainContext from "../../contexts/MainContext";
 
 const TopFilter = ({ tabs, cats }) => {
   const state = useContext(MainContext);
-  const [menu, setMenu] = useState(1);
   const [visibleReport, setVisibleReport] = useState(false);
 
   const showModal = () => setVisibleReport(true);
@@ -113,19 +112,19 @@ const TopFilter = ({ tabs, cats }) => {
             <TouchableOpacity
               style={[
                 styles.eachMenu,
-                menu == 1
+                state.selectedHeader == 1
                   ? {
                       backgroundColor: MAIN_COLOR,
                       borderRadius: 8,
                     }
                   : null,
               ]}
-              onPress={() => setMenu(1)}
+              onPress={() => state.setSelectedHeader(1)}
             >
               <Text
                 style={{
                   color: "#fff",
-                  fontWeight: menu == 1 ? "bold" : "normal",
+                  fontWeight: state.selectedHeader == 1 ? "bold" : "normal",
                   textAlign: "center",
                 }}
               >
@@ -135,19 +134,19 @@ const TopFilter = ({ tabs, cats }) => {
             <TouchableOpacity
               style={[
                 styles.eachMenu,
-                menu == 2
+                state.selectedHeader == 2
                   ? {
                       backgroundColor: MAIN_COLOR,
                       borderRadius: 8,
                     }
                   : null,
               ]}
-              onPress={() => setMenu(2)}
+              onPress={() => state.setSelectedHeader(2)}
             >
               <Text
                 style={{
                   color: "#fff",
-                  fontWeight: menu == 2 ? "bold" : "normal",
+                  fontWeight: state.selectedHeader == 2 ? "bold" : "normal",
                   textAlign: "center",
                 }}
               >
@@ -157,19 +156,19 @@ const TopFilter = ({ tabs, cats }) => {
             <TouchableOpacity
               style={[
                 styles.eachMenu,
-                menu == 3
+                state.selectedHeader == 3
                   ? {
                       backgroundColor: MAIN_COLOR,
                       borderRadius: 8,
                     }
                   : null,
               ]}
-              onPress={() => setMenu(3)}
+              onPress={() => state.setSelectedHeader(3)}
             >
               <Text
                 style={{
                   color: "#fff",
-                  fontWeight: menu == 3 ? "bold" : "normal",
+                  fontWeight: state.selectedHeader == 3 ? "bold" : "normal",
                   textAlign: "center",
                 }}
               >
