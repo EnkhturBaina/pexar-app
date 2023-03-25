@@ -16,8 +16,10 @@ import {
 import { CheckBox, Icon } from "@rneui/base";
 import ReportListSkeleton from "../../../Skeletons/ReportListSkeleton";
 import Base from "../../../../assets/Base.png";
+import { useNavigation } from "@react-navigation/native";
 
 const ReportList = () => {
+  const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -51,7 +53,10 @@ const ReportList = () => {
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
             </View>
-            <TouchableOpacity style={styles.cardContainer} onPress={() => {}}>
+            <TouchableOpacity
+              style={styles.cardContainer}
+              onPress={() => navigation.navigate("ReportListDtl")}
+            >
               <View style={styles.cardHeader}>
                 <View style={styles.topContainer}>
                   <View
