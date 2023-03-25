@@ -21,6 +21,7 @@ import InventoryDtl from "../screens/Home/Pages/InventoryDtl";
 import ListDtl from "../screens/Home/Pages/ListDtl";
 import TransactionDtl from "../screens/Home/Pages/TransactionDtl";
 import PlanDtl from "../screens/Home/Pages/PlanDtl";
+import ReportChartDtl from "../screens/Home/Pages/ReportChartDtl";
 
 const Stack = createStackNavigator();
 
@@ -235,6 +236,22 @@ const HomeScreenStackNavigator = (props) => {
           ),
         }}
       />
+      <Stack.Screen
+        name="ReportChartDtl"
+        component={ReportChartDtl}
+        options={{
+          title: "",
+          headerTitleStyle: {},
+          headerStyle: {
+            shadowColor: "transparent",
+            elevation: 0,
+            backgroundColor: MAIN_COLOR,
+            // borderBottomLeftRadius: 12,
+            // borderBottomRightRadius: 12,
+          },
+          headerLeft: () => null,
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -409,7 +426,7 @@ const styles = StyleSheet.create({
   headerLeftText: {
     marginLeft: 10,
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 18,
     width: "100%",
   },
 });

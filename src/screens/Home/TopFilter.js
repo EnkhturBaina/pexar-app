@@ -9,7 +9,7 @@ import { Icon } from "@rneui/base";
 import { Modal, Portal } from "react-native-paper";
 import MainContext from "../../contexts/MainContext";
 
-const TopFilter = ({ tabs, cats }) => {
+const TopFilter = ({ tabs, cats, totalCat }) => {
   const state = useContext(MainContext);
   const [visibleReport, setVisibleReport] = useState(false);
 
@@ -188,29 +188,29 @@ const TopFilter = ({ tabs, cats }) => {
             marginVertical: 10,
           }}
         >
+          {totalCat != 2 ? (
+            <TouchableOpacity
+              style={[
+                styles.eachCardMenu,
+                {
+                  backgroundColor:
+                    state.cardMenu == 1 ? MAIN_COLOR : MAIN_COLOR_GRAY_LEVEL4,
+                  width: totalCat == 2 ? "48%" : "30%",
+                },
+              ]}
+              onPress={() => state.setCardMenu(1)}
+            >
+              <Icon name="graph-pie" type="foundation" size={25} color="#fff" />
+            </TouchableOpacity>
+          ) : null}
           <TouchableOpacity
             style={[
               styles.eachCardMenu,
-              state.cardMenu == 1
-                ? {
-                    backgroundColor: MAIN_COLOR,
-                    borderRadius: 8,
-                  }
-                : null,
-            ]}
-            onPress={() => state.setCardMenu(1)}
-          >
-            <Icon name="graph-pie" type="foundation" size={25} color="#fff" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              styles.eachCardMenu,
-              state.cardMenu == 2
-                ? {
-                    backgroundColor: MAIN_COLOR,
-                    borderRadius: 8,
-                  }
-                : null,
+              {
+                backgroundColor:
+                  state.cardMenu == 2 ? MAIN_COLOR : MAIN_COLOR_GRAY_LEVEL4,
+                width: totalCat == 2 ? "48%" : "30%",
+              },
             ]}
             onPress={() => state.setCardMenu(2)}
           >
@@ -219,12 +219,11 @@ const TopFilter = ({ tabs, cats }) => {
           <TouchableOpacity
             style={[
               styles.eachCardMenu,
-              state.cardMenu == 3
-                ? {
-                    backgroundColor: MAIN_COLOR,
-                    borderRadius: 8,
-                  }
-                : null,
+              {
+                backgroundColor:
+                  state.cardMenu == 3 ? MAIN_COLOR : MAIN_COLOR_GRAY_LEVEL4,
+                width: totalCat == 2 ? "48%" : "30%",
+              },
             ]}
             onPress={() => state.setCardMenu(3)}
           >
@@ -300,10 +299,8 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   eachCardMenu: {
-    width: "30%",
     borderRadius: 6,
     height: 40,
     justifyContent: "center",
-    backgroundColor: MAIN_COLOR_GRAY_LEVEL4,
   },
 });
