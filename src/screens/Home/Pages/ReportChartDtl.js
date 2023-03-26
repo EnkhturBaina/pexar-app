@@ -29,7 +29,10 @@ const ReportChartDtl = (props) => {
   }, [props.navigation]);
   return (
     <View>
-      <TopFilter tabs={true} cats={true} totalCat={2} />
+      <TopFilter tabs={true} cats={true} />
+      <View>
+        <Text>AAA</Text>
+      </View>
     </View>
   );
 };
