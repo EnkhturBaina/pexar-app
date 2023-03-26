@@ -94,196 +94,211 @@ const ReportListDtl = (props) => {
           <Text style={styles.amountText}>99,999сая₮</Text>
         </View>
       </View>
-      <ScrollView bounces={false} contentContainerStyle={styles.mainContainer}>
-        <View style={styles.middleContainer}>
-          <Text style={{ color: "#272E3B", fontSize: 16, fontWeight: "bold" }}>
-            1 сар
-          </Text>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>Цэвэр борлуулалт</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
+      {selectedCat == 1 ? (
+        <Text>1</Text>
+      ) : (
+        <ScrollView
+          bounces={false}
+          contentContainerStyle={styles.mainContainer}
+        >
+          <View style={styles.middleContainer}>
+            <Text
+              style={{ color: "#272E3B", fontSize: 16, fontWeight: "bold" }}
+            >
+              1 сар
             </Text>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>Цэвэр борлуулалт</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.grayRow}>
+              <Text style={{ color: "#4E5969" }}>Өртөг</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>ҮА зардал</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.grayRow}>
+              <Text style={{ color: "#4E5969" }}>Татвар өмнөх ашиг</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>ААНОАТ зардал</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.grayRow}>
+              <Text style={{ color: "#4E5969" }}>Бусад олз (гарз)</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>Цэвэр ашиг (алдагдал)</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
           </View>
-          <View style={styles.grayRow}>
-            <Text style={{ color: "#4E5969" }}>Өртөг</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
+          <View style={styles.middleContainer}>
+            <Text
+              style={{ color: "#272E3B", fontSize: 16, fontWeight: "bold" }}
+            >
+              1 сар
             </Text>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>Цэвэр борлуулалт</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.grayRow}>
+              <Text style={{ color: "#4E5969" }}>Өртөг</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>ҮА зардал</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.grayRow}>
+              <Text style={{ color: "#4E5969" }}>Татвар өмнөх ашиг</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>ААНОАТ зардал</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.grayRow}>
+              <Text style={{ color: "#4E5969" }}>Бусад олз (гарз)</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>Цэвэр ашиг (алдагдал)</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
           </View>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>ҮА зардал</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
+          <View style={styles.middleContainer}>
+            <Text
+              style={{ color: "#272E3B", fontSize: 16, fontWeight: "bold" }}
+            >
+              1 сар
             </Text>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>Цэвэр борлуулалт</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.grayRow}>
+              <Text style={{ color: "#4E5969" }}>Өртөг</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>ҮА зардал</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.grayRow}>
+              <Text style={{ color: "#4E5969" }}>Татвар өмнөх ашиг</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>ААНОАТ зардал</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.grayRow}>
+              <Text style={{ color: "#4E5969" }}>Бусад олз (гарз)</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>Цэвэр ашиг (алдагдал)</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
           </View>
-          <View style={styles.grayRow}>
-            <Text style={{ color: "#4E5969" }}>Татвар өмнөх ашиг</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
+          <View style={styles.middleContainer}>
+            <Text
+              style={{ color: "#272E3B", fontSize: 16, fontWeight: "bold" }}
+            >
+              1 сар
             </Text>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>Цэвэр борлуулалт</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.grayRow}>
+              <Text style={{ color: "#4E5969" }}>Өртөг</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>ҮА зардал</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.grayRow}>
+              <Text style={{ color: "#4E5969" }}>Татвар өмнөх ашиг</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>ААНОАТ зардал</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.grayRow}>
+              <Text style={{ color: "#4E5969" }}>Бусад олз (гарз)</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
+            <View style={styles.whiteRow}>
+              <Text style={{ color: "#4E5969" }}>Цэвэр ашиг (алдагдал)</Text>
+              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
+                10,000,000.00
+              </Text>
+            </View>
           </View>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>ААНОАТ зардал</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.grayRow}>
-            <Text style={{ color: "#4E5969" }}>Бусад олз (гарз)</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>Цэвэр ашиг (алдагдал)</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-        </View>
-        <View style={styles.middleContainer}>
-          <Text style={{ color: "#272E3B", fontSize: 16, fontWeight: "bold" }}>
-            1 сар
-          </Text>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>Цэвэр борлуулалт</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.grayRow}>
-            <Text style={{ color: "#4E5969" }}>Өртөг</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>ҮА зардал</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.grayRow}>
-            <Text style={{ color: "#4E5969" }}>Татвар өмнөх ашиг</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>ААНОАТ зардал</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.grayRow}>
-            <Text style={{ color: "#4E5969" }}>Бусад олз (гарз)</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>Цэвэр ашиг (алдагдал)</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-        </View>
-        <View style={styles.middleContainer}>
-          <Text style={{ color: "#272E3B", fontSize: 16, fontWeight: "bold" }}>
-            1 сар
-          </Text>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>Цэвэр борлуулалт</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.grayRow}>
-            <Text style={{ color: "#4E5969" }}>Өртөг</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>ҮА зардал</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.grayRow}>
-            <Text style={{ color: "#4E5969" }}>Татвар өмнөх ашиг</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>ААНОАТ зардал</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.grayRow}>
-            <Text style={{ color: "#4E5969" }}>Бусад олз (гарз)</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>Цэвэр ашиг (алдагдал)</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-        </View>
-        <View style={styles.middleContainer}>
-          <Text style={{ color: "#272E3B", fontSize: 16, fontWeight: "bold" }}>
-            1 сар
-          </Text>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>Цэвэр борлуулалт</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.grayRow}>
-            <Text style={{ color: "#4E5969" }}>Өртөг</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>ҮА зардал</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.grayRow}>
-            <Text style={{ color: "#4E5969" }}>Татвар өмнөх ашиг</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>ААНОАТ зардал</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.grayRow}>
-            <Text style={{ color: "#4E5969" }}>Бусад олз (гарз)</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-          <View style={styles.whiteRow}>
-            <Text style={{ color: "#4E5969" }}>Цэвэр ашиг (алдагдал)</Text>
-            <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-              10,000,000.00
-            </Text>
-          </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      )}
     </View>
   );
 };
