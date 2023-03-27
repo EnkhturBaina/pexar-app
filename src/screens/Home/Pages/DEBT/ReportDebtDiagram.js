@@ -9,7 +9,7 @@ import {
 import { CheckBox } from "@rneui/base";
 import ReportDiagramSkeleton from "../../../../Skeletons/ReportDiagramSkeleton";
 
-const ReportDiagram = () => {
+const ReportDebtDiagram = () => {
   const [selectedIndex, setSelectedIndex] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -107,7 +107,7 @@ const ReportDiagram = () => {
                   >
                     61%
                   </Text>
-                  <Text style={{ fontSize: 20, lineHeight: 18 }}>Ашиг</Text>
+                  <Text style={{ fontSize: 20, lineHeight: 18 }}>Нийт үлдэгдэл</Text>
                 </View>
               </PieChart>
               <View
@@ -125,7 +125,7 @@ const ReportDiagram = () => {
                 >
                   <View style={styles.smallPieTextContainer}>
                     <Text style={styles.smallPieTopText}>61%</Text>
-                    <Text style={styles.smallPieBtmText}>Орлого</Text>
+                    <Text style={styles.smallPieBtmText}>Касс</Text>
                   </View>
                 </PieChart>
                 <PieChart
@@ -136,7 +136,7 @@ const ReportDiagram = () => {
                 >
                   <View style={styles.smallPieTextContainer}>
                     <Text style={styles.smallPieTopText}>61%</Text>
-                    <Text style={styles.smallPieBtmText}>Зардал</Text>
+                    <Text style={styles.smallPieBtmText}>Х.Данс</Text>
                   </View>
                 </PieChart>
               </View>
@@ -144,19 +144,19 @@ const ReportDiagram = () => {
             <View style={styles.bottomContainer}>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
-                  Орлого
+                Харилцах данс
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
               <View style={styles.bottomMidContent}>
                 <Text style={{ color: "#E34935", fontWeight: "bold" }}>
-                  Зардал
+                Касс
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
-                  Ашиг
+                Нийт үлдэгдэл
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
@@ -192,7 +192,7 @@ const ReportDiagram = () => {
   );
 };
 
-export default ReportDiagram;
+export default ReportDebtDiagram;
 
 const styles = StyleSheet.create({
   mainContainer: {

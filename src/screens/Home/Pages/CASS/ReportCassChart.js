@@ -23,7 +23,7 @@ const ReportCassChart = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 500);
   }, []);
 
   return (
@@ -67,7 +67,7 @@ const ReportCassChart = () => {
               </View>
               <ProgressBar
                 progress={0.2}
-                color="#E34935"
+                color="#1F3F55"
                 style={{ borderRadius: 8, marginTop: 5 }}
               />
             </View>
@@ -78,7 +78,7 @@ const ReportCassChart = () => {
               </View>
               <ProgressBar
                 progress={0.3}
-                color="#EC7A09"
+                color="#4B8CD9"
                 style={{ borderRadius: 8, marginTop: 5 }}
               />
             </View>

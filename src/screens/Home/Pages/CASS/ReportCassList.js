@@ -23,7 +23,7 @@ const ReportCassList = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 500);
   }, []);
   return (
     <View style={{ flex: 1 }}>
@@ -34,20 +34,20 @@ const ReportCassList = () => {
           <View>
             <View style={styles.bottomContainerCard}>
               <View style={{ width: "33%", alignItems: "center" }}>
-                <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
-                  Орлого
+                <Text style={{ color: "#168B5E", fontWeight: "bold" }}>
+                Харилцах данс
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
               <View style={styles.bottomMidContent}>
-                <Text style={{ color: "#E34935", fontWeight: "bold" }}>
-                  Зардал
+                <Text style={{ color: "#1F3F55", fontWeight: "bold" }}>
+                Касс
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
               <View style={{ width: "33%", alignItems: "center" }}>
-                <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
-                  Ашиг
+                <Text style={{ color: "#4B8CD9", fontWeight: "bold" }}>
+                Нийт үлдэгдэл
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
@@ -88,20 +88,20 @@ const ReportCassList = () => {
               </View>
               <View style={styles.bottomContainer}>
                 <View style={{ width: "33%", alignItems: "center" }}>
-                  <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
-                    Ашиг
+                  <Text style={{ color: "#4B8CD9", fontWeight: "bold" }}>
+                  Нийт үлдэгдэл
                   </Text>
                   <Text style={styles.amountText}>99,999сая₮</Text>
                 </View>
                 <View style={styles.bottomMidContent}>
-                  <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
-                    Орлого
+                  <Text style={{ color: "#168B5E", fontWeight: "bold" }}>
+                  Харилцах данс
                   </Text>
                   <Text style={styles.amountText}>99,999сая₮</Text>
                 </View>
                 <View style={{ width: "33%", alignItems: "center" }}>
-                  <Text style={{ color: "#E34935", fontWeight: "bold" }}>
-                    Зардал
+                  <Text style={{ color: "#1F3F55", fontWeight: "bold" }}>
+                  Касс
                   </Text>
                   <Text style={styles.amountText}>99,999сая₮</Text>
                 </View>
