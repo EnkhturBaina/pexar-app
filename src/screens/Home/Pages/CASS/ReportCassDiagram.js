@@ -5,11 +5,11 @@ import {
   MAIN_BACKGROUND_COLOR,
   MAIN_COLOR,
   MAIN_COLOR_GRAY,
-} from "../../../constant";
+} from "../../../../constant";
 import { CheckBox } from "@rneui/base";
-import ReportDiagramSkeleton from "../../../Skeletons/ReportDiagramSkeleton";
+import ReportDiagramSkeleton from "../../../../Skeletons/ReportDiagramSkeleton";
 
-const ReportDiagram = () => {
+const ReportCassDiagram = () => {
   const [selectedIndex, setSelectedIndex] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -192,7 +192,7 @@ const ReportDiagram = () => {
   );
 };
 
-export default ReportDiagram;
+export default ReportCassDiagram;
 
 const styles = StyleSheet.create({
   mainContainer: {

@@ -11,11 +11,11 @@ import {
   MAIN_BACKGROUND_COLOR,
   MAIN_COLOR,
   MAIN_COLOR_GRAY,
-} from "../../../constant";
-import Base from "../../../../assets/Base.png";
+} from "../../../../constant";
+import Base from "../../../../../assets/Base.png";
 import { ProgressBar } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
-import ReportChartSkeleton from "../../../Skeletons/ReportChartSkeleton";
+import ReportChartSkeleton from "../../../../Skeletons/ReportChartSkeleton";
 
 const ReportChart = () => {
   const navigation = useNavigation();

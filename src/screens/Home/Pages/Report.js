@@ -1,20 +1,19 @@
 import { StyleSheet, View } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import TopFilter from "../TopFilter";
-import { MAIN_BACKGROUND_COLOR, MAIN_COLOR_GRAY } from "../../../constant";
-import ReportDiagram from "./ReportDiagram";
 import MainContext from "../../../contexts/MainContext";
-import ReportChart from "./ReportChart";
-import ReportList from "./ReportList";
+import MainReportOudt from "./OUDT/MainReportOudt";
+import MainReportCass from "./CASS/MainReportCass";
+import MainReportDebt from "./DEBT/MainReportDebt";
 
 const Report = () => {
   const state = useContext(MainContext);
   return (
     <View style={{ flex: 1 }}>
       <TopFilter tabs={true} cats={true} />
-      {state.cardMenu == 1 ? <ReportDiagram /> : null}
-      {state.cardMenu == 2 ? <ReportChart /> : null}
-      {state.cardMenu == 3 ? <ReportList /> : null}
+      {state.selectedHeader == 1 ? <MainReportOudt /> : null}
+      {state.selectedHeader == 2 ? <MainReportCass /> : null}
+      {state.selectedHeader == 3 ? <MainReportDebt /> : null}
     </View>
   );
 };

@@ -8,14 +8,14 @@ import {
 } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import { Icon } from "@rneui/base";
-import Base from "../../../../assets/Base.png";
-import TopFilter from "../TopFilter";
+import Base from "../../../../../assets/Base.png";
+import TopFilter from "../../TopFilter";
 import {
   MAIN_BACKGROUND_COLOR,
   MAIN_COLOR,
   MAIN_COLOR_GRAY,
   MAIN_COLOR_GRAY_LEVEL4,
-} from "../../../constant";
+} from "../../../../constant";
 // import { Grid, LineChart, XAxis, YAxis } from "react-native-svg-charts";
 
 const ReportListDtl = (props) => {

@@ -21,8 +21,8 @@ import InventoryDtl from "../screens/Home/Pages/InventoryDtl";
 import ListDtl from "../screens/Home/Pages/ListDtl";
 import TransactionDtl from "../screens/Home/Pages/TransactionDtl";
 import PlanDtl from "../screens/Home/Pages/PlanDtl";
-import ReportChartDtl from "../screens/Home/Pages/ReportChartDtl";
-import ReportListDtl from "../screens/Home/Pages/ReportListDtl";
+import ReportChartDtl from "../screens/Home/Pages/OUDT/ReportChartDtl";
+import ReportListDtl from "../screens/Home/Pages/OUDT/ReportListDtl";
 
 const Stack = createStackNavigator();
 

@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { Icon } from "@rneui/base";
-import Base from "../../../../assets/Base.png";
-import TopFilter from "../TopFilter";
+import Base from "../../../../../assets/Base.png";
+import TopFilter from "../../TopFilter";
 
-const ReportChartDtl = (props) => {
+const ReportCassChartDtl = (props) => {
   useLayoutEffect(() => {
     props.navigation.setOptions({
       headerLeft: () => (
@@ -37,7 +37,7 @@ const ReportChartDtl = (props) => {
   );
 };
 
-export default ReportChartDtl;
+export default ReportCassChartDtl;
 
 const styles = StyleSheet.create({
   headerLeftContainer: {

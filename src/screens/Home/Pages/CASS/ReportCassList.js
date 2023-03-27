@@ -11,13 +11,13 @@ import {
   MAIN_BACKGROUND_COLOR,
   MAIN_COLOR,
   MAIN_COLOR_GRAY,
-} from "../../../constant";
+} from "../../../../constant";
 import { CheckBox, Icon } from "@rneui/base";
-import ReportListSkeleton from "../../../Skeletons/ReportListSkeleton";
-import Base from "../../../../assets/Base.png";
+import ReportListSkeleton from "../../../../Skeletons/ReportListSkeleton";
+import Base from "../../../../../assets/Base.png";
 import { useNavigation } from "@react-navigation/native";
 
-const ReportList = () => {
+const ReportCassList = () => {
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -114,7 +114,7 @@ const ReportList = () => {
   );
 };
 
-export default ReportList;
+export default ReportCassList;
 
 const styles = StyleSheet.create({
   mainContainer: {
