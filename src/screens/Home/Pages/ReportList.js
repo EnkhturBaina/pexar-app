@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import { PieChart } from "react-native-svg-charts";
 import {
   MAIN_BACKGROUND_COLOR,
   MAIN_COLOR,
