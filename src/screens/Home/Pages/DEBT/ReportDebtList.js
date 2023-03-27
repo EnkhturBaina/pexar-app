@@ -34,20 +34,20 @@ const ReportDebtList = () => {
           <View>
             <View style={styles.bottomContainerCard}>
               <View style={{ width: "33%", alignItems: "center" }}>
-                <Text style={{ color: "#168B5E", fontWeight: "bold" }}>
-                Харилцах данс
+                <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
+                Авлага
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
               <View style={styles.bottomMidContent}>
-                <Text style={{ color: "#1F3F55", fontWeight: "bold" }}>
-                Касс
+                <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
+                Өглөг
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
               <View style={{ width: "33%", alignItems: "center" }}>
-                <Text style={{ color: "#4B8CD9", fontWeight: "bold" }}>
-                Нийт үлдэгдэл
+                <Text style={{ color: "#E34935", fontWeight: "bold" }}>
+                Зөрүү
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
@@ -88,20 +88,20 @@ const ReportDebtList = () => {
               </View>
               <View style={styles.bottomContainer}>
                 <View style={{ width: "33%", alignItems: "center" }}>
-                  <Text style={{ color: "#4B8CD9", fontWeight: "bold" }}>
-                  Нийт үлдэгдэл
+                  <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
+                 Авлага
                   </Text>
                   <Text style={styles.amountText}>99,999сая₮</Text>
                 </View>
                 <View style={styles.bottomMidContent}>
-                  <Text style={{ color: "#168B5E", fontWeight: "bold" }}>
-                  Харилцах данс
+                  <Text style={{ color: "#E34935", fontWeight: "bold" }}>
+                  Зөрүү
                   </Text>
                   <Text style={styles.amountText}>99,999сая₮</Text>
                 </View>
                 <View style={{ width: "33%", alignItems: "center" }}>
-                  <Text style={{ color: "#1F3F55", fontWeight: "bold" }}>
-                  Касс
+                  <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
+                  Өглөг
                   </Text>
                   <Text style={styles.amountText}>99,999сая₮</Text>
                 </View>

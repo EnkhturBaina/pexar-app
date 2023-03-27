@@ -51,7 +51,7 @@ const ReportDebtChart = () => {
             </View>
             <View style={{ marginTop: 5 }}>
               <View style={styles.textContainer}>
-                <Text style={styles.labelText}>Харилцах данс</Text>
+                <Text style={styles.labelText}>Авлага</Text>
                 <Text style={styles.valueText}>999,999,999,00₮</Text>
               </View>
               <ProgressBar
@@ -62,23 +62,23 @@ const ReportDebtChart = () => {
             </View>
             <View style={{ marginTop: 5 }}>
               <View style={styles.textContainer}>
-                <Text style={styles.labelText}>Касс</Text>
+                <Text style={styles.labelText}>Өглөг</Text>
                 <Text style={styles.valueText}>999,999,999,00₮</Text>
               </View>
               <ProgressBar
                 progress={0.2}
-                color="#1F3F55"
+                color="#E34935"
                 style={{ borderRadius: 8, marginTop: 5 }}
               />
             </View>
             <View style={{ marginTop: 5 }}>
               <View style={styles.textContainer}>
-                <Text style={styles.labelText}>Нийт үлдэгдэл</Text>
+                <Text style={styles.labelText}>Зөрүү</Text>
                 <Text style={styles.valueText}>999,999,999,00₮</Text>
               </View>
               <ProgressBar
                 progress={0.3}
-                color="#4B8CD9"
+                color="#EC7A09"
                 style={{ borderRadius: 8, marginTop: 5 }}
               />
             </View>

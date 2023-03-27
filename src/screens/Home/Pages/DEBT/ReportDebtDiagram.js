@@ -107,7 +107,7 @@ const ReportDebtDiagram = () => {
                   >
                     61%
                   </Text>
-                  <Text style={{ fontSize: 20, lineHeight: 18 }}>Нийт үлдэгдэл</Text>
+                  <Text style={{ fontSize: 20, lineHeight: 18 }}>Зөрүү</Text>
                 </View>
               </PieChart>
               <View
@@ -125,7 +125,7 @@ const ReportDebtDiagram = () => {
                 >
                   <View style={styles.smallPieTextContainer}>
                     <Text style={styles.smallPieTopText}>61%</Text>
-                    <Text style={styles.smallPieBtmText}>Касс</Text>
+                    <Text style={styles.smallPieBtmText}>Авлага</Text>
                   </View>
                 </PieChart>
                 <PieChart
@@ -136,7 +136,7 @@ const ReportDebtDiagram = () => {
                 >
                   <View style={styles.smallPieTextContainer}>
                     <Text style={styles.smallPieTopText}>61%</Text>
-                    <Text style={styles.smallPieBtmText}>Х.Данс</Text>
+                    <Text style={styles.smallPieBtmText}>Өглөг</Text>
                   </View>
                 </PieChart>
               </View>
@@ -144,19 +144,19 @@ const ReportDebtDiagram = () => {
             <View style={styles.bottomContainer}>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
-                Харилцах данс
+                Зөрүү
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
               <View style={styles.bottomMidContent}>
                 <Text style={{ color: "#E34935", fontWeight: "bold" }}>
-                Касс
+                Өглөг
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
-                Нийт үлдэгдэл
+                Авлага
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
