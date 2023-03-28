@@ -219,25 +219,11 @@ const HomeScreenStackNavigator = (props) => {
         component={PlanDtl}
         options={{
           title: "",
-          headerTitleStyle: {},
           headerStyle: {
+            shadowColor: "transparent",
+            elevation: 0,
             backgroundColor: MAIN_COLOR,
-            borderBottomLeftRadius: 12,
-            borderBottomRightRadius: 12,
           },
-          headerLeft: () => (
-            <TouchableOpacity
-              style={styles.headerLeftContainer}
-              onPress={() => {
-                navigation.goBack();
-              }}
-            >
-              <Icon name="arrow-left" type="feather" size={25} color="#FFF" />
-              <Text style={[styles.headerLeftText, { color: "#FFF" }]}>
-                Төлөвлөгөө
-              </Text>
-            </TouchableOpacity>
-          ),
         }}
       />
       <Stack.Screen

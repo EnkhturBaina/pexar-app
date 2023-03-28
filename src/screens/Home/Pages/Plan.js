@@ -6,7 +6,6 @@ import {
   ScrollView,
   Image,
   useWindowDimensions,
-  SafeAreaView,
 } from "react-native";
 import React, { useCallback, useState } from "react";
 import TopFilter from "../TopFilter";
@@ -24,7 +23,9 @@ import {
   Area,
   HorizontalAxis,
   VerticalAxis,
+  Tooltip,
 } from "react-native-responsive-linechart";
+import { Icon } from "@rneui/base";
 
 const Plan = () => {
   const navigation = useNavigation();
@@ -45,20 +46,26 @@ const Plan = () => {
     },
   ]);
 
-  const Tooltip = (a) => {
-    console.log("A", a);
-    return <Text>{a.value.y}</Text>;
-  };
   const FirstRoute = useCallback(() => {
     return (
       <View>
-        <Text>Орлого</Text>
+        <View style={styles.bottomContainer}>
+          <View style={{ width: "33%", alignItems: "center" }}>
+            <Text style={styles.labelText}>Төлөвлөгөөт</Text>
+            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+          </View>
+          <View style={styles.bottomMidContent}>
+            <Text style={styles.labelText}>Норматив</Text>
+            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+          </View>
+          <View style={{ width: "33%", alignItems: "center" }}>
+            <Text style={styles.labelText}>Гүйцэтгэл</Text>
+            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+          </View>
+        </View>
         <Chart
           style={{ height: 200, width: 400 }}
           data={[
-            { x: -2, y: 15 },
-            { x: -1, y: 10 },
-            { x: 0, y: 12 },
             { x: 1, y: 7 },
             { x: 2, y: 6 },
             { x: 3, y: 8 },
@@ -69,16 +76,21 @@ const Plan = () => {
             { x: 8, y: 12 },
             { x: 9, y: 13.5 },
             { x: 10, y: 18 },
+            { x: 11, y: 15 },
+            { x: 12, y: 10 },
           ]}
-          padding={{ left: 40, bottom: 20, right: 20, top: 20 }}
-          xDomain={{ min: -2, max: 10 }}
+          padding={{ left: 15, bottom: 30, right: 60, top: 10 }}
+          xDomain={{ min: 1, max: 12 }}
           yDomain={{ min: 0, max: 20 }}
         >
-          <VerticalAxis
-            tickCount={11}
-            theme={{ labels: { formatter: (v) => v.toFixed(2) } }}
+          <HorizontalAxis
+            tickCount={12}
+            theme={{ labels: { formatter: (v) => v } }}
           />
-          <HorizontalAxis tickCount={5} />
+          <VerticalAxis
+            tickCount={5}
+            theme={{ labels: { formatter: (v) => null } }}
+          />
           <Area
             theme={{
               gradient: {
@@ -100,15 +112,129 @@ const Plan = () => {
   }, []);
   const SecondRoute = useCallback(() => {
     return (
-      <View style={{}}>
-        <Text>Зарлага</Text>
+      <View>
+        <View style={styles.bottomContainer}>
+          <View style={{ width: "33%", alignItems: "center" }}>
+            <Text style={styles.labelText}>Төлөвлөгөөт</Text>
+            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+          </View>
+          <View style={styles.bottomMidContent}>
+            <Text style={styles.labelText}>Норматив</Text>
+            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+          </View>
+          <View style={{ width: "33%", alignItems: "center" }}>
+            <Text style={styles.labelText}>Гүйцэтгэл</Text>
+            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+          </View>
+        </View>
+        <Chart
+          style={{ height: 200, width: 400 }}
+          data={[
+            { x: 1, y: 1 },
+            { x: 2, y: 3 },
+            { x: 3, y: 5 },
+            { x: 4, y: 2 },
+            { x: 5, y: 4 },
+            { x: 6, y: 10 },
+            { x: 7, y: 14 },
+            { x: 8, y: 12 },
+            { x: 9, y: 11.5 },
+            { x: 10, y: 8 },
+            { x: 11, y: 7 },
+            { x: 12, y: 6 },
+          ]}
+          padding={{ left: 15, bottom: 30, right: 60, top: 10 }}
+          xDomain={{ min: 1, max: 12 }}
+          yDomain={{ min: 0, max: 20 }}
+        >
+          <HorizontalAxis
+            tickCount={12}
+            theme={{ labels: { formatter: (v) => v } }}
+          />
+          <VerticalAxis
+            tickCount={5}
+            theme={{ labels: { formatter: (v) => null } }}
+          />
+          <Area
+            theme={{
+              gradient: {
+                from: { color: "#ffa502" },
+                to: { color: "#ffa502", opacity: 0.4 },
+              },
+            }}
+          />
+          <Line
+            tooltipComponent={<Tooltip />}
+            theme={{
+              stroke: { color: "#ffa502", width: 5 },
+              scatter: { default: { width: 4, height: 4, rx: 2 } },
+            }}
+          />
+        </Chart>
       </View>
     );
   }, []);
   const ThirdRoute = useCallback(() => {
     return (
-      <View style={{}}>
-        <Text>Ашиг</Text>
+      <View>
+        <View style={styles.bottomContainer}>
+          <View style={{ width: "33%", alignItems: "center" }}>
+            <Text style={styles.labelText}>Төлөвлөгөөт</Text>
+            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+          </View>
+          <View style={styles.bottomMidContent}>
+            <Text style={styles.labelText}>Норматив</Text>
+            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+          </View>
+          <View style={{ width: "33%", alignItems: "center" }}>
+            <Text style={styles.labelText}>Гүйцэтгэл</Text>
+            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+          </View>
+        </View>
+        <Chart
+          style={{ height: 200, width: 400 }}
+          data={[
+            { x: 1, y: 11 },
+            { x: 2, y: 12 },
+            { x: 3, y: 13 },
+            { x: 4, y: 10 },
+            { x: 5, y: 8 },
+            { x: 6, y: 12 },
+            { x: 7, y: 11 },
+            { x: 8, y: 7 },
+            { x: 9, y: 13.5 },
+            { x: 10, y: 8 },
+            { x: 11, y: 15 },
+            { x: 12, y: 13 },
+          ]}
+          padding={{ left: 15, bottom: 30, right: 60, top: 10 }}
+          xDomain={{ min: 1, max: 12 }}
+          yDomain={{ min: 0, max: 20 }}
+        >
+          <HorizontalAxis
+            tickCount={12}
+            theme={{ labels: { formatter: (v) => v } }}
+          />
+          <VerticalAxis
+            tickCount={5}
+            theme={{ labels: { formatter: (v) => null } }}
+          />
+          <Area
+            theme={{
+              gradient: {
+                from: { color: "#ffa502" },
+                to: { color: "#ffa502", opacity: 0.4 },
+              },
+            }}
+          />
+          <Line
+            tooltipComponent={<Tooltip />}
+            theme={{
+              stroke: { color: "#ffa502", width: 5 },
+              scatter: { default: { width: 4, height: 4, rx: 2 } },
+            }}
+          />
+        </Chart>
       </View>
     );
   }, []);
@@ -136,7 +262,7 @@ const Plan = () => {
       pressColor="transparent"
       style={{
         justifyContent: "center",
-        backgroundColor: "#fff",
+        backgroundColor: "transparent",
         elevation: 0,
         marginTop: 15,
       }}
@@ -161,25 +287,27 @@ const Plan = () => {
   return (
     <View style={{ flex: 1 }}>
       <TopFilter tabs={false} cats={false} />
-      <View style={styles.mainContainer}>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          style={styles.cardContainer}
-          // onPress={() => navigation.navigate("PlanDtl")}
-        >
-          <View style={styles.cardHeader}>
-            <Image
-              source={Base}
-              style={{ width: 40, height: 40 }}
-              resizeMode="contain"
-            />
-            <View style={{ flexDirection: "column", marginLeft: 5 }}>
-              <Text style={{ fontWeight: "bold", color: "#272E3B" }}>
-                "Смарт-Крафт" ХХК
-              </Text>
-              <Text style={{ fontSize: 12, color: "#4E5969" }}>5506913</Text>
+      <ScrollView bounces={false} contentContainerStyle={styles.mainContainer}>
+        <View activeOpacity={0.8} style={styles.cardContainer}>
+          <TouchableOpacity
+            style={styles.cardHeader}
+            onPress={() => navigation.navigate("PlanDtl")}
+          >
+            <View style={styles.cardHeaderTitle}>
+              <Image
+                source={Base}
+                style={{ width: 40, height: 40 }}
+                resizeMode="contain"
+              />
+              <View style={{ flexDirection: "column", marginLeft: 5 }}>
+                <Text style={{ fontWeight: "bold", color: "#272E3B" }}>
+                  "Смарт-Крафт" ХХК
+                </Text>
+                <Text style={{ fontSize: 12, color: "#4E5969" }}>5506913</Text>
+              </View>
             </View>
-          </View>
+            <Icon name="chevron-right" type="feather" size={25} />
+          </TouchableOpacity>
           <TabView
             navigationState={{ index, routes }}
             renderScene={renderScene}
@@ -188,8 +316,8 @@ const Plan = () => {
             initialLayout={{ width: layout.width }}
             swipeEnabled={false}
           />
-        </TouchableOpacity>
-      </View>
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -198,14 +326,16 @@ export default Plan;
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: MAIN_BACKGROUND_COLOR,
     paddingHorizontal: 10,
     paddingTop: 10,
-    paddingBottom: 60,
+  },
+  mainScrollContainer: {
+    flexGrow: 1,
   },
   cardContainer: {
-    height: 300,
+    height: 350,
     borderColor: MAIN_COLOR_GRAY,
     backgroundColor: "#fff",
     opacity: 1,
@@ -225,5 +355,32 @@ const styles = StyleSheet.create({
   cardHeader: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
+  },
+  cardHeaderTitle: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  bottomContainer: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginVertical: 10,
+  },
+  bottomMidContent: {
+    borderLeftColor: "#E5E6EB",
+    borderLeftWidth: 1,
+    borderRightColor: "#E5E6EB",
+    borderRightWidth: 1,
+    width: "33%",
+    alignItems: "center",
+  },
+  labelText: {
+    color: "#4E5969",
+    fontWeight: "bold",
+    fontSize: 12,
+  },
+  amountText: {
+    color: "#4E5969",
+    fontSize: 10,
   },
 });
