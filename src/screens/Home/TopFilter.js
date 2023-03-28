@@ -1,11 +1,18 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useContext, useState } from "react";
 import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import React, { useContext, useEffect, useState } from "react";
+import {
+  BUTTON_BORDER_RADIUS,
   MAIN_COLOR,
   MAIN_COLOR_B1,
   MAIN_COLOR_GRAY_LEVEL4,
 } from "../../constant";
-import { Icon } from "@rneui/base";
+import { Button, Icon } from "@rneui/base";
 import { Modal, Portal } from "react-native-paper";
 import MainContext from "../../contexts/MainContext";
 
@@ -15,6 +22,22 @@ const TopFilter = ({ tabs, cats }) => {
 
   const showModal = () => setVisibleReport(true);
   const hideModal = () => setVisibleReport(false);
+
+  const [visibleCalendar, setVisibleCalendar] = useState(false);
+
+  const showModalCalendar = () => setVisibleCalendar(true);
+  const hideModalCalendar = () => setVisibleCalendar(false);
+
+  const date = new Date();
+  const [currentYear, setCurrentYear] = useState(date.getFullYear());
+  const [selectedMonths, setSelectedMonths] = useState([
+    {
+      value: "2023-3",
+      label: "2023-3",
+      year: 2023,
+      month: 3,
+    },
+  ]);
   const reports = [
     {
       id: 0,
@@ -59,6 +82,67 @@ const TopFilter = ({ tabs, cats }) => {
       key: "Sales",
     },
   ];
+  const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+  useEffect(() => {
+    console.log("selectedMonths", selectedMonths);
+  }, [selectedMonths]);
+
+  const checkIsExistMonth = (item) => {
+    const reducedArr = [...selectedMonths];
+
+    if (
+      !selectedMonths.some((el) => el.year == currentYear && el.month == item)
+    ) {
+      setSelectedMonths((selectedMonths) => [
+        ...selectedMonths,
+        {
+          value: `${currentYear}-${item}`,
+          label: `${currentYear}-${item}`,
+          year: currentYear,
+          month: item,
+        },
+      ]);
+    } else {
+      reducedArr.map((el) => {
+        if (el.year == currentYear && el.month == item) {
+          var index = reducedArr.indexOf(el);
+          if (index !== -1) {
+            reducedArr?.splice(index, 1);
+            setSelectedMonths(reducedArr);
+          }
+        }
+      });
+    }
+  };
+  const RenderMonths = ({ item }) => {
+    return (
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => {
+          checkIsExistMonth(item);
+        }}
+        style={styles.eachMonth}
+      >
+        <Text
+          style={[
+            { padding: 5, borderRadius: 8 },
+            selectedMonths.some(
+              (el) => el.year == currentYear && el.month == item
+            )
+              ? {
+                  backgroundColor: "#00904D",
+                  color: "#fff",
+                }
+              : null,
+          ]}
+        >
+          {item} сар
+        </Text>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View>
       <View style={styles.topFilterContainer}>
@@ -102,10 +186,88 @@ const TopFilter = ({ tabs, cats }) => {
               </View>
             </Modal>
           </Portal>
-          <TouchableOpacity style={styles.filterContainer}>
+          <TouchableOpacity
+            style={styles.filterContainer}
+            onPress={showModalCalendar}
+          >
             <Text style={{ color: "#fff" }}>1,2,4 -р сар</Text>
             <Icon name="sliders" type="font-awesome" size={20} color="#fff" />
           </TouchableOpacity>
+          <Portal>
+            <Modal
+              visible={visibleCalendar}
+              onDismiss={hideModalCalendar}
+              contentContainerStyle={styles.modalContainerStyle}
+            >
+              <View
+                style={{
+                  flexDirection: "column",
+                }}
+              >
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                    alignItems: "center",
+                  }}
+                >
+                  <Icon
+                    name="chevron-left"
+                    type="feather"
+                    size={25}
+                    onPress={() => setCurrentYear(currentYear - 1)}
+                  />
+                  <Text
+                    style={{
+                      color: "#4E5969",
+                      fontWeight: "bold",
+                      fontSize: 16,
+                    }}
+                  >
+                    {currentYear}
+                  </Text>
+                  <Icon
+                    name="chevron-right"
+                    type="feather"
+                    size={25}
+                    onPress={() => setCurrentYear(currentYear + 1)}
+                  />
+                </View>
+                <View style={{}}>
+                  <FlatList
+                    bounces={false}
+                    contentContainerStyle={{
+                      marginVertical: 10,
+                    }}
+                    data={months}
+                    numColumns={3}
+                    renderItem={RenderMonths}
+                    keyExtractor={(item, index) => String(index)}
+                  />
+                  <View
+                    style={{
+                      width: "80%",
+                      marginRight: "auto",
+                      marginLeft: "auto",
+                    }}
+                  >
+                    <Button
+                      title="Үргэлжлүүлэх"
+                      color={MAIN_COLOR}
+                      radius={BUTTON_BORDER_RADIUS}
+                      onPress={() => {
+                        hideModalCalendar();
+                      }}
+                      titleStyle={{
+                        fontWeight: "bold",
+                      }}
+                      buttonStyle={{ height: 40 }}
+                    />
+                  </View>
+                </View>
+              </View>
+            </Modal>
+          </Portal>
         </View>
         {tabs ? (
           <View style={styles.secondRowContainer}>
@@ -299,6 +461,14 @@ const styles = StyleSheet.create({
   eachCardMenu: {
     borderRadius: 6,
     height: 40,
+    justifyContent: "center",
+  },
+  eachMonth: {
+    flex: 1,
+    maxWidth: "33%",
+    alignItems: "center",
+    height: 40,
+    borderRadius: 8,
     justifyContent: "center",
   },
 });

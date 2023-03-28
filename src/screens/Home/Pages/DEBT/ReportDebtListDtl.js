@@ -82,17 +82,17 @@ const ReportDebtListDtl = (props) => {
           <Icon name="document-text" type="ionicon" size={25} color="#fff" />
         </TouchableOpacity>
       </View>
-      <View style={styles.bottomContainer}>
+      <View style={styles.bottomContainerCard}>
         <View style={{ width: "33%", alignItems: "center" }}>
-          <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>Орлого</Text>
+          <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>Авлага</Text>
           <Text style={styles.amountText}>99,999сая₮</Text>
         </View>
         <View style={styles.bottomMidContent}>
-          <Text style={{ color: "#E34935", fontWeight: "bold" }}>Зардал</Text>
+          <Text style={{ color: "#E34935", fontWeight: "bold" }}>Өглөг</Text>
           <Text style={styles.amountText}>99,999сая₮</Text>
         </View>
         <View style={{ width: "33%", alignItems: "center" }}>
-          <Text style={{ color: "#22A06B", fontWeight: "bold" }}>Ашиг</Text>
+          <Text style={{ color: "#22A06B", fontWeight: "bold" }}>Зөрүү</Text>
           <Text style={styles.amountText}>99,999сая₮</Text>
         </View>
       </View>
@@ -103,53 +103,44 @@ const ReportDebtListDtl = (props) => {
           bounces={false}
           contentContainerStyle={styles.mainContainer}
         >
-          <View style={styles.middleContainer}>
-            <Text
-              style={{ color: "#272E3B", fontSize: 16, fontWeight: "bold" }}
-            >
-              1 сар
-            </Text>
-            <View style={styles.whiteRow}>
-              <Text style={{ color: "#4E5969" }}>Цэвэр борлуулалт</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
+          <View style={styles.cardContainer}>
+            <View style={styles.cardHeader}>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <View style={{ flexDirection: "column", marginLeft: 5 }}>
+                  <Text style={{ fontWeight: "bold", color: "#272E3B" }}>
+                    "Смарт-Крафт" ХХК
+                  </Text>
+                  <Text style={{ fontSize: 12, color: "#4E5969" }}>
+                    5506913
+                  </Text>
+                </View>
+              </View>
+              <Text style={styles.statusContainer}>Батлагдсан</Text>
             </View>
-            <View style={styles.grayRow}>
-              <Text style={{ color: "#4E5969" }}>Өртөг</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
+            <View style={styles.rowContainer}>
+              <Text style={{ color: "#4E5969" }}>Хугацаа: 2023.06.01</Text>
+              <Text style={styles.valText}>| РД9988 7766</Text>
             </View>
-            <View style={styles.whiteRow}>
-              <Text style={{ color: "#4E5969" }}>ҮА зардал</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
-            </View>
-            <View style={styles.grayRow}>
-              <Text style={{ color: "#4E5969" }}>Татвар өмнөх ашиг</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
-            </View>
-            <View style={styles.whiteRow}>
-              <Text style={{ color: "#4E5969" }}>ААНОАТ зардал</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
-            </View>
-            <View style={styles.grayRow}>
-              <Text style={{ color: "#4E5969" }}>Бусад олз (гарз)</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
-            </View>
-            <View style={styles.whiteRow}>
-              <Text style={{ color: "#4E5969" }}>Цэвэр ашиг (алдагдал)</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
+
+            <View style={styles.bottomContainer}>
+              <View style={{ width: "33%", alignItems: "center" }}>
+                <Text style={styles.boldText}>Авлага</Text>
+                <Text style={{ fontSize: 10, color: "#4E5969" }}>
+                  99,999сая₮
+                </Text>
+              </View>
+              <View style={styles.bottomMidContent}>
+                <Text style={styles.boldText}>Өглөг</Text>
+                <Text style={{ fontSize: 10, color: "#4E5969" }}>
+                  99,999сая₮
+                </Text>
+              </View>
+              <View style={{ width: "33%", alignItems: "center" }}>
+                <Text style={styles.boldText}>Зөрүү</Text>
+                <Text style={{ fontSize: 10, color: "#4E5969" }}>
+                  99,999сая₮
+                </Text>
+              </View>
             </View>
           </View>
         </ScrollView>
@@ -177,8 +168,7 @@ const styles = StyleSheet.create({
     height: 40,
     justifyContent: "center",
   },
-  bottomContainer: {
-    marginHorizontal: 10,
+  bottomContainerCard: {
     flexDirection: "row",
     justifyContent: "space-evenly",
     borderColor: MAIN_COLOR_GRAY,
@@ -194,7 +184,14 @@ const styles = StyleSheet.create({
     elevation: 1,
     borderRadius: 8,
     paddingVertical: 10,
-    marginBottom: 5,
+    marginHorizontal: 10,
+    marginBottom: 10,
+  },
+  bottomContainer: {
+    marginHorizontal: 10,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    paddingVertical: 10,
   },
   amountText: {
     color: "#4E5969",
@@ -208,10 +205,17 @@ const styles = StyleSheet.create({
     width: "33%",
     alignItems: "center",
   },
-  middleContainer: {
-    flexDirection: "column",
-    justifyContent: "space-between",
-    marginTop: 10,
+  rowContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 5,
+  },
+  mainContainer: {
+    flexGrow: 1,
+    backgroundColor: MAIN_BACKGROUND_COLOR,
+    paddingHorizontal: 10,
+  },
+  cardContainer: {
     borderColor: MAIN_COLOR_GRAY,
     backgroundColor: "#FFF",
     opacity: 1,
@@ -223,23 +227,25 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.18,
     shadowRadius: 1.0,
     elevation: 1,
+    borderRadius: 8,
+    flexDirection: "column",
     padding: 10,
     marginBottom: 10,
-    marginHorizontal: 10,
   },
-  whiteRow: {
+  cardHeader: {
     flexDirection: "row",
+    alignItems: "center",
     justifyContent: "space-between",
-    padding: 3,
+    marginBottom: 5,
   },
-  grayRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "#F2F3F5",
-    padding: 3,
-  },
-  mainContainer: {
-    flexGrow: 1,
-    backgroundColor: MAIN_BACKGROUND_COLOR,
+  statusContainer: {
+    color: "#00904D",
+    backgroundColor: "#99D3B8",
+    borderRadius: 12,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    fontSize: 10,
+    overflow: "hidden",
+    fontWeight: "bold",
   },
 });

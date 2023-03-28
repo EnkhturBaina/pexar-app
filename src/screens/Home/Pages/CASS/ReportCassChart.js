@@ -34,7 +34,7 @@ const ReportCassChart = () => {
         ) : (
           <TouchableOpacity
             style={styles.cardContainer}
-            onPress={() => navigation.navigate("ReportChartDtl")}
+            onPress={() => navigation.navigate("ReportCassChartDtl")}
           >
             <View style={styles.cardHeader}>
               <Image

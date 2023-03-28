@@ -23,6 +23,9 @@ import TransactionDtl from "../screens/Home/Pages/TransactionDtl";
 import PlanDtl from "../screens/Home/Pages/PlanDtl";
 import ReportChartDtl from "../screens/Home/Pages/OUDT/ReportChartDtl";
 import ReportListDtl from "../screens/Home/Pages/OUDT/ReportListDtl";
+import ReportCassChartDtl from "../screens/Home/Pages/CASS/ReportCassChartDtl";
+import ReportCassListDtl from "../screens/Home/Pages/CASS/ReportCassListDtl";
+import ReportDebtListDtl from "../screens/Home/Pages/DEBT/ReportDebtListDtl";
 
 const Stack = createStackNavigator();
 
@@ -256,6 +259,54 @@ const HomeScreenStackNavigator = (props) => {
       <Stack.Screen
         name="ReportListDtl"
         component={ReportListDtl}
+        options={{
+          title: "",
+          headerTitleStyle: {},
+          headerStyle: {
+            shadowColor: "transparent",
+            elevation: 0,
+            backgroundColor: MAIN_COLOR,
+            // borderBottomLeftRadius: 12,
+            // borderBottomRightRadius: 12,
+          },
+          headerLeft: () => null,
+        }}
+      />
+      <Stack.Screen
+        name="ReportCassChartDtl"
+        component={ReportCassChartDtl}
+        options={{
+          title: "",
+          headerTitleStyle: {},
+          headerStyle: {
+            shadowColor: "transparent",
+            elevation: 0,
+            backgroundColor: MAIN_COLOR,
+            // borderBottomLeftRadius: 12,
+            // borderBottomRightRadius: 12,
+          },
+          headerLeft: () => null,
+        }}
+      />
+      <Stack.Screen
+        name="ReportCassListDtl"
+        component={ReportCassListDtl}
+        options={{
+          title: "",
+          headerTitleStyle: {},
+          headerStyle: {
+            shadowColor: "transparent",
+            elevation: 0,
+            backgroundColor: MAIN_COLOR,
+            // borderBottomLeftRadius: 12,
+            // borderBottomRightRadius: 12,
+          },
+          headerLeft: () => null,
+        }}
+      />
+      <Stack.Screen
+        name="ReportDebtListDtl"
+        component={ReportDebtListDtl}
         options={{
           title: "",
           headerTitleStyle: {},

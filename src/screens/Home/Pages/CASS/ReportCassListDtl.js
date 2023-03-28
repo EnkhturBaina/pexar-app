@@ -16,6 +16,7 @@ import {
   MAIN_COLOR_GRAY,
   MAIN_COLOR_GRAY_LEVEL4,
 } from "../../../../constant";
+import khan from "../../../../../assets/khan.png";
 // import { Grid, LineChart, XAxis, YAxis } from "react-native-svg-charts";
 
 const ReportCassListDtl = (props) => {
@@ -84,15 +85,19 @@ const ReportCassListDtl = (props) => {
       </View>
       <View style={styles.bottomContainer}>
         <View style={{ width: "33%", alignItems: "center" }}>
-          <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>Орлого</Text>
+          <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
+            Харилцах данс
+          </Text>
           <Text style={styles.amountText}>99,999сая₮</Text>
         </View>
         <View style={styles.bottomMidContent}>
-          <Text style={{ color: "#E34935", fontWeight: "bold" }}>Зардал</Text>
+          <Text style={{ color: "#E34935", fontWeight: "bold" }}>Касс</Text>
           <Text style={styles.amountText}>99,999сая₮</Text>
         </View>
         <View style={{ width: "33%", alignItems: "center" }}>
-          <Text style={{ color: "#22A06B", fontWeight: "bold" }}>Ашиг</Text>
+          <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
+            Нийт үлдэгдэл
+          </Text>
           <Text style={styles.amountText}>99,999сая₮</Text>
         </View>
       </View>
@@ -104,52 +109,29 @@ const ReportCassListDtl = (props) => {
           contentContainerStyle={styles.mainContainer}
         >
           <View style={styles.middleContainer}>
-            <Text
-              style={{ color: "#272E3B", fontSize: 16, fontWeight: "bold" }}
-            >
-              1 сар
+            <Text style={styles.headerText}>
+              Харилцах дансанд дахь үлдэгдэл
             </Text>
+            <View style={styles.whiteRowBorder}>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Image
+                  source={khan}
+                  resizeMode="contain"
+                  style={{ width: 25, height: 25 }}
+                />
+                <View style={{ marginLeft: 10 }}>
+                  <Text style={{ fontSize: 14 }}>Хаан банк</Text>
+                  <Text>5753382973 төг</Text>
+                </View>
+              </View>
+              <Text style={{ fontWeight: "bold" }}>100,000.00 сая</Text>
+            </View>
+          </View>
+          <View style={styles.middleContainer}>
+            <Text style={styles.headerText}>Кассын үлдэгдэл</Text>
             <View style={styles.whiteRow}>
-              <Text style={{ color: "#4E5969" }}>Цэвэр борлуулалт</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
-            </View>
-            <View style={styles.grayRow}>
-              <Text style={{ color: "#4E5969" }}>Өртөг</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
-            </View>
-            <View style={styles.whiteRow}>
-              <Text style={{ color: "#4E5969" }}>ҮА зардал</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
-            </View>
-            <View style={styles.grayRow}>
-              <Text style={{ color: "#4E5969" }}>Татвар өмнөх ашиг</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
-            </View>
-            <View style={styles.whiteRow}>
-              <Text style={{ color: "#4E5969" }}>ААНОАТ зардал</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
-            </View>
-            <View style={styles.grayRow}>
-              <Text style={{ color: "#4E5969" }}>Бусад олз (гарз)</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
-            </View>
-            <View style={styles.whiteRow}>
-              <Text style={{ color: "#4E5969" }}>Цэвэр ашиг (алдагдал)</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
+              <Text>Бэлэн</Text>
+              <Text style={{ fontWeight: "bold" }}>100,000.00 сая</Text>
             </View>
           </View>
         </ScrollView>
@@ -224,22 +206,29 @@ const styles = StyleSheet.create({
     shadowRadius: 1.0,
     elevation: 1,
     padding: 10,
-    marginBottom: 10,
     marginHorizontal: 10,
+  },
+  whiteRowBorder: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 10,
+    alignItems: "center",
+    borderBottomColor: "#E5E6EB",
+    borderBottomWidth: 1,
   },
   whiteRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 3,
-  },
-  grayRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "#F2F3F5",
-    padding: 3,
+    paddingVertical: 10,
+    alignItems: "center",
   },
   mainContainer: {
     flexGrow: 1,
     backgroundColor: MAIN_BACKGROUND_COLOR,
+  },
+  headerText: {
+    color: "#272E3B",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });

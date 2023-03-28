@@ -107,7 +107,9 @@ const ReportCassDiagram = () => {
                   >
                     61%
                   </Text>
-                  <Text style={{ fontSize: 20, lineHeight: 18 }}>Нийт үлдэгдэл</Text>
+                  <Text style={{ fontSize: 16, lineHeight: 16 }}>
+                    Нийт үлдэгдэл
+                  </Text>
                 </View>
               </PieChart>
               <View
@@ -144,19 +146,19 @@ const ReportCassDiagram = () => {
             <View style={styles.bottomContainer}>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
-                Харилцах данс
+                  Харилцах данс
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
               <View style={styles.bottomMidContent}>
                 <Text style={{ color: "#E34935", fontWeight: "bold" }}>
-                Касс
+                  Касс
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
-                Нийт үлдэгдэл
+                  Нийт үлдэгдэл
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>

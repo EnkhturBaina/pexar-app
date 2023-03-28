@@ -38,67 +38,21 @@ const Transaction = () => {
                 <Text style={{ fontSize: 12, color: "#4E5969" }}>5506913</Text>
               </View>
             </View>
-            <Text
-              style={{
-                color: "#00904D",
-                backgroundColor: "#99D3B8",
-                borderRadius: 12,
-                paddingVertical: 6,
-                paddingHorizontal: 12,
-                fontSize: 10,
-                overflow: "hidden",
-                fontWeight: "bold",
-              }}
-            >
-              Батлагдсан
-            </Text>
+            <Text style={styles.statusContainer}>Батлагдсан</Text>
           </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              padding: 5,
-              paddingVertical: 3,
-            }}
-          >
+          <View style={styles.rowContainer}>
             <Text style={{ color: "#4E5969", fontSize: 12 }}>Ирсэн огноо:</Text>
-            <Text
-              style={{ color: "#4E5969", fontWeight: "bold", paddingLeft: 5 }}
-            >
-              2023/02/02
-            </Text>
+            <Text style={styles.valText}>2023/02/02</Text>
           </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              padding: 5,
-              paddingVertical: 3,
-            }}
-          >
+          <View style={styles.rowContainer}>
             <Text style={{ color: "#4E5969", fontSize: 12 }}>Харилцагч:</Text>
-            <Text
-              style={{ color: "#4E5969", fontWeight: "bold", paddingLeft: 5 }}
-            >
-              Б.Өлзийтогтох
-            </Text>
+            <Text style={styles.valText}>Б.Өлзийтогтох</Text>
           </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              padding: 5,
-              paddingVertical: 3,
-            }}
-          >
+          <View style={styles.rowContainer}>
             <Text style={{ color: "#4E5969", fontSize: 12 }}>
               Журналын төрөл:
             </Text>
-            <Text
-              style={{ color: "#4E5969", fontWeight: "bold", paddingLeft: 5 }}
-            >
-              Барааны орлого
-            </Text>
+            <Text style={styles.valText}>Барааны орлого</Text>
           </View>
           <View style={styles.bottomContainer}>
             <View style={{ width: "33%", alignItems: "center" }}>
@@ -170,5 +124,26 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     width: "33%",
     alignItems: "center",
+  },
+  statusContainer: {
+    color: "#00904D",
+    backgroundColor: "#99D3B8",
+    borderRadius: 12,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    fontSize: 10,
+    overflow: "hidden",
+    fontWeight: "bold",
+  },
+  rowContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 5,
+    paddingVertical: 3,
+  },
+  valText: {
+    color: "#4E5969",
+    fontWeight: "bold",
+    paddingLeft: 5,
   },
 });

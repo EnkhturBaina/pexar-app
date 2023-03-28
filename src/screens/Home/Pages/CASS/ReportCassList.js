@@ -35,26 +35,26 @@ const ReportCassList = () => {
             <View style={styles.bottomContainerCard}>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#168B5E", fontWeight: "bold" }}>
-                Харилцах данс
+                  Харилцах данс
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
               <View style={styles.bottomMidContent}>
                 <Text style={{ color: "#1F3F55", fontWeight: "bold" }}>
-                Касс
+                  Касс
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#4B8CD9", fontWeight: "bold" }}>
-                Нийт үлдэгдэл
+                  Нийт үлдэгдэл
                 </Text>
                 <Text style={styles.amountText}>99,999сая₮</Text>
               </View>
             </View>
             <TouchableOpacity
               style={styles.cardContainer}
-              onPress={() => navigation.navigate("ReportListDtl")}
+              onPress={() => navigation.navigate("ReportCassListDtl")}
             >
               <View style={styles.cardHeader}>
                 <View style={styles.topContainer}>
@@ -89,19 +89,19 @@ const ReportCassList = () => {
               <View style={styles.bottomContainer}>
                 <View style={{ width: "33%", alignItems: "center" }}>
                   <Text style={{ color: "#4B8CD9", fontWeight: "bold" }}>
-                  Нийт үлдэгдэл
+                    Нийт үлдэгдэл
                   </Text>
                   <Text style={styles.amountText}>99,999сая₮</Text>
                 </View>
                 <View style={styles.bottomMidContent}>
                   <Text style={{ color: "#168B5E", fontWeight: "bold" }}>
-                  Харилцах данс
+                    Харилцах данс
                   </Text>
                   <Text style={styles.amountText}>99,999сая₮</Text>
                 </View>
                 <View style={{ width: "33%", alignItems: "center" }}>
                   <Text style={{ color: "#1F3F55", fontWeight: "bold" }}>
-                  Касс
+                    Касс
                   </Text>
                   <Text style={styles.amountText}>99,999сая₮</Text>
                 </View>
