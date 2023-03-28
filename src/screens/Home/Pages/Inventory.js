@@ -84,6 +84,7 @@ const Inventory = (props) => {
                     checkedColor={MAIN_COLOR}
                     containerStyle={{
                       padding: 0,
+                      backgroundColor:"transparent"
                     }}
                     onPress={() => setCheck1(!check1)}
                     size={25}
@@ -98,6 +99,7 @@ const Inventory = (props) => {
                     checkedColor={MAIN_COLOR}
                     containerStyle={{
                       padding: 0,
+                      backgroundColor:"transparent"
                     }}
                     onPress={() => setCheck2(!check2)}
                     size={25}
@@ -112,6 +114,7 @@ const Inventory = (props) => {
                     checkedColor={MAIN_COLOR}
                     containerStyle={{
                       padding: 0,
+                      backgroundColor:"transparent"
                     }}
                     onPress={() => setCheck3(!check3)}
                     size={25}

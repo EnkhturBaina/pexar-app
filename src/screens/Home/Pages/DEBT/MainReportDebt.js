@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import MainContext from "../../../../contexts/MainContext";
 import ReportDebtDiagram from "./ReportDebtDiagram";
 import ReportDebtChart from "./ReportDebtChart";
