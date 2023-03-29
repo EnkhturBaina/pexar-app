@@ -41,31 +41,29 @@ const Transaction = () => {
             <Text style={styles.statusContainer}>Батлагдсан</Text>
           </View>
           <View style={styles.rowContainer}>
-            <Text style={{ color: "#4E5969", fontSize: 12 }}>Ирсэн огноо:</Text>
+            <Text style={styles.labelText}>Ирсэн огноо:</Text>
             <Text style={styles.valText}>2023/02/02</Text>
           </View>
           <View style={styles.rowContainer}>
-            <Text style={{ color: "#4E5969", fontSize: 12 }}>Харилцагч:</Text>
+            <Text style={styles.labelText}>Харилцагч:</Text>
             <Text style={styles.valText}>Б.Өлзийтогтох</Text>
           </View>
           <View style={styles.rowContainer}>
-            <Text style={{ color: "#4E5969", fontSize: 12 }}>
-              Журналын төрөл:
-            </Text>
+            <Text style={styles.labelText}>Журналын төрөл:</Text>
             <Text style={styles.valText}>Барааны орлого</Text>
           </View>
           <View style={styles.bottomContainer}>
             <View style={{ width: "33%", alignItems: "center" }}>
               <Text style={styles.boldText}>Дүн</Text>
-              <Text style={{ fontSize: 10, color: "#4E5969" }}>99,999сая₮</Text>
+              <Text style={styles.valueText}>99,999сая₮</Text>
             </View>
             <View style={styles.bottomMidContent}>
               <Text style={styles.boldText}>НӨАТ</Text>
-              <Text style={{ fontSize: 10, color: "#4E5969" }}>99,999сая₮</Text>
+              <Text style={styles.valueText}>99,999сая₮</Text>
             </View>
             <View style={{ width: "33%", alignItems: "center" }}>
               <Text style={styles.boldText}>Бүгд дүн</Text>
-              <Text style={{ fontSize: 10, color: "#4E5969" }}>99,999сая₮</Text>
+              <Text style={styles.valueText}>99,999сая₮</Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -145,5 +143,13 @@ const styles = StyleSheet.create({
     color: "#4E5969",
     fontWeight: "bold",
     paddingLeft: 5,
+  },
+  valueText: {
+    fontSize: 10,
+    color: "#4E5969",
+  },
+  labelText: {
+    color: "#4E5969",
+    fontSize: 12,
   },
 });

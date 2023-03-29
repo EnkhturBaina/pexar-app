@@ -21,32 +21,20 @@ const InventoryDtl = () => {
       </View>
       <View style={styles.titleContainer}>
         <Text style={{ color: "#86909C", fontSize: 16 }}>#1234 5678 9000</Text>
-        <Text
-          style={{
-            backgroundColor: "#91A3AF",
-            borderRadius: 4,
-            paddingVertical: 4,
-            paddingHorizontal: 12,
-            color: "#22465E",
-            fontSize: 12,
-            overflow: "hidden",
-          }}
-        >
-          Хэмжих нэгж: Ширхэг
-        </Text>
+        <Text style={styles.badgeContainer}>Хэмжих нэгж: Ширхэг</Text>
       </View>
       <View style={styles.bottomContainer}>
         <View style={{ width: "33%", alignItems: "center" }}>
           <Text style={styles.boldText}>Харилцах данс</Text>
-          <Text style={{ fontSize: 10, color: "#4E5969" }}>99,999сая₮</Text>
+          <Text style={styles.amountText}>99,999сая₮</Text>
         </View>
         <View style={styles.bottomMidContent}>
           <Text style={styles.boldText}>Касс</Text>
-          <Text style={{ fontSize: 10, color: "#4E5969" }}>99,999сая₮</Text>
+          <Text style={styles.amountText}>99,999сая₮</Text>
         </View>
         <View style={{ width: "33%", alignItems: "center" }}>
           <Text style={styles.boldText}>Нийт үлдэгдэл</Text>
-          <Text style={{ fontSize: 10, color: "#4E5969" }}>99,999сая₮</Text>
+          <Text style={styles.amountText}>99,999сая₮</Text>
         </View>
       </View>
       <View style={styles.middleContainer}>
@@ -170,5 +158,18 @@ const styles = StyleSheet.create({
     borderRadius: 400,
     justifyContent: "center",
     alignItems: "center",
+  },
+  amountText: {
+    fontSize: 10,
+    color: "#4E5969",
+  },
+  badgeContainer: {
+    backgroundColor: "#91A3AF",
+    borderRadius: 4,
+    paddingVertical: 4,
+    paddingHorizontal: 12,
+    color: "#22465E",
+    fontSize: 12,
+    overflow: "hidden",
   },
 });

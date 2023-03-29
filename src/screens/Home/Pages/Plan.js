@@ -247,25 +247,9 @@ const Plan = () => {
     <TabBar
       {...props}
       indicatorStyle={{ backgroundColor: "transparent" }}
-      tabStyle={{
-        width: "auto",
-        padding: 0,
-        height: 30,
-        borderWidth: 1,
-        borderColor: "#E5E6EB",
-        borderTopLeftRadius: 4,
-        borderTopRightRadius: 4,
-        marginRight: 5,
-        padding: 2,
-        zIndex: 999,
-      }}
+      tabStyle={styles.tabBarStyle}
       pressColor="transparent"
-      style={{
-        justifyContent: "center",
-        backgroundColor: "transparent",
-        elevation: 0,
-        marginTop: 15,
-      }}
+      style={styles.tabsStyle}
       renderLabel={({ route, focused, color }) => (
         <Text
           adjustsFontSizeToFit
@@ -382,5 +366,23 @@ const styles = StyleSheet.create({
   amountText: {
     color: "#4E5969",
     fontSize: 10,
+  },
+  tabsStyle: {
+    justifyContent: "center",
+    backgroundColor: "transparent",
+    elevation: 0,
+    marginTop: 15,
+  },
+  tabBarStyle: {
+    width: "auto",
+    padding: 0,
+    height: 30,
+    borderWidth: 1,
+    borderColor: "#E5E6EB",
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4,
+    marginRight: 5,
+    padding: 2,
+    zIndex: 999,
   },
 });

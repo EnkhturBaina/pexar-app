@@ -66,13 +66,7 @@ const List = () => {
             />
             <Text style={{ flex: 1 }}>www.smart-craft.mn</Text>
           </View>
-          <View
-            style={{
-              flexDirection: "row",
-              paddingHorizontal: 10,
-              paddingVertical: 5,
-            }}
-          >
+          <View style={styles.addressContainer}>
             <Icon
               name="location-sharp"
               type="ionicon"
@@ -141,6 +135,11 @@ const styles = StyleSheet.create({
   webContainer: {
     flexDirection: "row",
     alignItems: "center",
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  addressContainer: {
+    flexDirection: "row",
     paddingHorizontal: 10,
     paddingVertical: 5,
   },

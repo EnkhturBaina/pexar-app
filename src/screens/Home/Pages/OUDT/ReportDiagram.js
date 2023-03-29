@@ -81,42 +81,17 @@ const ReportDiagram = () => {
           <View>
             <View style={styles.topPieContainer}>
               <PieChart
-                style={{
-                  height: 180,
-                  width: 180,
-                  flex: 1,
-                  alignSelf: "center",
-                }}
+                style={styles.mainChart1}
                 data={data}
                 innerRadius={"70%"}
                 valueAccessor={({ item }) => item.amount}
               >
-                <View
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: 180,
-                  }}
-                >
-                  <Text
-                    style={{
-                      fontSize: 36,
-                      fontWeight: "bold",
-                      lineHeight: 36,
-                    }}
-                  >
-                    61%
-                  </Text>
+                <View style={styles.chart1Container}>
+                  <Text style={styles.chart1Text}>61%</Text>
                   <Text style={{ fontSize: 20, lineHeight: 18 }}>Ашиг</Text>
                 </View>
               </PieChart>
-              <View
-                style={{
-                  flexDirection: "column",
-                  width: "30%",
-                  justifyContent: "space-around",
-                }}
-              >
+              <View style={styles.chart2Container}>
                 <PieChart
                   style={styles.smallPieContainer}
                   data={data1}
@@ -297,5 +272,26 @@ const styles = StyleSheet.create({
     width: "20%",
     textAlign: "center",
     color: "#86909C",
+  },
+  chart1Container: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: 180,
+  },
+  chart1Text: {
+    fontSize: 36,
+    fontWeight: "bold",
+    lineHeight: 36,
+  },
+  chart2Container: {
+    flexDirection: "column",
+    width: "30%",
+    justifyContent: "space-around",
+  },
+  mainChart1: {
+    height: 180,
+    width: 180,
+    flex: 1,
+    alignSelf: "center",
   },
 });

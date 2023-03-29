@@ -1,21 +1,7 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  StatusBar,
-  NativeModules,
-  Platform,
-  TouchableOpacity,
-} from "react-native";
-import React, { useContext, useState } from "react";
-import {
-  MAIN_BACKGROUND_COLOR,
-  MAIN_COLOR,
-  MAIN_COLOR_GRAY_LEVEL4,
-} from "../../constant";
+import { StyleSheet, View, SafeAreaView, StatusBar } from "react-native";
+import React, { useContext } from "react";
+import { MAIN_BACKGROUND_COLOR, MAIN_COLOR } from "../../constant";
 import { Provider } from "react-native-paper";
-import { Icon } from "@rneui/base";
 import Inventory from "./Pages/Inventory";
 import List from "./Pages/List";
 import Plan from "./Pages/Plan";
@@ -23,7 +9,6 @@ import Report from "./Pages/Report";
 import Sales from "./Pages/Sales";
 import Transaction from "./Pages/Transaction";
 import MainContext from "../../contexts/MainContext";
-const { StatusBarManager } = NativeModules;
 
 const STATUSBAR_HEIGHT = StatusBar.currentHeight;
 
@@ -73,9 +58,6 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   statusBar: {
     height: STATUSBAR_HEIGHT,
   },

@@ -47,15 +47,7 @@ const ReportCassListDtl = (props) => {
   return (
     <View style={{ flex: 1, backgroundColor: MAIN_BACKGROUND_COLOR }}>
       <TopFilter tabs={true} cats={false} />
-      <View
-        style={{
-          flexDirection: "row",
-          width: "100%",
-          justifyContent: "space-between",
-          paddingHorizontal: 20,
-          marginVertical: 10,
-        }}
-      >
+      <View style={styles.topCardContainer}>
         <TouchableOpacity
           style={[
             styles.eachCardMenu,
@@ -147,6 +139,13 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     flexDirection: "row",
     alignItems: "center",
+  },
+  topCardContainer: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    marginVertical: 10,
   },
   headerLeftText: {
     marginLeft: 10,

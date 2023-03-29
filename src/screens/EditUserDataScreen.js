@@ -15,14 +15,12 @@ import {
   MAIN_COLOR,
   MAIN_BACKGROUND_COLOR,
   REG_CHARS,
-  MAIN_COLOR_GRAY,
   MAIN_DARK_LEVEL9,
   INPUT_BG_COLOR,
 } from "../constant";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { Button, Icon } from "@rneui/base";
 import BottomSheetReg from "../components/BottomSheetReg";
-import axios from "axios";
 import CustomSnackbar from "../components/CustomSnackbar";
 import CustomDialog from "../components/CustomDialog";
 import MainContext from "../contexts/MainContext";
@@ -32,8 +30,6 @@ import BottomSheet from "../components/BottomSheet";
 const EditUserDataScreen = () => {
   const state = useContext(MainContext);
   const headerHeight = useHeaderHeight();
-  const [lastName, setLastName] = useState("");
-  const [firstName, setFirstName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 

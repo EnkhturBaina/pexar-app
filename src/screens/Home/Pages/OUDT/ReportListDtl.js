@@ -46,15 +46,7 @@ const ReportListDtl = (props) => {
   return (
     <View style={{ flex: 1, backgroundColor: MAIN_BACKGROUND_COLOR }}>
       <TopFilter tabs={true} cats={false} />
-      <View
-        style={{
-          flexDirection: "row",
-          width: "100%",
-          justifyContent: "space-between",
-          paddingHorizontal: 20,
-          marginVertical: 10,
-        }}
-      >
+      <View style={styles.topCardContainer}>
         <TouchableOpacity
           style={[
             styles.eachCardMenu,
@@ -110,46 +102,32 @@ const ReportListDtl = (props) => {
               1 сар
             </Text>
             <View style={styles.whiteRow}>
-              <Text style={{ color: "#4E5969" }}>Цэвэр борлуулалт</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
+              <Text style={styles.labelText}>Цэвэр борлуулалт</Text>
+              <Text style={styles.valueText}>10,000,000.00</Text>
             </View>
             <View style={styles.grayRow}>
-              <Text style={{ color: "#4E5969" }}>Өртөг</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
+              <Text style={styles.labelText}>Өртөг</Text>
+              <Text style={styles.valueText}>10,000,000.00</Text>
             </View>
             <View style={styles.whiteRow}>
-              <Text style={{ color: "#4E5969" }}>ҮА зардал</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
+              <Text style={styles.labelText}>ҮА зардал</Text>
+              <Text style={styles.valueText}>10,000,000.00</Text>
             </View>
             <View style={styles.grayRow}>
-              <Text style={{ color: "#4E5969" }}>Татвар өмнөх ашиг</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
+              <Text style={styles.labelText}>Татвар өмнөх ашиг</Text>
+              <Text style={styles.valueText}>10,000,000.00</Text>
             </View>
             <View style={styles.whiteRow}>
-              <Text style={{ color: "#4E5969" }}>ААНОАТ зардал</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
+              <Text style={styles.labelText}>ААНОАТ зардал</Text>
+              <Text style={styles.valueText}>10,000,000.00</Text>
             </View>
             <View style={styles.grayRow}>
-              <Text style={{ color: "#4E5969" }}>Бусад олз (гарз)</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
+              <Text style={styles.labelText}>Бусад олз (гарз)</Text>
+              <Text style={styles.valueText}>10,000,000.00</Text>
             </View>
             <View style={styles.whiteRow}>
-              <Text style={{ color: "#4E5969" }}>Цэвэр ашиг (алдагдал)</Text>
-              <Text style={{ color: "#4E5969", fontWeight: "bold" }}>
-                10,000,000.00
-              </Text>
+              <Text style={styles.labelText}>Цэвэр ашиг (алдагдал)</Text>
+              <Text style={styles.valueText}>10,000,000.00</Text>
             </View>
           </View>
         </ScrollView>
@@ -241,5 +219,19 @@ const styles = StyleSheet.create({
   mainContainer: {
     flexGrow: 1,
     backgroundColor: MAIN_BACKGROUND_COLOR,
+  },
+  topCardContainer: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    marginVertical: 10,
+  },
+  labelText: {
+    color: "#4E5969",
+  },
+  valueText: {
+    color: "#4E5969",
+    fontWeight: "bold",
   },
 });

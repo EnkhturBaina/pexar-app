@@ -46,15 +46,7 @@ const ReportDebtListDtl = (props) => {
   return (
     <View style={{ flex: 1, backgroundColor: MAIN_BACKGROUND_COLOR }}>
       <TopFilter tabs={true} cats={false} />
-      <View
-        style={{
-          flexDirection: "row",
-          width: "100%",
-          justifyContent: "space-between",
-          paddingHorizontal: 20,
-          marginVertical: 10,
-        }}
-      >
+      <View style={styles.topCardContainer}>
         <TouchableOpacity
           style={[
             styles.eachCardMenu,
@@ -247,5 +239,12 @@ const styles = StyleSheet.create({
     fontSize: 10,
     overflow: "hidden",
     fontWeight: "bold",
+  },
+  topCardContainer: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    marginVertical: 10,
   },
 });

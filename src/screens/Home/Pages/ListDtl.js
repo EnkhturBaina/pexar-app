@@ -80,13 +80,7 @@ const ListDtl = () => {
             дүүрэг, Улаанбаатар хот, Монгол Улс
           </Text>
         </View>
-        <View
-          style={{
-            flexDirection: "row",
-            padding: 10,
-            alignItems: "center",
-          }}
-        >
+        <View style={styles.rowContainer}>
           <Icon
             name="user"
             type="font-awesome"
@@ -94,27 +88,14 @@ const ListDtl = () => {
             color="#272E3B"
             style={styles.inputIcon}
           />
-          <View
-            style={{
-              flex: 1,
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
+          <View style={styles.rowDtl}>
             <Text style={{ fontSize: 12 }}>Б.Батболд</Text>
             <Text style={{ fontSize: 12 }}>/Захирал/</Text>
             <Text style={{ fontSize: 12 }}>Утас: 9999-8888</Text>
           </View>
         </View>
       </View>
-      <View
-        style={{
-          flexDirection: "row",
-          padding: 10,
-          alignItems: "center",
-          justifyContent: "space-around",
-        }}
-      >
+      <View style={styles.filesContainer}>
         <TouchableOpacity style={styles.folderContainer}>
           <Image
             source={pdf_folder}
@@ -205,5 +186,21 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 15,
     marginBottom: 10,
+  },
+  filesContainer: {
+    flexDirection: "row",
+    padding: 10,
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  rowContainer: {
+    flexDirection: "row",
+    padding: 10,
+    alignItems: "center",
+  },
+  rowDtl: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });
