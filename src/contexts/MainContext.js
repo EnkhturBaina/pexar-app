@@ -13,13 +13,16 @@ export const UserStore = (props) => {
   const [expoPushToken, setExpoPushToken] = useState("");
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [accessToken, setAccessToken] = useState("");
   const [refreshToken, setRefreshToken] = useState("");
 
   const [loginMsg, setLoginMsg] = useState("");
   const [token, setToken] = useState("");
   const [rememberUserName, setRememberUserName] = useState(false);
+
+  const [isLoadingReport, setIsLoadingReport] = useState(true);
+  const [reportData, setReportData] = useState("");
 
   const [lookUpType, setLookUpType] = useState("");
 
@@ -109,6 +112,39 @@ export const UserStore = (props) => {
       setIsLoading(false);
     }
   };
+
+  const getBalances = async () => {
+    setIsLoadingReport(true);
+    console.log("get Balances");
+    await axios({
+      method: "get",
+      url: `${DEV_URL}client/amountBalances`,
+      headers: {
+        "X-API-KEY": X_API_KEY,
+        Authorization: `Bearer ${accessToken}`,
+      },
+      params: {
+        startDate: "2022-03-01",
+        endDate: "2022-03-26",
+      },
+    })
+      .then((response) => {
+        console.log("response.data.response", response.data.response);
+        setReportData(response.data.response);
+        setIsLoadingReport(false);
+      })
+      .catch(function (error) {
+        console.log("error dic", error);
+        setIsLoadingReport(false);
+        if (error.response) {
+          // console.log("error saveWord", error.response.status);
+          if (error.response.status == "401") {
+            setIsLoggedIn(false);
+          }
+        }
+      });
+  };
+
   const logout = () => {
     AsyncStorage.removeItem("accessToken");
     AsyncStorage.removeItem("refreshToken");
@@ -141,6 +177,9 @@ export const UserStore = (props) => {
         setSelectedHeader,
         login,
         accessToken,
+        reportData,
+        isLoadingReport,
+        getBalances,
       }}
     >
       {props.children}

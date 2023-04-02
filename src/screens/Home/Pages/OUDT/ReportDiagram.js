@@ -1,5 +1,5 @@
 import { Text, StyleSheet, View, ScrollView } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { PieChart } from "react-native-svg-charts";
 import {
   MAIN_BACKGROUND_COLOR,
@@ -8,15 +8,11 @@ import {
 } from "../../../../constant";
 import { CheckBox } from "@rneui/base";
 import ReportDiagramSkeleton from "../../../../Skeletons/ReportDiagramSkeleton";
+import MainContext from "../../../../contexts/MainContext";
 
 const ReportDiagram = () => {
-  const [selectedIndex, setSelectedIndex] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-  }, []);
+  const state = useContext(MainContext);
+  const [selectedIndex, setSelectedIndex] = useState([]);
 
   const data = [
     {
@@ -72,10 +68,21 @@ const ReportDiagram = () => {
       svg: { fill: "#E34935" },
     },
   ];
+  const onChange = (val) => {
+    const reducedArr = [...selectedIndex];
+    var index = reducedArr.indexOf(val);
+    if (index !== -1) {
+      reducedArr?.splice(index, 1);
+      setSelectedIndex(reducedArr);
+    } else {
+      setSelectedIndex((selectedIndex) => [...selectedIndex, val]);
+    }
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <ScrollView bounces={false} contentContainerStyle={styles.mainContainer}>
-        {isLoading ? (
+        {state.isLoadingReport ? (
           <ReportDiagramSkeleton />
         ) : (
           <View>
@@ -138,26 +145,32 @@ const ReportDiagram = () => {
             </View>
             <View style={styles.bottomCardContainer}>
               <ScrollView bounces={false} nestedScrollEnabled>
-                <View style={styles.rowContainer}>
-                  <CheckBox
-                    checked={selectedIndex}
-                    onPress={() => setSelectedIndex(!selectedIndex)}
-                    iconType="ionicon"
-                    checkedIcon="checkbox"
-                    uncheckedIcon="square-outline"
-                    title="Тэнплас Интернэйшнал ХХК"
-                    containerStyle={{
-                      width: "75%",
-                      padding: 0,
-                      margin: 0,
-                      marginLeft: 0,
-                    }}
-                    checkedColor={MAIN_COLOR}
-                    uncheckedColor={MAIN_COLOR}
-                    titleProps={{ numberOfLines: 1 }}
-                  />
-                  <Text style={styles.regText}>5506913</Text>
-                </View>
+                {state.reportData?.map((el, index) => {
+                  return (
+                    <View style={styles.rowContainer} key={index}>
+                      <CheckBox
+                        checked={selectedIndex?.includes(el.b_id)}
+                        onPress={() => {
+                          onChange(el.b_id);
+                        }}
+                        iconType="ionicon"
+                        checkedIcon="checkbox"
+                        uncheckedIcon="square-outline"
+                        title={el.b_name}
+                        containerStyle={{
+                          width: "75%",
+                          padding: 0,
+                          margin: 0,
+                          marginLeft: 0,
+                        }}
+                        checkedColor={MAIN_COLOR}
+                        uncheckedColor={MAIN_COLOR}
+                        titleProps={{ numberOfLines: 1 }}
+                      />
+                      <Text style={styles.regText}>{el.b_register}</Text>
+                    </View>
+                  );
+                })}
               </ScrollView>
             </View>
           </View>
@@ -204,6 +217,7 @@ const styles = StyleSheet.create({
   amountText: {
     color: "#4E5969",
     fontWeight: "bold",
+    fontSize: 12,
   },
   topPieContainer: {
     flexDirection: "row",
@@ -258,7 +272,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 10,
     marginBottom: 10,
-    height: 220,
+    maxHeight: 220,
     marginTop: 10,
   },
   rowContainer: {

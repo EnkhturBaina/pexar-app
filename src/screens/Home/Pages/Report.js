@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import TopFilter from "../TopFilter";
 import MainContext from "../../../contexts/MainContext";
 import MainReportOudt from "./OUDT/MainReportOudt";
@@ -8,6 +8,10 @@ import MainReportDebt from "./DEBT/MainReportDebt";
 
 const Report = () => {
   const state = useContext(MainContext);
+  useEffect(() => {
+    state.getBalances();
+  }, []);
+
   return (
     <View style={{ flex: 1 }}>
       <TopFilter tabs={true} cats={true} />

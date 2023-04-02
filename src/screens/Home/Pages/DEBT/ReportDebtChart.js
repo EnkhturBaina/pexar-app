@@ -16,73 +16,97 @@ import Base from "../../../../../assets/Base.png";
 import { ProgressBar } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import ReportChartSkeleton from "../../../../Skeletons/ReportChartSkeleton";
+import { useContext } from "react";
+import MainContext from "../../../../contexts/MainContext";
 
 const ReportDebtChart = () => {
+  const state = useContext(MainContext);
   const navigation = useNavigation();
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-  }, []);
 
   return (
     <View style={{ flex: 1 }}>
       <ScrollView bounces={false} contentContainerStyle={styles.mainContainer}>
-        {isLoading ? (
+        {state.isLoadingReport ? (
           <ReportChartSkeleton />
         ) : (
-          <TouchableOpacity
-            style={styles.cardContainer}
-            onPress={() => navigation.navigate("ReportChartDtl")}
-          >
-            <View style={styles.cardHeader}>
-              <Image
-                source={Base}
-                style={{ width: 40, height: 40 }}
-                resizeMode="contain"
-              />
-              <View style={{ flexDirection: "column", marginLeft: 5 }}>
-                <Text style={{ fontWeight: "bold", color: "#272E3B" }}>
-                  "Смарт-Крафт" ХХК
-                </Text>
-                <Text style={{ fontSize: 12, color: "#4E5969" }}>5506913</Text>
-              </View>
-            </View>
-            <View style={{ marginTop: 5 }}>
-              <View style={styles.textContainer}>
-                <Text style={styles.labelText}>Авлага</Text>
-                <Text style={styles.valueText}>999,999,999,00₮</Text>
-              </View>
-              <ProgressBar
-                progress={0.7}
-                color={MAIN_COLOR}
-                style={{ borderRadius: 8, marginTop: 5 }}
-              />
-            </View>
-            <View style={{ marginTop: 5 }}>
-              <View style={styles.textContainer}>
-                <Text style={styles.labelText}>Өглөг</Text>
-                <Text style={styles.valueText}>999,999,999,00₮</Text>
-              </View>
-              <ProgressBar
-                progress={0.2}
-                color="#E34935"
-                style={{ borderRadius: 8, marginTop: 5 }}
-              />
-            </View>
-            <View style={{ marginTop: 5 }}>
-              <View style={styles.textContainer}>
-                <Text style={styles.labelText}>Зөрүү</Text>
-                <Text style={styles.valueText}>999,999,999,00₮</Text>
-              </View>
-              <ProgressBar
-                progress={0.3}
-                color="#EC7A09"
-                style={{ borderRadius: 8, marginTop: 5 }}
-              />
-            </View>
-          </TouchableOpacity>
+          <>
+            {state.reportData?.map((el, index) => {
+              return (
+                <TouchableOpacity
+                  style={styles.cardContainer}
+                  onPress={() => navigation.navigate("ReportChartDtl")}
+                  key={index}
+                >
+                  <View style={styles.cardHeader}>
+                    <Image
+                      source={Base}
+                      style={{ width: 40, height: 40 }}
+                      resizeMode="contain"
+                    />
+                    <View style={{ flexDirection: "column", marginLeft: 5 }}>
+                      <Text style={{ fontWeight: "bold", color: "#272E3B" }}>
+                        {el.b_name}
+                      </Text>
+                      <Text style={{ fontSize: 12, color: "#4E5969" }}>
+                        {el.b_register}
+                      </Text>
+                    </View>
+                  </View>
+                  <View style={{ marginTop: 5 }}>
+                    <View style={styles.textContainer}>
+                      <Text style={styles.labelText}>Авлага</Text>
+                      <Text style={styles.valueText}>
+                        {el.amountsum
+                          ? `${el.amountsum
+                              ?.toFixed(2)
+                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")} ₮`
+                          : "-"}
+                      </Text>
+                    </View>
+                    <ProgressBar
+                      progress={0.7}
+                      color={MAIN_COLOR}
+                      style={{ borderRadius: 8, marginTop: 5 }}
+                    />
+                  </View>
+                  <View style={{ marginTop: 5 }}>
+                    <View style={styles.textContainer}>
+                      <Text style={styles.labelText}>Өглөг</Text>
+                      <Text style={styles.valueText}>
+                        {el.cash
+                          ? `${el.cash
+                              ?.toFixed(2)
+                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")} ₮`
+                          : "-"}
+                      </Text>
+                    </View>
+                    <ProgressBar
+                      progress={0.2}
+                      color="#E34935"
+                      style={{ borderRadius: 8, marginTop: 5 }}
+                    />
+                  </View>
+                  <View style={{ marginTop: 5 }}>
+                    <View style={styles.textContainer}>
+                      <Text style={styles.labelText}>Зөрүү</Text>
+                      <Text style={styles.valueText}>
+                        {el.current
+                          ? `${el.current
+                              ?.toFixed(2)
+                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")} ₮`
+                          : "-"}
+                      </Text>
+                    </View>
+                    <ProgressBar
+                      progress={0.3}
+                      color="#EC7A09"
+                      style={{ borderRadius: 8, marginTop: 5 }}
+                    />
+                  </View>
+                </TouchableOpacity>
+              );
+            })}
+          </>
         )}
       </ScrollView>
     </View>

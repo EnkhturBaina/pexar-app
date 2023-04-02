@@ -7,28 +7,39 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import {
-  MAIN_BACKGROUND_COLOR,
-  MAIN_COLOR,
-  MAIN_COLOR_GRAY,
-} from "../../../../constant";
-import { CheckBox, Icon } from "@rneui/base";
+import { MAIN_BACKGROUND_COLOR, MAIN_COLOR_GRAY } from "../../../../constant";
+import { Icon } from "@rneui/base";
 import ReportListSkeleton from "../../../../Skeletons/ReportListSkeleton";
 import Base from "../../../../../assets/Base.png";
 import { useNavigation } from "@react-navigation/native";
+import { useContext } from "react";
+import MainContext from "../../../../contexts/MainContext";
 
 const ReportList = () => {
+  const state = useContext(MainContext);
   const navigation = useNavigation();
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-  }, []);
+  const [selectedIndex, setSelectedIndex] = useState([]);
+
+  const onChange = (val) => {
+    const reducedArr = [...selectedIndex];
+    var index = reducedArr.indexOf(val);
+    if (index !== -1) {
+      reducedArr?.splice(index, 1);
+      setSelectedIndex(reducedArr);
+    } else {
+      setSelectedIndex((selectedIndex) => [...selectedIndex, val]);
+    }
+  };
+  const calcSum = (data) => {
+    let sum = state.reportData.reduce(function (prev, current) {
+      return prev + +current[data];
+    }, 0);
+    return sum;
+  };
   return (
     <View style={{ flex: 1 }}>
       <ScrollView bounces={false} contentContainerStyle={styles.mainContainer}>
-        {isLoading ? (
+        {state.isLoadingReport ? (
           <ReportListSkeleton />
         ) : (
           <View>
@@ -37,76 +48,117 @@ const ReportList = () => {
                 <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
                   Орлого
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>{calcSum("sale")}₮</Text>
               </View>
               <View style={styles.bottomMidContent}>
                 <Text style={{ color: "#E34935", fontWeight: "bold" }}>
                   Зардал
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>{calcSum("cost")}₮</Text>
               </View>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
                   Ашиг
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>{calcSum("amount")}₮</Text>
               </View>
             </View>
-            <TouchableOpacity
-              style={styles.cardContainer}
-              onPress={() => navigation.navigate("ReportListDtl")}
-            >
-              <View style={styles.cardHeader}>
-                <View style={styles.topContainer}>
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Image
-                      source={Base}
-                      style={{ width: 40, height: 40 }}
-                      resizeMode="contain"
-                    />
-                    <View style={{ flexDirection: "column", marginLeft: 5 }}>
-                      <Text style={{ fontWeight: "bold", color: "#272E3B" }}>
-                        "Смарт-Крафт" ХХК
+
+            {state.reportData?.map((el, index) => {
+              return (
+                <TouchableOpacity
+                  style={styles.cardContainer}
+                  onPress={() => navigation.navigate("ReportListDtl")}
+                  key={index}
+                >
+                  <View style={styles.cardHeader}>
+                    <View style={styles.topContainer}>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Image
+                          source={Base}
+                          style={{ width: 40, height: 40 }}
+                          resizeMode="contain"
+                        />
+                        <View
+                          style={{ flexDirection: "column", marginLeft: 5 }}
+                        >
+                          <Text
+                            style={{ fontWeight: "bold", color: "#272E3B" }}
+                          >
+                            {el.b_name}
+                          </Text>
+                          <Text style={{ fontSize: 12, color: "#4E5969" }}>
+                            {el.b_register}
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <TouchableOpacity
+                      onPress={() => onChange(el.b_id)}
+                      style={{ zIndex: 999, width: 40 }}
+                    >
+                      <Icon
+                        name={
+                          selectedIndex?.includes(el.b_id) ? "eye" : "eye-off"
+                        }
+                        type="ionicon"
+                        size={25}
+                        color="#4E5969"
+                      />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.bottomContainer}>
+                    <View style={{ width: "33%", alignItems: "center" }}>
+                      <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
+                        Ашиг
                       </Text>
-                      <Text style={{ fontSize: 12, color: "#4E5969" }}>
-                        5506913
+                      <Text style={styles.amountText}>
+                        {selectedIndex?.includes(el.b_id)
+                          ? el.amount
+                            ? `${el.amount
+                                ?.toFixed(2)
+                                .replace(/\d(?=(\d{3})+\.)/g, "$&,")} ₮`
+                            : "-"
+                          : "******"}
+                      </Text>
+                    </View>
+                    <View style={styles.bottomMidContent}>
+                      <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
+                        Орлого
+                      </Text>
+                      <Text style={styles.amountText}>
+                        {selectedIndex?.includes(el.b_id)
+                          ? el.sale
+                            ? `${el.sale
+                                ?.toFixed(2)
+                                .replace(/\d(?=(\d{3})+\.)/g, "$&,")} ₮`
+                            : "-"
+                          : "******"}
+                      </Text>
+                    </View>
+                    <View style={{ width: "33%", alignItems: "center" }}>
+                      <Text style={{ color: "#E34935", fontWeight: "bold" }}>
+                        Зардал
+                      </Text>
+                      <Text style={styles.amountText}>
+                        {selectedIndex?.includes(el.b_id)
+                          ? el.cost
+                            ? `${el.cost
+                                ?.toFixed(2)
+                                .replace(/\d(?=(\d{3})+\.)/g, "$&,")} ₮`
+                            : "-"
+                          : "******"}
                       </Text>
                     </View>
                   </View>
-                </View>
-                <TouchableOpacity
-                  onPress={() => console.log("A")}
-                  style={{ zIndex: 999, width: 40 }}
-                >
-                  <Icon name="eye" type="ionicon" size={25} color="#4E5969" />
                 </TouchableOpacity>
-              </View>
-              <View style={styles.bottomContainer}>
-                <View style={{ width: "33%", alignItems: "center" }}>
-                  <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
-                    Ашиг
-                  </Text>
-                  <Text style={styles.amountText}>99,999сая₮</Text>
-                </View>
-                <View style={styles.bottomMidContent}>
-                  <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
-                    Орлого
-                  </Text>
-                  <Text style={styles.amountText}>99,999сая₮</Text>
-                </View>
-                <View style={{ width: "33%", alignItems: "center" }}>
-                  <Text style={{ color: "#E34935", fontWeight: "bold" }}>
-                    Зардал
-                  </Text>
-                  <Text style={styles.amountText}>99,999сая₮</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
+              );
+            })}
           </View>
         )}
       </ScrollView>
@@ -160,6 +212,7 @@ const styles = StyleSheet.create({
   },
   amountText: {
     color: "#4E5969",
+    fontSize: 12,
   },
   cardHeader: {
     flexDirection: "row",

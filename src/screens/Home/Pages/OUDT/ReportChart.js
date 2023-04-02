@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   MAIN_BACKGROUND_COLOR,
   MAIN_COLOR,
@@ -16,73 +16,96 @@ import Base from "../../../../../assets/Base.png";
 import { ProgressBar } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import ReportChartSkeleton from "../../../../Skeletons/ReportChartSkeleton";
+import MainContext from "../../../../contexts/MainContext";
 
 const ReportChart = () => {
+  const state = useContext(MainContext);
   const navigation = useNavigation();
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-  }, []);
 
   return (
     <View style={{ flex: 1 }}>
       <ScrollView bounces={false} contentContainerStyle={styles.mainContainer}>
-        {isLoading ? (
+        {state.isLoadingReport ? (
           <ReportChartSkeleton />
         ) : (
-          <TouchableOpacity
-            style={styles.cardContainer}
-            onPress={() => navigation.navigate("ReportChartDtl")}
-          >
-            <View style={styles.cardHeader}>
-              <Image
-                source={Base}
-                style={{ width: 40, height: 40 }}
-                resizeMode="contain"
-              />
-              <View style={{ flexDirection: "column", marginLeft: 5 }}>
-                <Text style={{ fontWeight: "bold", color: "#272E3B" }}>
-                  "Смарт-Крафт" ХХК
-                </Text>
-                <Text style={{ fontSize: 12, color: "#4E5969" }}>5506913</Text>
-              </View>
-            </View>
-            <View style={{ marginTop: 5 }}>
-              <View style={styles.textContainer}>
-                <Text style={styles.labelText}>Орлого</Text>
-                <Text style={styles.valueText}>999,999,999,00₮</Text>
-              </View>
-              <ProgressBar
-                progress={0.7}
-                color={MAIN_COLOR}
-                style={{ borderRadius: 8, marginTop: 5 }}
-              />
-            </View>
-            <View style={{ marginTop: 5 }}>
-              <View style={styles.textContainer}>
-                <Text style={styles.labelText}>Зарлага</Text>
-                <Text style={styles.valueText}>999,999,999,00₮</Text>
-              </View>
-              <ProgressBar
-                progress={0.2}
-                color="#E34935"
-                style={{ borderRadius: 8, marginTop: 5 }}
-              />
-            </View>
-            <View style={{ marginTop: 5 }}>
-              <View style={styles.textContainer}>
-                <Text style={styles.labelText}>Ашиг</Text>
-                <Text style={styles.valueText}>999,999,999,00₮</Text>
-              </View>
-              <ProgressBar
-                progress={0.3}
-                color="#EC7A09"
-                style={{ borderRadius: 8, marginTop: 5 }}
-              />
-            </View>
-          </TouchableOpacity>
+          <>
+            {state.reportData?.map((el, index) => {
+              return (
+                <TouchableOpacity
+                  style={styles.cardContainer}
+                  onPress={() => navigation.navigate("ReportChartDtl")}
+                  key={index}
+                >
+                  <View style={styles.cardHeader}>
+                    <Image
+                      source={Base}
+                      style={{ width: 40, height: 40 }}
+                      resizeMode="contain"
+                    />
+                    <View style={{ flexDirection: "column", marginLeft: 5 }}>
+                      <Text style={{ fontWeight: "bold", color: "#272E3B" }}>
+                        {el.b_name}
+                      </Text>
+                      <Text style={{ fontSize: 12, color: "#4E5969" }}>
+                        {el.b_register}
+                      </Text>
+                    </View>
+                  </View>
+                  <View style={{ marginTop: 5 }}>
+                    <View style={styles.textContainer}>
+                      <Text style={styles.labelText}>Орлого</Text>
+                      <Text style={styles.valueText}>
+                        {el.sale
+                          ? `${el.sale
+                              ?.toFixed(2)
+                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")} ₮`
+                          : "-"}
+                      </Text>
+                    </View>
+                    <ProgressBar
+                      progress={0.7}
+                      color={MAIN_COLOR}
+                      style={{ borderRadius: 8, marginTop: 5 }}
+                    />
+                  </View>
+                  <View style={{ marginTop: 5 }}>
+                    <View style={styles.textContainer}>
+                      <Text style={styles.labelText}>Зарлага</Text>
+                      <Text style={styles.valueText}>
+                        {el.cost
+                          ? `${el.cost
+                              ?.toFixed(2)
+                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")} ₮`
+                          : "-"}
+                      </Text>
+                    </View>
+                    <ProgressBar
+                      progress={0.2}
+                      color="#E34935"
+                      style={{ borderRadius: 8, marginTop: 5 }}
+                    />
+                  </View>
+                  <View style={{ marginTop: 5 }}>
+                    <View style={styles.textContainer}>
+                      <Text style={styles.labelText}>Ашиг</Text>
+                      <Text style={styles.valueText}>
+                        {el.amount
+                          ? `${el.amount
+                              ?.toFixed(2)
+                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")} ₮`
+                          : "-"}
+                      </Text>
+                    </View>
+                    <ProgressBar
+                      progress={0.3}
+                      color="#EC7A09"
+                      style={{ borderRadius: 8, marginTop: 5 }}
+                    />
+                  </View>
+                </TouchableOpacity>
+              );
+            })}
+          </>
         )}
       </ScrollView>
     </View>
