@@ -24,12 +24,13 @@ import MainContext from "../contexts/MainContext";
 import logo_black from "../../assets/logo_black.png";
 import { useHeaderHeight } from "@react-navigation/elements";
 import CustomSnackbar from "../components/CustomSnackbar";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginScreen = (props) => {
   const state = useContext(MainContext);
   const headerHeight = useHeaderHeight();
 
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("zrllju");
   const [hidePassword, setHidePassword] = useState(true);
   const [backgroundColor, setBackgroundColor] = useState("");
   const [borderColor, setBorderColor] = useState("");
@@ -58,8 +59,8 @@ const LoginScreen = (props) => {
     // } else {
     //   state.login(state.userName, password, state.rememberUserName);
     // }
-    state.setIsLoggedIn(true);
-    // state.login(state.email, password, state.rememberEmail);
+    // state.setIsLoggedIn(true);
+    state.login(state.userName, password, state.rememberUserName);
   };
   const onFocus = (type) => {
     setSelectedInput(type == "userName" ? "userName" : "password");
@@ -71,6 +72,15 @@ const LoginScreen = (props) => {
     setBackgroundColor("#fff");
     setBorderColor(MAIN_COLOR_GRAY);
   };
+
+  useEffect(() => {
+    AsyncStorage.getItem("login_email").then((res) => {
+      if (res != null) {
+        state.setUserName(res);
+        state.setRememberUserName(true);
+      }
+    });
+  }, []);
 
   return (
     <KeyboardAvoidingView
