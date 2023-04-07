@@ -11,6 +11,7 @@ import {
   MAIN_BACKGROUND_COLOR,
   MAIN_COLOR,
   MAIN_COLOR_GRAY,
+  progressMax,
 } from "../../../../constant";
 import Base from "../../../../../assets/Base.png";
 import { ProgressBar } from "react-native-paper";
@@ -42,8 +43,19 @@ const ReportChart = () => {
                       style={{ width: 40, height: 40 }}
                       resizeMode="contain"
                     />
-                    <View style={{ flexDirection: "column", marginLeft: 5 }}>
-                      <Text style={{ fontWeight: "bold", color: "#272E3B" }}>
+                    <View
+                      style={{
+                        flex: 1,
+                        flexDirection: "column",
+                        marginLeft: 5,
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontWeight: "bold",
+                          color: "#272E3B",
+                        }}
+                      >
                         {el.b_name}
                       </Text>
                       <Text style={{ fontSize: 12, color: "#4E5969" }}>
@@ -63,7 +75,7 @@ const ReportChart = () => {
                       </Text>
                     </View>
                     <ProgressBar
-                      progress={0.7}
+                      progress={el.sale ? el.sale / progressMax : 0}
                       color={MAIN_COLOR}
                       style={{ borderRadius: 8, marginTop: 5 }}
                     />
@@ -80,7 +92,7 @@ const ReportChart = () => {
                       </Text>
                     </View>
                     <ProgressBar
-                      progress={0.2}
+                      progress={el.cost ? el.cost / progressMax : 0}
                       color="#E34935"
                       style={{ borderRadius: 8, marginTop: 5 }}
                     />
@@ -97,7 +109,7 @@ const ReportChart = () => {
                       </Text>
                     </View>
                     <ProgressBar
-                      progress={0.3}
+                      progress={el.amount ? el.amount / progressMax : 0}
                       color="#EC7A09"
                       style={{ borderRadius: 8, marginTop: 5 }}
                     />

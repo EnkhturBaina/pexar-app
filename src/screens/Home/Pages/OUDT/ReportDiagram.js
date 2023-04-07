@@ -128,19 +128,21 @@ const ReportDiagram = () => {
                 <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
                   Орлого
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>{state.calcSum("sale")}₮</Text>
               </View>
               <View style={styles.bottomMidContent}>
                 <Text style={{ color: "#E34935", fontWeight: "bold" }}>
                   Зардал
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>{state.calcSum("cost")}₮</Text>
               </View>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
                   Ашиг
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>
+                  {state.calcSum("amount")}₮
+                </Text>
               </View>
             </View>
             <View style={styles.bottomCardContainer}>

@@ -76,7 +76,7 @@ const EditUserDataScreen = () => {
     setUselessParam(!uselessParam);
   };
 
-  const [userData, setUserData] = useState({
+  const [userProfileData, setUserProfileData] = useState({
     lastName: "",
     firstName: "",
     email: "",
@@ -110,9 +110,9 @@ const EditUserDataScreen = () => {
           />
           <TextInput
             placeholder="Овог"
-            value={userData.lastName}
+            value={userProfileData.lastName}
             onChangeText={(e) =>
-              setUserData((prevState) => ({
+              setUserProfileData((prevState) => ({
                 ...prevState,
                 lastName: e,
               }))
@@ -130,9 +130,9 @@ const EditUserDataScreen = () => {
           />
           <TextInput
             placeholder="Нэр"
-            value={userData.firstName}
+            value={userProfileData.firstName}
             onChangeText={(e) =>
-              setUserData((prevState) => ({
+              setUserProfileData((prevState) => ({
                 ...prevState,
                 firstName: e,
               }))
@@ -198,7 +198,7 @@ const EditUserDataScreen = () => {
           />
         </View>
         <CustomLookup
-          value={userData.region?.name}
+          value={userProfileData.region?.name}
           press={() => {
             setLookupData(testArr, "region", "name");
           }}
@@ -224,7 +224,7 @@ const EditUserDataScreen = () => {
           />
         </View>
         <CustomLookup
-          value={userData.gender?.name}
+          value={userProfileData.gender?.name}
           press={() => {
             setLookupData(testArr, "gender", "name");
           }}
@@ -279,7 +279,7 @@ const EditUserDataScreen = () => {
           displayName={displayName}
           handle={uselessParam}
           action={(e) =>
-            setUserData((prevState) => ({
+            setUserProfileData((prevState) => ({
               ...prevState,
               [fieldName]: e,
             }))

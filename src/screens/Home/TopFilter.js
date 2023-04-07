@@ -26,18 +26,25 @@ const TopFilter = ({ tabs, cats }) => {
   const [visibleCalendar, setVisibleCalendar] = useState(false);
 
   const showModalCalendar = () => setVisibleCalendar(true);
-  const hideModalCalendar = () => setVisibleCalendar(false);
+  const hideModalCalendar = () => {
+    var b_Ids = [];
+    var years = [];
+    var months = [];
+    if (state.selectedReport.id == 1) {
+      state.selectedMonths?.map((el) => {
+        //Сонгогдсон жил, сар -г ARRAY болгох
+        years.push(el.year);
+        months.push(el.month);
+      });
+      state.userData.userData?.map((el) => {
+        //Тухайн USER -н байгууллагуудын ID -г ARRAY болгох
+        b_Ids.push(el.b_id);
+      });
+      state.getBalances(b_Ids, years, months);
+    }
+    setVisibleCalendar(false);
+  };
 
-  const date = new Date();
-  const [currentYear, setCurrentYear] = useState(date.getFullYear());
-  const [selectedMonths, setSelectedMonths] = useState([
-    {
-      value: "2023-3",
-      label: "2023-3",
-      year: 2023,
-      month: 3,
-    },
-  ]);
   const reports = [
     {
       id: 0,
@@ -85,27 +92,29 @@ const TopFilter = ({ tabs, cats }) => {
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   const checkIsExistMonth = (item) => {
-    const reducedArr = [...selectedMonths];
+    const reducedArr = [...state.selectedMonths];
 
     if (
-      !selectedMonths.some((el) => el.year == currentYear && el.month == item)
+      !state.selectedMonths.some(
+        (el) => el.year == state.currentYear && el.month == item
+      )
     ) {
-      setSelectedMonths((selectedMonths) => [
+      state.setSelectedMonths((selectedMonths) => [
         ...selectedMonths,
         {
-          value: `${currentYear}-${item}`,
-          label: `${currentYear}-${item}`,
-          year: currentYear,
+          value: `${state.currentYear}-${item}`,
+          label: `${state.currentYear}-${item}`,
+          year: state.currentYear,
           month: item,
         },
       ]);
     } else {
       reducedArr.map((el) => {
-        if (el.year == currentYear && el.month == item) {
+        if (el.year == state.currentYear && el.month == item) {
           var index = reducedArr.indexOf(el);
           if (index !== -1) {
             reducedArr?.splice(index, 1);
-            setSelectedMonths(reducedArr);
+            state.setSelectedMonths(reducedArr);
           }
         }
       });
@@ -122,9 +131,9 @@ const TopFilter = ({ tabs, cats }) => {
       >
         <Text
           style={[
-            { padding: 5, borderRadius: 8 },
-            selectedMonths.some(
-              (el) => el.year == currentYear && el.month == item
+            { padding: 5, borderRadius: 8, overflow: "hidden" },
+            state.selectedMonths.some(
+              (el) => el.year == state.currentYear && el.month == item
             )
               ? {
                   backgroundColor: "#00904D",
@@ -186,14 +195,14 @@ const TopFilter = ({ tabs, cats }) => {
             style={styles.filterContainer}
             onPress={showModalCalendar}
           >
-            <Text style={{ color: "#fff" }}>1,2,4 -р сар</Text>
+            <Text style={{ color: "#fff" }}>Сонгох</Text>
             <Icon name="sliders" type="font-awesome" size={20} color="#fff" />
           </TouchableOpacity>
           <Portal>
             <Modal
               visible={visibleCalendar}
               onDismiss={hideModalCalendar}
-              contentContainerStyle={styles.modalContainerStyle}
+              contentContainerStyle={styles.modalContainerStyle2}
             >
               <View
                 style={{
@@ -211,7 +220,8 @@ const TopFilter = ({ tabs, cats }) => {
                     name="chevron-left"
                     type="feather"
                     size={25}
-                    onPress={() => setCurrentYear(currentYear - 1)}
+                    onPress={() => state.setCurrentYear(state.currentYear - 1)}
+                    style={{ padding: 10 }}
                   />
                   <Text
                     style={{
@@ -220,13 +230,14 @@ const TopFilter = ({ tabs, cats }) => {
                       fontSize: 16,
                     }}
                   >
-                    {currentYear}
+                    {state.currentYear}
                   </Text>
                   <Icon
                     name="chevron-right"
                     type="feather"
                     size={25}
-                    onPress={() => setCurrentYear(currentYear + 1)}
+                    onPress={() => state.setCurrentYear(state.currentYear + 1)}
+                    style={{ padding: 10 }}
                   />
                 </View>
                 <View style={{}}>
@@ -448,6 +459,16 @@ const styles = StyleSheet.create({
   modalContainerStyle: {
     backgroundColor: "white",
     padding: 20,
+    width: "70%",
+    marginRight: "auto",
+    marginLeft: "auto",
+    borderRadius: 12,
+    paddingBottom: 10,
+  },
+  modalContainerStyle2: {
+    backgroundColor: "white",
+    padding: 20,
+    paddingTop: 0,
     width: "70%",
     marginRight: "auto",
     marginLeft: "auto",

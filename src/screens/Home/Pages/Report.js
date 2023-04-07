@@ -9,7 +9,22 @@ import MainReportDebt from "./DEBT/MainReportDebt";
 const Report = () => {
   const state = useContext(MainContext);
   useEffect(() => {
-    state.getBalances();
+    var b_Ids = [];
+    var years = [];
+    var months = [];
+
+    if (state.selectedReport.id == 1) {
+      state.selectedMonths?.map((el) => {
+        //Сонгогдсон жил, сар -г ARRAY болгох
+        years.push(el.year);
+        months.push(el.month);
+      });
+      state.userData.userData?.map((el) => {
+        //Тухайн USER -н байгууллагуудын ID -г ARRAY болгох
+        b_Ids.push(el.b_id);
+      });
+      state.getBalances(b_Ids, years, months);
+    }
   }, []);
 
   return (

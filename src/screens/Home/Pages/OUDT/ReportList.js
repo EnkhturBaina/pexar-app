@@ -30,12 +30,6 @@ const ReportList = () => {
       setSelectedIndex((selectedIndex) => [...selectedIndex, val]);
     }
   };
-  const calcSum = (data) => {
-    let sum = state.reportData.reduce(function (prev, current) {
-      return prev + +current[data];
-    }, 0);
-    return sum;
-  };
   return (
     <View style={{ flex: 1 }}>
       <ScrollView bounces={false} contentContainerStyle={styles.mainContainer}>
@@ -48,19 +42,21 @@ const ReportList = () => {
                 <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
                   Орлого
                 </Text>
-                <Text style={styles.amountText}>{calcSum("sale")}₮</Text>
+                <Text style={styles.amountText}>{state.calcSum("sale")}₮</Text>
               </View>
               <View style={styles.bottomMidContent}>
                 <Text style={{ color: "#E34935", fontWeight: "bold" }}>
                   Зардал
                 </Text>
-                <Text style={styles.amountText}>{calcSum("cost")}₮</Text>
+                <Text style={styles.amountText}>{state.calcSum("cost")}₮</Text>
               </View>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
                   Ашиг
                 </Text>
-                <Text style={styles.amountText}>{calcSum("amount")}₮</Text>
+                <Text style={styles.amountText}>
+                  {state.calcSum("amount")}₮
+                </Text>
               </View>
             </View>
 
@@ -75,6 +71,7 @@ const ReportList = () => {
                     <View style={styles.topContainer}>
                       <View
                         style={{
+                          width: "90%",
                           flexDirection: "row",
                           alignItems: "center",
                         }}
@@ -85,10 +82,17 @@ const ReportList = () => {
                           resizeMode="contain"
                         />
                         <View
-                          style={{ flexDirection: "column", marginLeft: 5 }}
+                          style={{
+                            flex: 1,
+                            flexDirection: "column",
+                            marginLeft: 5,
+                          }}
                         >
                           <Text
-                            style={{ fontWeight: "bold", color: "#272E3B" }}
+                            style={{
+                              fontWeight: "bold",
+                              color: "#272E3B",
+                            }}
                           >
                             {el.b_name}
                           </Text>

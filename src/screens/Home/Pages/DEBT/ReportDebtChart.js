@@ -11,6 +11,7 @@ import {
   MAIN_BACKGROUND_COLOR,
   MAIN_COLOR,
   MAIN_COLOR_GRAY,
+  progressMax,
 } from "../../../../constant";
 import Base from "../../../../../assets/Base.png";
 import { ProgressBar } from "react-native-paper";
@@ -43,7 +44,13 @@ const ReportDebtChart = () => {
                       style={{ width: 40, height: 40 }}
                       resizeMode="contain"
                     />
-                    <View style={{ flexDirection: "column", marginLeft: 5 }}>
+                    <View
+                      style={{
+                        flex: 1,
+                        flexDirection: "column",
+                        marginLeft: 5,
+                      }}
+                    >
                       <Text style={{ fontWeight: "bold", color: "#272E3B" }}>
                         {el.b_name}
                       </Text>
@@ -64,7 +71,7 @@ const ReportDebtChart = () => {
                       </Text>
                     </View>
                     <ProgressBar
-                      progress={0.7}
+                      progress={el.amountsum ? el.amountsum / progressMax : 0}
                       color={MAIN_COLOR}
                       style={{ borderRadius: 8, marginTop: 5 }}
                     />
@@ -81,7 +88,7 @@ const ReportDebtChart = () => {
                       </Text>
                     </View>
                     <ProgressBar
-                      progress={0.2}
+                      progress={el.cash ? el.cash / progressMax : 0}
                       color="#E34935"
                       style={{ borderRadius: 8, marginTop: 5 }}
                     />
@@ -98,7 +105,7 @@ const ReportDebtChart = () => {
                       </Text>
                     </View>
                     <ProgressBar
-                      progress={0.3}
+                      progress={el.current ? el.current / progressMax : 0}
                       color="#EC7A09"
                       style={{ borderRadius: 8, marginTop: 5 }}
                     />

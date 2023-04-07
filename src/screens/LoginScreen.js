@@ -30,7 +30,7 @@ const LoginScreen = (props) => {
   const state = useContext(MainContext);
   const headerHeight = useHeaderHeight();
 
-  const [password, setPassword] = useState("zrllju");
+  const [password, setPassword] = useState("iybIJc");
   const [hidePassword, setHidePassword] = useState(true);
   const [backgroundColor, setBackgroundColor] = useState("");
   const [borderColor, setBorderColor] = useState("");

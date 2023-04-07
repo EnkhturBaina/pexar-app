@@ -12,17 +12,17 @@ export const UserStore = (props) => {
   const [userName, setUserName] = useState("dorjoffice@gmail.com");
   const [expoPushToken, setExpoPushToken] = useState("");
 
+  const [userData, setUserData] = useState(null);
+  const [userCompanies, setUserCompanies] = useState("");
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [accessToken, setAccessToken] = useState("");
-  const [refreshToken, setRefreshToken] = useState("");
 
   const [loginMsg, setLoginMsg] = useState("");
-  const [token, setToken] = useState("");
   const [rememberUserName, setRememberUserName] = useState(false);
 
   const [isLoadingReport, setIsLoadingReport] = useState(true);
-  const [reportData, setReportData] = useState("");
+  const [reportData, setReportData] = useState(null);
 
   const [lookUpType, setLookUpType] = useState("");
 
@@ -36,8 +36,19 @@ export const UserStore = (props) => {
   const [selectedHeader, setSelectedHeader] = useState(1);
   const [cardMenu, setCardMenu] = useState(1);
 
+  const current_date = new Date();
+  const [currentYear, setCurrentYear] = useState(current_date.getFullYear());
+  const [selectedMonths, setSelectedMonths] = useState([
+    {
+      value: "2023-3",
+      label: "2023-3",
+      year: 2023,
+      month: 3,
+    },
+  ]);
+
   useEffect(() => {
-    getLocalUserData();
+    userData == null && getLocalUserData();
   }, []);
 
   const login = async (userName, password, rememberEmail) => {
@@ -64,20 +75,14 @@ export const UserStore = (props) => {
         }
         // console.log("responee login", response.data.response);
         if (response.status == 200) {
-          //*** access token хадгалах
-          AsyncStorage.setItem(
-            "accessToken",
-            response.data.response.accessToken
-          );
-          //*** refresh token хадгалах
-          AsyncStorage.setItem(
-            "refreshToken",
-            response.data.response.refreshToken
-          );
-          setAccessToken(response.data.response.accessToken);
-          setRefreshToken(response.data.response.refreshToken);
-          setIsLoggedIn(true);
-          setIsLoading(false);
+          setUserData(response.data.response);
+          await AsyncStorage.setItem(
+            "userLocalData",
+            JSON.stringify(response.data.response)
+          ).then(() => {
+            setIsLoggedIn(true);
+            setIsLoading(false);
+          });
         }
       })
       .catch(function (error) {
@@ -88,23 +93,20 @@ export const UserStore = (props) => {
   };
 
   const getLocalUserData = () => {
+    console.log("get LocalUserData");
     //*** LocalStorage -с мэдээлэл уншиж авах
     try {
       //*** access token уншиж авах
-      AsyncStorage.getItem("accessToken")
-        .then((accessToken_local) => {
-          setAccessToken(accessToken_local);
+      AsyncStorage.getItem("userLocalData")
+        .then((user_local_data) => {
+          // console.log("user_local_data", user_local_data);
+          if (user_local_data != null) {
+            setUserData(JSON.parse(user_local_data));
+            setIsLoggedIn(true);
+          }
         })
         .then(() => {
-          //*** refresh token уншиж авах
-          AsyncStorage.getItem("refreshToken")
-            .then((refreshToken_local) => {
-              setRefreshToken(refreshToken_local);
-              refreshToken_local ? setIsLoggedIn(true) : setIsLoggedIn(false);
-            })
-            .then(() => {
-              setIsLoading(false);
-            });
+          setIsLoading(false);
         });
     } catch (error) {
       console.log("error");
@@ -113,23 +115,36 @@ export const UserStore = (props) => {
     }
   };
 
-  const getBalances = async () => {
+  const calcSum = (key) => {
+    let sum = reportData?.reduce(function (prev, current) {
+      return prev + +current[key];
+    }, 0);
+    return sum ? sum?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") : 0;
+  };
+
+  const getBalances = async (b_Ids, years, months) => {
+    // Жилийн давхардал арилгах
+    var axios_years = [...new Set(years)];
+    // console.log("b_Ids", b_Ids?.toString());
+    // console.log("years", axios_years?.toString());
+    // console.log("months", months?.toString());
+
     setIsLoadingReport(true);
-    console.log("get Balances");
     await axios({
       method: "get",
       url: `${DEV_URL}client/amountBalances`,
       headers: {
         "X-API-KEY": X_API_KEY,
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${userData.accessToken}`,
       },
       params: {
-        startDate: "2022-03-01",
-        endDate: "2022-03-26",
+        b_id: b_Ids?.toString(),
+        ryear: axios_years?.toString(),
+        rmonth: months?.toString(),
       },
     })
       .then((response) => {
-        console.log("response.data.response", response.data.response);
+        // console.log("response.data.response", response.data.response);
         setReportData(response.data.response);
         setIsLoadingReport(false);
       })
@@ -146,9 +161,7 @@ export const UserStore = (props) => {
   };
 
   const logout = () => {
-    AsyncStorage.removeItem("accessToken");
-    AsyncStorage.removeItem("refreshToken");
-    AsyncStorage.removeItem("userData");
+    AsyncStorage.removeItem("userLocalData");
     setIsLoggedIn(false);
   };
   return (
@@ -160,7 +173,6 @@ export const UserStore = (props) => {
         setIsLoading,
         loginMsg,
         setLoginMsg,
-        token,
         expoPushToken,
         logout,
         rememberUserName,
@@ -176,10 +188,16 @@ export const UserStore = (props) => {
         selectedHeader,
         setSelectedHeader,
         login,
-        accessToken,
         reportData,
         isLoadingReport,
         getBalances,
+        userData,
+        userCompanies,
+        currentYear,
+        selectedMonths,
+        setCurrentYear,
+        setSelectedMonths,
+        calcSum,
       }}
     >
       {props.children}

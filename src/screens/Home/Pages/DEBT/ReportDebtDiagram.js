@@ -153,19 +153,23 @@ const ReportDebtDiagram = () => {
                 <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
                   Зөрүү
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>
+                  {state.calcSum("current")}₮
+                </Text>
               </View>
               <View style={styles.bottomMidContent}>
                 <Text style={{ color: "#E34935", fontWeight: "bold" }}>
                   Өглөг
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>{state.calcSum("cash")}₮</Text>
               </View>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
                   Авлага
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>
+                  {state.calcSum("amountsum")}₮
+                </Text>
               </View>
             </View>
             <View style={styles.bottomCardContainer}>

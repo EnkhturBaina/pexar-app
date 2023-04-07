@@ -46,19 +46,25 @@ const ReportCassList = () => {
                 <Text style={{ color: "#168B5E", fontWeight: "bold" }}>
                   Харилцах данс
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>
+                  {state.calcSum("receivable")}₮
+                </Text>
               </View>
               <View style={styles.bottomMidContent}>
                 <Text style={{ color: "#1F3F55", fontWeight: "bold" }}>
                   Касс
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>
+                  {state.calcSum("payable")}₮
+                </Text>
               </View>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#4B8CD9", fontWeight: "bold" }}>
                   Нийт үлдэгдэл
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>
+                  {state.calcSum("diff01")}₮
+                </Text>
               </View>
             </View>
             {state.reportData?.map((el, index) => {
@@ -72,6 +78,7 @@ const ReportCassList = () => {
                     <View style={styles.topContainer}>
                       <View
                         style={{
+                          width: "90%",
                           flexDirection: "row",
                           alignItems: "center",
                         }}
@@ -82,7 +89,11 @@ const ReportCassList = () => {
                           resizeMode="contain"
                         />
                         <View
-                          style={{ flexDirection: "column", marginLeft: 5 }}
+                          style={{
+                            flex: 1,
+                            flexDirection: "column",
+                            marginLeft: 5,
+                          }}
                         >
                           <Text
                             style={{ fontWeight: "bold", color: "#272E3B" }}

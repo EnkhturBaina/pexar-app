@@ -155,19 +155,25 @@ const ReportCassDiagram = () => {
                 <Text style={{ color: "#EC7A09", fontWeight: "bold" }}>
                   Харилцах данс
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>
+                  {state.calcSum("receivable")}₮
+                </Text>
               </View>
               <View style={styles.bottomMidContent}>
                 <Text style={{ color: "#E34935", fontWeight: "bold" }}>
                   Касс
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>
+                  {state.calcSum("payable")}₮
+                </Text>
               </View>
               <View style={{ width: "33%", alignItems: "center" }}>
                 <Text style={{ color: "#22A06B", fontWeight: "bold" }}>
                   Нийт үлдэгдэл
                 </Text>
-                <Text style={styles.amountText}>99,999сая₮</Text>
+                <Text style={styles.amountText}>
+                  {state.calcSum("diff01")}₮
+                </Text>
               </View>
             </View>
             <View style={styles.bottomCardContainer}>

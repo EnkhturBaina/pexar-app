@@ -8,6 +8,7 @@ export const INPUT_BG_COLOR = "#F2F3F5";
 export const MAIN_COLOR_B1 = "#007B42"; //Үндсэн өнгө B1
 export const MAIN_COLOR_GRAY_LEVEL4 = "#C9CDD4"; //Цайвар level 4
 
+export const progressMax = 1000000000;
 export const BUTTON_BORDER_RADIUS = 12;
 export const SERVER_URL = "";
 export const X_API_KEY =

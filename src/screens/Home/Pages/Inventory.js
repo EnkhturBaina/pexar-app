@@ -9,11 +9,11 @@ import {
   FlatList,
   Platform,
   ActivityIndicator,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import TopFilter from "../TopFilter";
 import {
-  BUTTON_BORDER_RADIUS,
   DEV_URL,
   MAIN_BACKGROUND_COLOR,
   MAIN_COLOR,
@@ -22,14 +22,15 @@ import {
 } from "../../../constant";
 import { useHeaderHeight } from "@react-navigation/elements";
 import empty_img from "../../../../assets/empty_img.png";
-import { Modal, Portal, Provider } from "react-native-paper";
-import { Icon, CheckBox, Button } from "@rneui/themed";
+import { Icon } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
 import InventorySkeleton from "../../../Skeletons/InventorySkeleton";
 import axios from "axios";
 import { useContext } from "react";
 import MainContext from "../../../contexts/MainContext";
+import RBSheet from "react-native-raw-bottom-sheet";
+import { useRef } from "react";
 
 const Inventory = (props) => {
   const state = useContext(MainContext);
@@ -41,21 +42,16 @@ const Inventory = (props) => {
   const [isListEnd, setIsListEnd] = useState(false); //Бүх дата харуулж дууссан үед харагдах
   const [serverData, setServerData] = useState([]); //Үндсэн дата
 
-  const [check1, setCheck1] = useState(false);
-  const [check2, setCheck2] = useState(false);
-  const [check3, setCheck3] = useState(false);
+  const [selectedCompany, setSelectedCompany] = useState(null);
+  const sheetRef = useRef(); //Bottomsheet
 
   const headerHeight = useHeaderHeight();
 
-  const [visibleFilter, setVisibleFilter] = useState(false);
-
-  const showModal = () => setVisibleFilter(true);
-  const hideModal = () => setVisibleFilter(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getInventoryData();
-  }, []);
+    selectedCompany != null && getInventoryData();
+  }, [selectedCompany]);
 
   useEffect(() => {
     setFilteredData(filterByValue(serverData, searchData));
@@ -82,22 +78,29 @@ const Inventory = (props) => {
   };
 
   const getInventoryData = async () => {
+    console.log("selectedCompany", selectedCompany);
+    setServerData([]);
     setIsLoadingData(true);
-    console.log("getInventory Data");
     await axios({
       method: "get",
-      url: `${DEV_URL}material`,
+      url: `${DEV_URL}material/all`,
       headers: {
         "X-API-KEY": X_API_KEY,
-        Authorization: `Bearer ${state.accessToken}`,
+        Authorization: `Bearer ${state.userData?.accessToken}`,
+      },
+      params: {
+        b_id: selectedCompany.b_id,
       },
     })
       .then((response) => {
-        // console.log("response dic", response.data);
-        if (response.data.response == "") {
+        console.log(
+          "response dic",
+          JSON.stringify(response.data.response.data)
+        );
+        if (response.data.response.data == "") {
           setIsListEnd(true);
         }
-        setServerData(response.data.response); //Хуучин байсан дата дээр нэмж хадгалах
+        setServerData(response.data.response.data); //Хуучин байсан дата дээр нэмж хадгалах
         setIsLoadingData(false);
         setIsLoading(false);
       })
@@ -114,6 +117,7 @@ const Inventory = (props) => {
       });
   };
   const renderItem = ({ item }) => {
+    console.log("ITEM", item);
     return (
       <TouchableOpacity
         style={styles.cardContainer}
@@ -241,118 +245,44 @@ const Inventory = (props) => {
     );
   };
   return (
-    <Provider>
-      <KeyboardAvoidingView
-        keyboardVerticalOffset={headerHeight}
-        behavior={Platform.OS == "ios" ? "padding" : ""}
-        style={{
-          flex: 1,
-        }}
-      >
-        <TopFilter tabs={false} cats={false} />
-        <View style={styles.headerContainer}>
-          <View style={styles.sectionStyle}>
-            <Icon
-              name="search"
-              type="feather"
-              size={20}
-              color={MAIN_COLOR_GRAY}
-              style={styles.inputIcon}
-            />
-            <TextInput
-              placeholder="Хайх"
-              value={searchData}
-              onChangeText={setSearchData}
-              style={styles.generalInput}
-              returnKeyType="done"
-            />
-          </View>
-          <TouchableOpacity onPress={showModal} style={styles.filterContainer}>
-            <Icon
-              name="filter"
-              type="feather"
-              size={20}
-              color={MAIN_COLOR_GRAY}
-            />
-          </TouchableOpacity>
-          <Portal>
-            <Modal
-              visible={visibleFilter}
-              onDismiss={hideModal}
-              contentContainerStyle={styles.modalContainerStyle}
-            >
-              <View style={{ flexDirection: "column" }}>
-                <View>
-                  <CheckBox
-                    checked={check1}
-                    checkedColor={MAIN_COLOR}
-                    containerStyle={{
-                      padding: 0,
-                      backgroundColor: "transparent",
-                    }}
-                    onPress={() => setCheck1(!check1)}
-                    size={25}
-                    title="Барааны төрөл"
-                    uncheckedColor={MAIN_COLOR}
-                    uncheckedIcon="checkbox-blank-outline"
-                    checkedIcon="checkbox-outline"
-                    iconType="material-community"
-                  />
-                  <CheckBox
-                    checked={check2}
-                    checkedColor={MAIN_COLOR}
-                    containerStyle={{
-                      padding: 0,
-                      backgroundColor: "transparent",
-                    }}
-                    onPress={() => setCheck2(!check2)}
-                    size={25}
-                    title="Барааны бүлэг"
-                    uncheckedColor={MAIN_COLOR}
-                    uncheckedIcon="checkbox-blank-outline"
-                    checkedIcon="checkbox-outline"
-                    iconType="material-community"
-                  />
-                  <CheckBox
-                    checked={check3}
-                    checkedColor={MAIN_COLOR}
-                    containerStyle={{
-                      padding: 0,
-                      backgroundColor: "transparent",
-                    }}
-                    onPress={() => setCheck3(!check3)}
-                    size={25}
-                    title="Барааны брэнд"
-                    uncheckedColor={MAIN_COLOR}
-                    uncheckedIcon="checkbox-blank-outline"
-                    checkedIcon="checkbox-outline"
-                    iconType="material-community"
-                  />
-                  <View
-                    style={{
-                      width: "80%",
-                      marginRight: "auto",
-                      marginLeft: "auto",
-                    }}
-                  >
-                    <Button
-                      title="Болсон"
-                      color={MAIN_COLOR}
-                      radius={BUTTON_BORDER_RADIUS}
-                      onPress={() => {
-                        hideModal();
-                      }}
-                      titleStyle={{
-                        fontWeight: "bold",
-                      }}
-                      buttonStyle={{ height: 40, marginVertical: 10 }}
-                    />
-                  </View>
-                </View>
-              </View>
-            </Modal>
-          </Portal>
+    <KeyboardAvoidingView
+      keyboardVerticalOffset={headerHeight}
+      behavior={Platform.OS == "ios" ? "padding" : ""}
+      style={{
+        flex: 1,
+      }}
+    >
+      <TopFilter tabs={false} cats={false} />
+      <View style={styles.headerContainer}>
+        <View style={styles.sectionStyle}>
+          <Icon
+            name="search"
+            type="feather"
+            size={20}
+            color={MAIN_COLOR_GRAY}
+            style={styles.inputIcon}
+          />
+          <TextInput
+            placeholder="Хайх"
+            value={searchData}
+            onChangeText={setSearchData}
+            style={styles.generalInput}
+            returnKeyType="done"
+          />
         </View>
+        <TouchableOpacity
+          onPress={() => sheetRef.current.open()}
+          style={styles.filterContainer}
+        >
+          <Icon
+            name="filter"
+            type="feather"
+            size={20}
+            color={MAIN_COLOR_GRAY}
+          />
+        </TouchableOpacity>
+      </View>
+      {selectedCompany ? (
         <View style={styles.mainContainer}>
           {isLoading ? (
             <InventorySkeleton />
@@ -363,14 +293,85 @@ const Inventory = (props) => {
               renderItem={renderItem}
               keyExtractor={(item, index) => index.toString()}
               ListFooterComponent={renderFooter} //List ны хамгийн доор харагдах
-              onEndReached={state.getWords} //Scroll доошоо тулхад ажиллах
+              // onEndReached={getInventoryData} //Scroll доошоо тулхад ажиллах
               onEndReachedThreshold={0.2}
               estimatedItemSize={100}
             />
           )}
         </View>
-      </KeyboardAvoidingView>
-    </Provider>
+      ) : null}
+      <RBSheet
+        ref={sheetRef}
+        height={300}
+        closeOnDragDown={true} //sheet -г доош чирж хаах
+        closeOnPressMask={true} //sheet -н гадна дарж хаах
+        customStyles={{
+          container: {
+            backgroundColor: "#fff",
+            flexDirection: "column",
+            borderTopEndRadius: 16,
+            borderTopStartRadius: 16,
+          },
+          draggableIcon: {
+            backgroundColor: "#000",
+          },
+        }}
+      >
+        <View style={styles.bottomSheetContainer}>
+          <View style={styles.lookupcontainer}>
+            {selectedCompany ? (
+              <Text
+                style={{
+                  padding: 5,
+                  borderRadius: 12,
+                  backgroundColor: MAIN_COLOR,
+                  color: "#fff",
+                  fontWeight: "bold",
+                  textAlign: "center",
+                  marginBottom: 5,
+                }}
+              >
+                {selectedCompany.b_name}
+              </Text>
+            ) : null}
+            <ScrollView
+              contentContainerStyle={{
+                backgroundColor: "#fff",
+              }}
+            >
+              {state.userData?.userData?.length > 1 ? (
+                state.userData?.userData?.map((el, index) => {
+                  return (
+                    <TouchableOpacity
+                      key={index}
+                      onPress={() => {
+                        setSelectedCompany(el);
+                        sheetRef.current.close();
+                      }}
+                    >
+                      <Text style={styles.bottomSheetBodyLookup}>
+                        {el.b_id} - {el.b_name}
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                })
+              ) : (
+                <TouchableOpacity
+                  onPress={() => {
+                    setSelectedCompany(state.userData?.userData[0]);
+                    sheetRef.current.close();
+                  }}
+                >
+                  <Text style={styles.bottomSheetBodyLookup}>
+                    {state.userData?.userData[0]?.b_name}
+                  </Text>
+                </TouchableOpacity>
+              )}
+            </ScrollView>
+          </View>
+        </View>
+      </RBSheet>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -507,5 +508,21 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     paddingBottom: 10,
     alignItems: "center",
+  },
+  bottomSheetContainer: {
+    justifyContent: "center",
+    backgroundColor: "#fff",
+    paddingHorizontal: 20,
+  },
+  lookupcontainer: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "flex-start",
+    paddingBottom: Platform.OS == "ios" ? 30 : 25,
+  },
+  bottomSheetBodyLookup: {
+    fontWeight: "bold",
+    fontSize: 18,
+    padding: 10,
   },
 });
