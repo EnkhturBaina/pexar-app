@@ -65,14 +65,18 @@ const ProfileScreen = (props) => {
               color: MAIN_COLOR_GRAY,
             }}
           >
-            М. Туул
+            {state.userData.user
+              ? `${state.userData?.user?.LastUserName?.substr(0, 1)}. ${
+                  state.userData?.user?.UserName
+                }`
+              : null}
           </Text>
           <Text
             style={{
               color: MAIN_COLOR_GRAY,
             }}
           >
-            +(976) 8803 2985
+            {state.userData.user ? state.userData.user?.mobile : null}
           </Text>
         </View>
         <Divider
