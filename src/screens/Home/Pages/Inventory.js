@@ -78,7 +78,6 @@ const Inventory = (props) => {
   };
 
   const getInventoryData = async () => {
-    console.log("selectedCompany", selectedCompany);
     setServerData([]);
     setIsLoadingData(true);
     await axios({
@@ -93,10 +92,6 @@ const Inventory = (props) => {
       },
     })
       .then((response) => {
-        console.log(
-          "response dic",
-          JSON.stringify(response.data.response.data)
-        );
         if (response.data.response.data == "") {
           setIsListEnd(true);
         }
@@ -117,7 +112,6 @@ const Inventory = (props) => {
       });
   };
   const renderItem = ({ item }) => {
-    console.log("ITEM", item);
     return (
       <TouchableOpacity
         style={styles.cardContainer}
