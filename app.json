@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "pexar-app",
-    "slug": "pexar-app",
+    "name": "iBalance",
+    "slug": "iBalance",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,9 +15,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ibalance.app",
+      "buildNumber": "1.0.0"
     },
     "android": {
+      "package": "com.ibalance.app",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -25,6 +29,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "923fc7d5-44cf-4fa4-a2cf-3c01a181c1cf"
+      }
     }
   }
 }

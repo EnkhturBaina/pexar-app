@@ -73,7 +73,7 @@ export const UserStore = (props) => {
           //Нэвтрэх нэр сануулах UNCHECK хийсэн үед тухайн утсан дээрээс EMAIL устгах
           await AsyncStorage.removeItem("login_email");
         }
-        // console.log("responee login", response.data.response);
+        console.log("responee login", response.data.response);
         if (response.status == 200) {
           setUserData(response.data.response);
           await AsyncStorage.setItem(
@@ -88,7 +88,7 @@ export const UserStore = (props) => {
       .catch(function (error) {
         setIsLoggedIn(false);
         setIsLoading(false);
-        console.log("error login", error);
+        console.log("error login", error.response);
       });
   };
 

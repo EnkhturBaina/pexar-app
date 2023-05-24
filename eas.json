@@ -1,0 +1,28 @@
+{
+  "cli": {
+    "version": ">= 3.13.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {}
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "appleId": "gurensoft2022@gmail.com",
+        "ascAppId": "1671389683",
+        "appleTeamId": "FT8W3KLF833"
+      },
+      "android": {
+        "track": "internal",
+        "serviceAccountKeyPath": "./iBalanceGoogleServiceKey.json"
+      }
+    }
+  }
+}

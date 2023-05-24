@@ -13,7 +13,8 @@ export const BUTTON_BORDER_RADIUS = 12;
 export const SERVER_URL = "";
 export const X_API_KEY =
   "cH5BFgWYzUxUpFVjA98Cbp8UzOBqsqAJYniFMRKJCEpX6dePoMp0rfhKXUa3U1aGItLAw4s9FHbT3q3Our8yDuAhu2kMicgcqRJjnxMFhJohvT8qlpcbTu2UCLZfE1tY";
-export const DEV_URL = "http://192.168.5.103:8001/"; //OLZII9589
+// export const DEV_URL = "http://192.168.5.103:8001/"; //OLZII9589
+export const DEV_URL = "https://ihospital.mn/middle/"; //OLZII9589
 export const REG_CHARS = [
   "А",
   "Б",
