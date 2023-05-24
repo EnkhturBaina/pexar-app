@@ -9,7 +9,7 @@ const MainContext = React.createContext();
 export const UserStore = (props) => {
   const navigation = useNavigation();
 
-  const [userName, setUserName] = useState("dorjoffice@gmail.com");
+  const [userName, setUserName] = useState("jorjoffice@gmail.com");
   const [expoPushToken, setExpoPushToken] = useState("");
 
   const [userData, setUserData] = useState(null);
