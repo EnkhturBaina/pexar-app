@@ -62,7 +62,7 @@ const HomeScreenTabNavigation = () => {
             },
           }}
         />
-        <Tab.Screen
+        {/* <Tab.Screen
           name="HRTab"
           component={HRScreenStackNavigator}
           listeners={{
@@ -125,7 +125,7 @@ const HomeScreenTabNavigation = () => {
               );
             },
           }}
-        />
+        /> */}
         <Tab.Screen
           name="NotifTab"
           component={NotifScreenStackNavigator}
