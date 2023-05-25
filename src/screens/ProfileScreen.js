@@ -106,7 +106,7 @@ const ProfileScreen = (props) => {
                 color={MAIN_COLOR_GRAY}
               />
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={styles.profileMenuContainer}
               onPress={() => props.navigation.navigate("PrivacyScreen")}
             >
@@ -144,7 +144,7 @@ const ProfileScreen = (props) => {
                   color={MAIN_COLOR_GRAY}
                 />
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           <TouchableOpacity
             style={styles.profileMenuContainer}

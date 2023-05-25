@@ -12,6 +12,8 @@ export const UserStore = (props) => {
   const [userName, setUserName] = useState("jorjoffice@gmail.com");
   const [expoPushToken, setExpoPushToken] = useState("");
 
+  const [loginError, setLoginError] = useState("");
+
   const [userData, setUserData] = useState(null);
   const [userCompanies, setUserCompanies] = useState("");
 
@@ -198,6 +200,9 @@ export const UserStore = (props) => {
         setCurrentYear,
         setSelectedMonths,
         calcSum,
+        setLoginError,
+        loginError,
+        setUserData,
       }}
     >
       {props.children}

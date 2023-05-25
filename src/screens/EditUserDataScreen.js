@@ -6,44 +6,30 @@ import {
   ScrollView,
   Platform,
   TextInput,
-  TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   BUTTON_BORDER_RADIUS,
   MAIN_COLOR,
   MAIN_BACKGROUND_COLOR,
-  REG_CHARS,
   MAIN_DARK_LEVEL9,
   INPUT_BG_COLOR,
+  DEV_URL,
+  X_API_KEY,
 } from "../constant";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { Button, Icon } from "@rneui/base";
-import BottomSheetReg from "../components/BottomSheetReg";
 import CustomSnackbar from "../components/CustomSnackbar";
 import CustomDialog from "../components/CustomDialog";
 import MainContext from "../contexts/MainContext";
-import CustomLookup from "../components/CustomLookup";
-import BottomSheet from "../components/BottomSheet";
+import axios from "axios";
 
 const EditUserDataScreen = () => {
   const state = useContext(MainContext);
   const headerHeight = useHeaderHeight();
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
+  const [editableData, setEditableData] = useState("");
 
-  const [regCharA, setRegCharA] = useState("A");
-  const [regCharB, setRegCharB] = useState("A");
-  const [regNumber, setRegNumber] = useState("");
-
-  const refRBSheet = useRef();
-  const refRBSheet2 = useRef();
-  const testArr = [
-    { id: 1, name: "TEST1" },
-    { id: 2, name: "TEST2" },
-    { id: 3, name: "TEST3" },
-  ];
   const regex_email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
 
   const [visibleSnack, setVisibleSnack] = useState(false);
@@ -57,34 +43,67 @@ const EditUserDataScreen = () => {
   //Snacbkbar хаах
   const onDismissSnackBar = () => setVisibleSnack(false);
 
-  const [data, setData] = useState(""); //BottomSheet рүү дамжуулах Дата
-  const [uselessParam, setUselessParam] = useState(false); //BottomSheet -г дуудаж байгааг мэдэх гэж ашиглаж байгамоо
-  const [fieldName, setFieldName] = useState(""); //Context -н аль утгыг OBJECT -с update хийхийг хадгалах
-  const [displayName, setDisplayName] = useState(""); //LOOKUP -д харагдах утга (display value)
-
   const [dialogText, setDialogText] = useState(""); //Dialog -н текст
   const [visibleDialog, setVisibleDialog] = useState(false); //Dialog харуулах
   const [dialogType, setDialogType] = useState("warning"); //Dialog харуулах төрөл
 
   const [loadingAction, setLoadingAction] = useState(false);
 
-  const setLookupData = (data, field, display) => {
-    // console.log("refRBSheet", refRBSheet);
-    setData(data); //Lookup -д харагдах дата
-    setFieldName(field); //Context -н object -н update хийх key
-    setDisplayName(display); //Lookup -д харагдах датаны текст талбар
-    setUselessParam(!uselessParam);
+  useEffect(() => {
+    setEditableData(state.userData?.user);
+  }, []);
+
+  const editUserData = async () => {
+    if (editableData.LastUserName == "") {
+      onToggleSnackBar("Овогоо оруулна уу.");
+    } else if (editableData.UserName == "") {
+      onToggleSnackBar("Нэрээ оруулна уу.");
+    } else if (editableData.email == "") {
+      onToggleSnackBar("И-мэйл оруулна уу.");
+    } else if (!regex_email.test(editableData.email)) {
+      onToggleSnackBar("И-мэйл хаягаа зөв оруулна уу.");
+    } else if (editableData.mobile == "") {
+      onToggleSnackBar("Утасны дугаараа оруулна уу.");
+    } else {
+      setLoadingAction(true);
+      await axios({
+        method: "patch",
+        url: `${DEV_URL}user/${editableData.UserPkID}`,
+        headers: {
+          "X-API-KEY": X_API_KEY,
+          Authorization: `Bearer ${state.accessToken}`,
+        },
+        data: {
+          LastUserName: editableData.LastUserName,
+          UserName: editableData.UserName,
+          email: editableData.email,
+          mobile: editableData.mobile,
+        },
+      })
+        .then(async (response) => {
+          // console.log("edit UserData", response.status);
+          if (response.status == 200) {
+            state.setUserData((prevState) => ({
+              ...prevState,
+              user: editableData,
+            }));
+            setDialogText("Мэдээлэл амжилттай засварлагдлаа");
+            setDialogType("success");
+            setVisibleDialog(true);
+          }
+          setLoadingAction(false);
+        })
+        .catch(function (error) {
+          setLoadingAction(false);
+          // console.log("err", error);
+          // console.log("error get History", error.response);
+          if (error?.response?.status == 401) {
+            state.setLoginError("Холболт салсан байна дахин нэвтэрнэ үү.");
+            state.logout();
+          }
+        });
+    }
   };
-
-  const [userProfileData, setUserProfileData] = useState({
-    lastName: "",
-    firstName: "",
-    email: "",
-    region: "",
-    phone: "",
-    gender: "",
-  });
-
   return (
     <KeyboardAvoidingView
       keyboardVerticalOffset={headerHeight}
@@ -97,7 +116,7 @@ const EditUserDataScreen = () => {
         visible={visibleSnack}
         dismiss={onDismissSnackBar}
         text={snackBarMsg}
-        topPos={30}
+        topPos={0}
       />
       <ScrollView bounces={false} contentContainerStyle={styles.mainContainer}>
         <View style={styles.sectionStyle}>
@@ -110,11 +129,11 @@ const EditUserDataScreen = () => {
           />
           <TextInput
             placeholder="Овог"
-            value={userProfileData.lastName}
+            value={editableData.LastUserName}
             onChangeText={(e) =>
-              setUserProfileData((prevState) => ({
+              setEditableData((prevState) => ({
                 ...prevState,
-                lastName: e,
+                LastUserName: e,
               }))
             }
             style={styles.generalInput}
@@ -130,18 +149,18 @@ const EditUserDataScreen = () => {
           />
           <TextInput
             placeholder="Нэр"
-            value={userProfileData.firstName}
+            value={editableData.UserName}
             onChangeText={(e) =>
-              setUserProfileData((prevState) => ({
+              setEditableData((prevState) => ({
                 ...prevState,
-                firstName: e,
+                UserName: e,
               }))
             }
             style={styles.generalInput}
           />
         </View>
 
-        <View style={styles.charContainer}>
+        {/* <View style={styles.charContainer}>
           <TouchableOpacity
             onPress={() => refRBSheet.current.open()}
             style={styles.regCharOpacity}
@@ -180,7 +199,7 @@ const EditUserDataScreen = () => {
             returnKeyType="done"
             maxLength={8}
           />
-        </View>
+        </View> */}
         <View style={styles.sectionStyle}>
           <Icon
             name="mail"
@@ -191,13 +210,18 @@ const EditUserDataScreen = () => {
           />
           <TextInput
             placeholder="И-мэйл"
-            value={email}
-            onChangeText={setEmail}
+            value={editableData.email}
+            onChangeText={(e) =>
+              setEditableData((prevState) => ({
+                ...prevState,
+                email: e,
+              }))
+            }
             keyboardType="email-address"
             style={styles.generalInput}
           />
         </View>
-        <CustomLookup
+        {/* <CustomLookup
           value={userProfileData.region?.name}
           press={() => {
             setLookupData(testArr, "region", "name");
@@ -205,7 +229,7 @@ const EditUserDataScreen = () => {
           placeholder="Улс"
           iconType="ion-icons"
           iconName="flag"
-        />
+        /> */}
         <View style={styles.sectionStyle}>
           <Icon
             name="mobile"
@@ -216,14 +240,19 @@ const EditUserDataScreen = () => {
           />
           <TextInput
             placeholder="Утасны дугаар"
-            value={phone}
-            onChangeText={setPhone}
+            value={editableData.mobile}
+            onChangeText={(e) =>
+              setEditableData((prevState) => ({
+                ...prevState,
+                mobile: e,
+              }))
+            }
             keyboardType="number-pad"
             style={styles.generalInput}
             maxLength={8}
           />
         </View>
-        <CustomLookup
+        {/* <CustomLookup
           value={userProfileData.gender?.name}
           press={() => {
             setLookupData(testArr, "gender", "name");
@@ -231,7 +260,7 @@ const EditUserDataScreen = () => {
           placeholder="Хүйс"
           iconType="material-community"
           iconName="heart-multiple"
-        />
+        /> */}
         <Button
           disabled={loadingAction}
           containerStyle={styles.btnContainer}
@@ -253,7 +282,7 @@ const EditUserDataScreen = () => {
           }
           color={MAIN_COLOR}
           radius={BUTTON_BORDER_RADIUS}
-          onPress={() => {}}
+          onPress={() => editUserData()}
           titleStyle={{
             fontWeight: "bold",
           }}
@@ -269,21 +298,7 @@ const EditUserDataScreen = () => {
           confirmBtnText="Хаах"
           DeclineBtnText=""
           type={dialogType}
-        />
-        <BottomSheet
-          bodyText={data}
-          dragDown={true}
-          backClick={true}
-          type="lookup"
-          fieldName={fieldName}
-          displayName={displayName}
-          handle={uselessParam}
-          action={(e) =>
-            setUserProfileData((prevState) => ({
-              ...prevState,
-              [fieldName]: e,
-            }))
-          }
+          dialogColor={MAIN_COLOR}
         />
       </ScrollView>
     </KeyboardAvoidingView>
