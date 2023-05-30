@@ -22,7 +22,8 @@ const Transaction = () => {
       <ScrollView bounces={false} contentContainerStyle={styles.mainContainer}>
         <TouchableOpacity
           style={styles.cardContainer}
-          onPress={() => navigation.navigate("TransactionDtl")}
+          // onPress={() => navigation.navigate("TransactionDtl")}
+          activeOpacity={1}
         >
           <View style={styles.cardHeader}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -55,15 +56,15 @@ const Transaction = () => {
           <View style={styles.bottomContainer}>
             <View style={{ width: "33%", alignItems: "center" }}>
               <Text style={styles.boldText}>Дүн</Text>
-              <Text style={styles.valueText}>99,999сая₮</Text>
+              <Text style={styles.valueText}>23,209сая₮</Text>
             </View>
             <View style={styles.bottomMidContent}>
               <Text style={styles.boldText}>НӨАТ</Text>
-              <Text style={styles.valueText}>99,999сая₮</Text>
+              <Text style={styles.valueText}>541,112сая₮</Text>
             </View>
             <View style={{ width: "33%", alignItems: "center" }}>
               <Text style={styles.boldText}>Бүгд дүн</Text>
-              <Text style={styles.valueText}>99,999сая₮</Text>
+              <Text style={styles.valueText}>23,412сая₮</Text>
             </View>
           </View>
         </TouchableOpacity>

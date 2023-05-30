@@ -52,15 +52,15 @@ const Plan = () => {
         <View style={styles.bottomContainer}>
           <View style={{ width: "33%", alignItems: "center" }}>
             <Text style={styles.labelText}>Төлөвлөгөөт</Text>
-            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+            <Text style={styles.amountText}>125,489сая₮ | 62%</Text>
           </View>
           <View style={styles.bottomMidContent}>
             <Text style={styles.labelText}>Норматив</Text>
-            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+            <Text style={styles.amountText}>19,332сая₮ | 32%</Text>
           </View>
           <View style={{ width: "33%", alignItems: "center" }}>
             <Text style={styles.labelText}>Гүйцэтгэл</Text>
-            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+            <Text style={styles.amountText}>12,919сая₮ | 80%</Text>
           </View>
         </View>
         <Chart
@@ -116,15 +116,15 @@ const Plan = () => {
         <View style={styles.bottomContainer}>
           <View style={{ width: "33%", alignItems: "center" }}>
             <Text style={styles.labelText}>Төлөвлөгөөт</Text>
-            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+            <Text style={styles.amountText}>500,022сая₮ | 70%</Text>
           </View>
           <View style={styles.bottomMidContent}>
             <Text style={styles.labelText}>Норматив</Text>
-            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+            <Text style={styles.amountText}>33,456сая₮ | 27%</Text>
           </View>
           <View style={{ width: "33%", alignItems: "center" }}>
             <Text style={styles.labelText}>Гүйцэтгэл</Text>
-            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+            <Text style={styles.amountText}>423,755сая₮ | 92%</Text>
           </View>
         </View>
         <Chart
@@ -180,15 +180,15 @@ const Plan = () => {
         <View style={styles.bottomContainer}>
           <View style={{ width: "33%", alignItems: "center" }}>
             <Text style={styles.labelText}>Төлөвлөгөөт</Text>
-            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+            <Text style={styles.amountText}>156,229сая₮ | 72%</Text>
           </View>
           <View style={styles.bottomMidContent}>
             <Text style={styles.labelText}>Норматив</Text>
-            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+            <Text style={styles.amountText}>63,669сая₮ | 44%</Text>
           </View>
           <View style={{ width: "33%", alignItems: "center" }}>
             <Text style={styles.labelText}>Гүйцэтгэл</Text>
-            <Text style={styles.amountText}>99,999сая₮ | 72%</Text>
+            <Text style={styles.amountText}>391,292сая₮ | 58%</Text>
           </View>
         </View>
         <Chart
@@ -275,7 +275,8 @@ const Plan = () => {
         <View activeOpacity={0.8} style={styles.cardContainer}>
           <TouchableOpacity
             style={styles.cardHeader}
-            onPress={() => navigation.navigate("PlanDtl")}
+            // onPress={() => navigation.navigate("PlanDtl")}
+            activeOpacity={1}
           >
             <View style={styles.cardHeaderTitle}>
               <Image
@@ -290,7 +291,7 @@ const Plan = () => {
                 <Text style={{ fontSize: 12, color: "#4E5969" }}>5506913</Text>
               </View>
             </View>
-            <Icon name="chevron-right" type="feather" size={25} />
+            {/* <Icon name="chevron-right" type="feather" size={25} /> */}
           </TouchableOpacity>
           <TabView
             navigationState={{ index, routes }}

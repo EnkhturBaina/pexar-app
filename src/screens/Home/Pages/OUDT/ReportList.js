@@ -64,8 +64,9 @@ const ReportList = () => {
               return (
                 <TouchableOpacity
                   style={styles.cardContainer}
-                  onPress={() => navigation.navigate("ReportListDtl")}
+                  // onPress={() => navigation.navigate("ReportListDtl")}
                   key={index}
+                  activeOpacity={1}
                 >
                   <View style={styles.cardHeader}>
                     <View style={styles.topContainer}>

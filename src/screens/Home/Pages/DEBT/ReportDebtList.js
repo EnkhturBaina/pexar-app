@@ -70,8 +70,9 @@ const ReportDebtList = () => {
               return (
                 <TouchableOpacity
                   style={styles.cardContainer}
-                  onPress={() => navigation.navigate("ReportDebtListDtl")}
+                  // onPress={() => navigation.navigate("ReportDebtListDtl")}
                   key={index}
+                  activeOpacity={1}
                 >
                   <View style={styles.cardHeader}>
                     <View style={styles.topContainer}>

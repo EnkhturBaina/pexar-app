@@ -34,8 +34,9 @@ const ReportChart = () => {
               return (
                 <TouchableOpacity
                   style={styles.cardContainer}
-                  onPress={() => navigation.navigate("ReportChartDtl")}
+                  // onPress={() => navigation.navigate("ReportChartDtl")}
                   key={index}
+                  activeOpacity={1}
                 >
                   <View style={styles.cardHeader}>
                     <Image

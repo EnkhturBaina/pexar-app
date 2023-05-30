@@ -1,15 +1,14 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
-import { FONT_FAMILY_BOLD, FONT_FAMILY_LIGHT } from "../constant";
 
 const Empty = ({ text, type, subtext }) => {
   var imageType = type;
   if (type == "warning") {
     imageType = require("../../assets/warning.png");
   } else if (type == "error") {
-    imageType = require("../../assets/error.png");
+    imageType = require("../../assets/warning.png");
   } else if (type == "empty") {
-    imageType = require("../../assets/empty.png");
+    imageType = require("../../assets/warning.png");
   } else {
     imageType = require("../../assets/success.png");
   }
@@ -32,12 +31,11 @@ export default Empty;
 
 const styles = StyleSheet.create({
   emptyText: {
-    fontFamily: FONT_FAMILY_BOLD,
+    fontWeight: "bold",
     textAlign: "center",
     marginTop: 10,
   },
   emptySubText: {
-    fontFamily: FONT_FAMILY_LIGHT,
     textAlign: "center",
     marginTop: 10,
   },

@@ -31,6 +31,7 @@ import { useContext } from "react";
 import MainContext from "../../../contexts/MainContext";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { useRef } from "react";
+import Empty from "../../../components/Empty";
 
 const Inventory = (props) => {
   const state = useContext(MainContext);
@@ -276,24 +277,31 @@ const Inventory = (props) => {
           />
         </TouchableOpacity>
       </View>
-      {selectedCompany ? (
-        <View style={styles.mainContainer}>
-          {isLoading ? (
-            <InventorySkeleton />
-          ) : (
-            <FlatList
-              data={searchData == "" ? serverData : filteredData}
-              style={{ width: "100%", marginTop: 0 }}
-              renderItem={renderItem}
-              keyExtractor={(item, index) => index.toString()}
-              ListFooterComponent={renderFooter} //List ны хамгийн доор харагдах
-              // onEndReached={getInventoryData} //Scroll доошоо тулхад ажиллах
-              onEndReachedThreshold={0.2}
-              estimatedItemSize={100}
-            />
-          )}
-        </View>
-      ) : null}
+      {serverData != "" ? (
+        <>
+          {selectedCompany ? (
+            <View style={styles.mainContainer}>
+              {isLoading ? (
+                <InventorySkeleton />
+              ) : (
+                <FlatList
+                  data={searchData == "" ? serverData : filteredData}
+                  style={{ width: "100%", marginTop: 0 }}
+                  renderItem={renderItem}
+                  keyExtractor={(item, index) => index.toString()}
+                  ListFooterComponent={renderFooter} //List ны хамгийн доор харагдах
+                  // onEndReached={getInventoryData} //Scroll доошоо тулхад ажиллах
+                  onEndReachedThreshold={0.2}
+                  estimatedItemSize={100}
+                />
+              )}
+            </View>
+          ) : null}
+        </>
+      ) : (
+        <Empty text="Үр дүн олдсонгүй" />
+      )}
+
       <RBSheet
         ref={sheetRef}
         height={300}
@@ -323,6 +331,7 @@ const Inventory = (props) => {
                   fontWeight: "bold",
                   textAlign: "center",
                   marginBottom: 5,
+                  overflow: "hidden",
                 }}
               >
                 {selectedCompany.b_name}

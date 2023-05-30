@@ -1,7 +1,7 @@
 import { StyleSheet, Text } from "react-native";
 import React from "react";
 import { Snackbar } from "react-native-paper";
-import { FONT_FAMILY_BOLD, MAIN_COLOR } from "../constant";
+import { MAIN_COLOR } from "../constant";
 
 export default function ({ visible, dismiss, text, topPos }) {
   return (
@@ -16,7 +16,12 @@ export default function ({ visible, dismiss, text, topPos }) {
         onPress: dismiss,
       }}
     >
-      <Text style={{ fontFamily: FONT_FAMILY_BOLD, color: "#fff" }}>
+      <Text
+        style={{
+          fontWeight: "bold",
+          color: "#fff",
+        }}
+      >
         {text}
       </Text>
     </Snackbar>

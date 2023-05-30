@@ -1,13 +1,7 @@
 import { Icon } from "@rneui/base";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import {
-  FONT_FAMILY_BOLD,
-  FONT_FAMILY_LIGHT,
-  INPUT_BG_COLOR,
-  MAIN_COLOR_GRAY,
-  MAIN_DARK_LEVEL9,
-} from "../constant";
+import { INPUT_BG_COLOR, MAIN_COLOR_GRAY, MAIN_DARK_LEVEL9 } from "../constant";
 
 const styles = StyleSheet.create({
   container: {},
@@ -22,7 +16,6 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   textInput: {
-    fontFamily: FONT_FAMILY_LIGHT,
     fontSize: 16,
     textAlignVertical: "center",
     width: "80%",

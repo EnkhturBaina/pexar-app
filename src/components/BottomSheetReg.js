@@ -7,13 +7,7 @@ import {
 } from "react-native";
 import React from "react";
 import RBSheet from "react-native-raw-bottom-sheet";
-import {
-  FONT_FAMILY_BOLD,
-  FONT_FAMILY_LIGHT,
-  MAIN_COLOR,
-  MAIN_COLOR_GRAY,
-  TEXT_COLOR_GRAY,
-} from "../constant";
+import { MAIN_COLOR, MAIN_COLOR_GRAY, TEXT_COLOR_GRAY } from "../constant";
 
 const BottomSheetReg = ({
   sheetRef,
@@ -83,13 +77,12 @@ const styles = StyleSheet.create({
   bottomSheetBody: {
     margin: 10,
     textAlign: "center",
-    fontFamily: FONT_FAMILY_LIGHT,
     fontSize: 18,
   },
   bottomSheetBodyReg: {
     marginRight: 15,
     marginBottom: 15,
-    fontFamily: FONT_FAMILY_BOLD,
+    fontWeight: "bold",
     fontSize: 18,
     borderRadius: 4,
     borderColor: MAIN_COLOR_GRAY,
@@ -101,7 +94,7 @@ const styles = StyleSheet.create({
     color: TEXT_COLOR_GRAY,
   },
   bottomSheetBodyLookup: {
-    fontFamily: FONT_FAMILY_BOLD,
+    fontWeight: "bold",
     fontSize: 18,
     padding: 10,
     color: TEXT_COLOR_GRAY,
