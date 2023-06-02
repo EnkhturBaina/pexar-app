@@ -3,13 +3,16 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import { DEV_URL, X_API_KEY } from "../constant";
+import * as Updates from "expo-updates";
 
 const MainContext = React.createContext();
 
 export const UserStore = (props) => {
   const navigation = useNavigation();
 
-  const [userName, setUserName] = useState("jorjoffice@gmail.com");
+  const [isUpdate, setIsUpdate] = useState(false);
+
+  const [userName, setUserName] = useState(""); //jorjoffice@gmail.com
   const [expoPushToken, setExpoPushToken] = useState("");
 
   const [loginError, setLoginError] = useState("");
@@ -49,9 +52,32 @@ export const UserStore = (props) => {
     },
   ]);
 
+  const onFetchUpdateAsync = async () => {
+    // console.log("onFetchUpdateAsync");
+    try {
+      const update = await Updates.checkForUpdateAsync();
+
+      // console.log("update", update);
+      if (update.isAvailable) {
+        setIsUpdate(true);
+      }
+      userData == null && getLocalUserData();
+    } catch (error) {
+      // console.log("error", error);
+      // You can also add an alert() to see the error message in case of an error when fetching updates.
+      alert(`Error fetching latest Expo update: ${error}`);
+    }
+  };
+
   useEffect(() => {
-    userData == null && getLocalUserData();
+    onFetchUpdateAsync();
+    // userData == null && getLocalUserData();
   }, []);
+
+  const doUpdate = () => {
+    Updates.fetchUpdateAsync();
+    Updates.reloadAsync();
+  };
 
   const login = async (userName, password, rememberEmail) => {
     //***** Нэвтрэх
@@ -203,6 +229,8 @@ export const UserStore = (props) => {
         setLoginError,
         loginError,
         setUserData,
+        isUpdate,
+        doUpdate,
       }}
     >
       {props.children}

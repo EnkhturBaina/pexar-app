@@ -46,13 +46,13 @@ const TopFilter = ({ tabs, cats }) => {
   };
 
   const reports = [
-    // {
-    //   id: 0,
-    //   name: "Жагсаалт",
-    //   iconType: "ionicon",
-    //   iconName: "document-text-outline",
-    //   key: "List",
-    // },
+    {
+      id: 0,
+      name: "Жагсаалт",
+      iconType: "ionicon",
+      iconName: "document-text-outline",
+      key: "List",
+    },
     {
       id: 1,
       name: "Тайлан",

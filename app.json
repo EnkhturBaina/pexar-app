@@ -34,6 +34,14 @@
       "eas": {
         "projectId": "923fc7d5-44cf-4fa4-a2cf-3c01a181c1cf"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-updates",
+        {
+          "username": "etr"
+        }
+      ]
+    ]
   }
 }
