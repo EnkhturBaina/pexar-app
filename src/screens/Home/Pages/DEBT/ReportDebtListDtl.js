@@ -16,7 +16,6 @@ import {
   MAIN_COLOR_GRAY,
   MAIN_COLOR_GRAY_LEVEL4,
 } from "../../../../constant";
-// import { Grid, LineChart, XAxis, YAxis } from "react-native-svg-charts";
 
 const ReportDebtListDtl = (props) => {
   const [selectedCat, setSelectedCat] = useState(1);

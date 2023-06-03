@@ -17,7 +17,6 @@ import {
   MAIN_COLOR_GRAY_LEVEL4,
 } from "../../../../constant";
 import khan from "../../../../../assets/khan.png";
-// import { Grid, LineChart, XAxis, YAxis } from "react-native-svg-charts";
 
 const ReportCassListDtl = (props) => {
   const [selectedCat, setSelectedCat] = useState(1);

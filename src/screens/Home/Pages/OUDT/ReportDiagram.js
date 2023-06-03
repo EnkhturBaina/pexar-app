@@ -1,6 +1,5 @@
-import { Text, StyleSheet, View, ScrollView } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
-import { PieChart } from "react-native-svg-charts";
+import { Text, StyleSheet, View, ScrollView, Dimensions } from "react-native";
+import React, { useContext, useState } from "react";
 import {
   MAIN_BACKGROUND_COLOR,
   MAIN_COLOR,
@@ -9,65 +8,14 @@ import {
 import { CheckBox } from "@rneui/base";
 import ReportDiagramSkeleton from "../../../../Skeletons/ReportDiagramSkeleton";
 import MainContext from "../../../../contexts/MainContext";
+import { PieChart } from "react-native-chart-kit";
 
 const ReportDiagram = () => {
   const state = useContext(MainContext);
   const [selectedIndex, setSelectedIndex] = useState([]);
 
-  const data = [
-    {
-      key: 1,
-      amount: 50,
-      svg: { fill: "#007B42" },
-    },
-    {
-      key: 2,
-      amount: 50,
-      svg: { fill: "#22465E" },
-    },
-    {
-      key: 3,
-      amount: 40,
-      svg: { fill: "#86909C" },
-    },
-    {
-      key: 4,
-      amount: 20,
-      svg: { fill: "#EC7A09" },
-    },
-    {
-      key: 5,
-      amount: 35,
-      svg: { fill: "#E34935" },
-    },
-  ];
-  const data1 = [
-    {
-      key: 1,
-      amount: 50,
-      svg: { fill: "#007B42" },
-    },
-    {
-      key: 2,
-      amount: 11,
-      svg: { fill: "#22465E" },
-    },
-    {
-      key: 3,
-      amount: 21,
-      svg: { fill: "#86909C" },
-    },
-    {
-      key: 4,
-      amount: 20,
-      svg: { fill: "#EC7A09" },
-    },
-    {
-      key: 5,
-      amount: 35,
-      svg: { fill: "#E34935" },
-    },
-  ];
+  const width = Dimensions.get("window").width;
+
   const onChange = (val) => {
     const reducedArr = [...selectedIndex];
     var index = reducedArr.indexOf(val);
@@ -79,6 +27,54 @@ const ReportDiagram = () => {
     }
   };
 
+  const data = [
+    {
+      name: "Үйлдвэр",
+      population: 364500,
+      color: "#007B42",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 14,
+    },
+    {
+      name: "Орон сууц",
+      population: 611058,
+      color: "#22465E",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 14,
+    },
+    {
+      name: "Тээвэр",
+      population: 527612,
+      color: "#86909C",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 14,
+    },
+    {
+      name: "Агуулах",
+      population: 41350,
+      color: "#EC7A09",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 14,
+    },
+    {
+      name: "Касс",
+      population: 102020,
+      color: "#E34935",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 14,
+    },
+  ];
+  const chartConfig = {
+    backgroundGradientFrom: "#1E2923",
+    backgroundGradientFromOpacity: 0,
+    backgroundGradientTo: "#08130D",
+    backgroundGradientToOpacity: 0.5,
+    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+    strokeWidth: 2, // optional, default 3
+    barPercentage: 0.5,
+    useShadowColorFromDataset: false, // optional
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <ScrollView bounces={false} contentContainerStyle={styles.mainContainer}>
@@ -88,40 +84,13 @@ const ReportDiagram = () => {
           <View>
             <View style={styles.topPieContainer}>
               <PieChart
-                style={styles.mainChart1}
                 data={data}
-                innerRadius={"70%"}
-                valueAccessor={({ item }) => item.amount}
-              >
-                <View style={styles.chart1Container}>
-                  <Text style={styles.chart1Text}>61%</Text>
-                  <Text style={{ fontSize: 20, lineHeight: 18 }}>Ашиг</Text>
-                </View>
-              </PieChart>
-              <View style={styles.chart2Container}>
-                <PieChart
-                  style={styles.smallPieContainer}
-                  data={data1}
-                  innerRadius={"60%"}
-                  valueAccessor={({ item }) => item.amount}
-                >
-                  <View style={styles.smallPieTextContainer}>
-                    <Text style={styles.smallPieTopText}>61%</Text>
-                    <Text style={styles.smallPieBtmText}>Орлого</Text>
-                  </View>
-                </PieChart>
-                <PieChart
-                  style={styles.smallPieContainer}
-                  data={data}
-                  innerRadius={"60%"}
-                  valueAccessor={({ item }) => item.amount}
-                >
-                  <View style={styles.smallPieTextContainer}>
-                    <Text style={styles.smallPieTopText}>61%</Text>
-                    <Text style={styles.smallPieBtmText}>Зардал</Text>
-                  </View>
-                </PieChart>
-              </View>
+                width={width - 40}
+                height={200}
+                chartConfig={chartConfig}
+                accessor={"population"}
+                backgroundColor={"transparent"}
+              />
             </View>
             <View style={styles.bottomContainer}>
               <View style={{ width: "33%", alignItems: "center" }}>
@@ -238,25 +207,6 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
     height: 220,
-  },
-  smallPieContainer: {
-    height: 90,
-    width: 90,
-    flex: 1,
-  },
-  smallPieTextContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    height: 100,
-  },
-  smallPieTopText: {
-    fontSize: 18,
-    fontWeight: "bold",
-    lineHeight: 18,
-  },
-  smallPieBtmText: {
-    fontSize: 12,
-    lineHeight: 12,
   },
   bottomCardContainer: {
     flexDirection: "row",
