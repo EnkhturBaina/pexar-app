@@ -52,15 +52,15 @@ const LoginScreen = (props) => {
   };
 
   const login = () => {
-    // if (state.userName == "") {
-    //   onToggleSnackBar("И-мэйл оруулна уу.");
-    // } else if (password == "") {
-    //   onToggleSnackBar("Нууц үг оруулна уу.");
-    // } else {
-    //   state.login(state.userName, password, state.rememberUserName);
-    // }
+    if (state.userName == "") {
+      onToggleSnackBar("И-мэйл оруулна уу.");
+    } else if (password == "") {
+      onToggleSnackBar("Нууц үг оруулна уу.");
+    } else {
+      state.login(state.userName, password, state.rememberUserName);
+    }
     // state.setIsLoggedIn(true);
-    state.login(state.userName, password, state.rememberUserName);
+    // state.login(state.userName, password, state.rememberUserName);
   };
   const onFocus = (type) => {
     setSelectedInput(type == "userName" ? "userName" : "password");
@@ -90,17 +90,17 @@ const LoginScreen = (props) => {
         flex: 1,
       }}
     >
+      <CustomSnackbar
+        visible={visibleSnack}
+        dismiss={onDismissSnackBar}
+        text={snackBarMsg}
+        topPos={0}
+      />
       <StatusBar
         translucent
         barStyle={Platform.OS == "ios" ? "dark-content" : "default"}
       />
       <ScrollView bounces={false} contentContainerStyle={styles.loginContainer}>
-        <CustomSnackbar
-          visible={visibleSnack}
-          dismiss={onDismissSnackBar}
-          text={snackBarMsg}
-          topPos={30}
-        />
         <Image source={logo_black} style={styles.logo} />
         <Text style={{ fontSize: 36 }}>Нэвтрэх хэсэг</Text>
         {state.loginError != "" ? (
